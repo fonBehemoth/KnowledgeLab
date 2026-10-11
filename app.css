@@ -38,3 +38,5 @@ body[data-theme="sage"]{--bg:#eff3ee;--panel:#fcfdf9;--inside:#e7eee6;--line:#cc
 @media(max-width:480px){.department-grid{grid-template-columns:1fr}.report-filter{flex-direction:column;align-items:stretch}.report-filter label,.report-filter button{width:100%}.activity{max-width:215px}.activity strong{font-size:13px}.composer-context{flex-wrap:wrap}.data-row{gap:12px}.data-row small{text-align:right}.report-metric strong{font-size:27px}}
 
 .main-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+.selected-employee{background:var(--accent-soft);border:1px solid var(--accent-border);border-radius:12px;padding:14px;margin:0 0 14px}.selected-employee strong{display:block;line-height:1.4;font-size:16px}.selected-employee small{display:block;font-size:12px;color:var(--muted);margin:6px 0 12px;line-height:1.5}.selected-employee button{padding:7px 12px;font-size:12px}.position-select{margin:0 0 10px}
