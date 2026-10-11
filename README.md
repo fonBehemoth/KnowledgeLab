@@ -22,3 +22,5 @@
 
 GitHub Pages: main, / (root).
 
+
+Материалы проекта: [состояние и следующий этап](docs/PROJECT_STATE.md), [исходники и черновики ролика до яхты](promo/before-yacht/README.md), [браузерные проверки](qa/README.md).
