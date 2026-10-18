@@ -19,7 +19,7 @@ function labeledButton(id,text,name,fn){const b=document.createElement('button')
 export function initConversationLayout(){
  if(document.body.classList.contains('conversation-layout'))return;
  document.body.classList.add('conversation-layout');
- const sheet=document.createElement('link');sheet.rel='stylesheet';sheet.href=new URL('./conversation-layout.css?v=20261018-nav1',import.meta.url);document.head.append(sheet);
+ const sheet=document.createElement('link');sheet.rel='stylesheet';sheet.href=new URL('./conversation-layout.css?v=20261018-nav2',import.meta.url);document.head.append(sheet);
  const side=document.querySelector('#navigation-panel'),toggle=document.querySelector('#menu-toggle'),brand=document.querySelector('.brand-lockup');
  const heading=document.createElement('div');heading.className='nav-heading';toggle.replaceChildren(icon('close'));toggle.setAttribute('aria-label',translate('Скрыть навигацию'));heading.append(brand,toggle);
  const scroll=document.createElement('div');scroll.className='nav-scroll';scroll.append(...side.childNodes);side.append(heading,scroll);

@@ -1,4 +1,4 @@
-import {initWorkspaceChrome,disclosure} from './workspace-chrome.js?v=20261018-nav1';
+import {initWorkspaceChrome,disclosure} from './workspace-chrome.js?v=20261018-nav2';
 const $=s=>document.querySelector(s),app=window.deepAgentDemo;
 const fixture=await fetch('./fixtures.json').then(r=>{if(!r.ok)throw Error('Не удалось загрузить демо');return r.json();});
 app.applyOrganization(fixture.organization);
