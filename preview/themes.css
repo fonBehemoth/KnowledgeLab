@@ -1,0 +1,20 @@
+/* Review-only variables. Geometry, content and font sizes are unchanged. */
+:root[data-review-theme="neutral"],:root[data-review-theme="graphite"]{--bg:#f5f7fa;--panel:#ffffff;--inside:#f0f3f8;--line:#dde3eb;--green:#315bc5;--text:#202938;--muted:#526173;--accent-soft:#eaf0ff;--accent-border:#b9c9ec;--orange:#946222;--gold-soft:#fff3dd;--shadow:#273a5910}
+:root[data-review-theme="warm"]{--bg:#f5f4f1;--panel:#ffffff;--inside:#efeeea;--line:#dedfd9;--green:#17736a;--text:#282c2b;--muted:#58645f;--accent-soft:#e7f3ef;--accent-border:#a8cfc7;--orange:#946222;--gold-soft:#fff3dd;--shadow:#2c453c10}
+:root[data-review-theme]:not([data-review-theme="original"]) .report-metric,
+:root[data-review-theme]:not([data-review-theme="original"]) .task,
+:root[data-review-theme]:not([data-review-theme="original"]) .composer{background:var(--panel)}
+:root[data-review-theme]:not([data-review-theme="original"]) .report-metric strong{color:var(--text)}
+:root[data-review-theme]:not([data-review-theme="original"]) .status{color:var(--green)}
+:root[data-review-theme="graphite"] #navigation-panel{background:#172437;color:#e8eef7;--panel:#22334d;--inside:#22334d;--line:#3c4b61;--text:#e8eef7;--muted:#bdc9da;--green:#c7d8ff;--accent-soft:#2e4568;--accent-border:#627eaa}
+:root[data-review-theme="graphite"] #navigation-panel .label,
+:root[data-review-theme="graphite"] #navigation-panel .step-label,
+:root[data-review-theme="graphite"] #navigation-panel .hint,
+:root[data-review-theme="graphite"] #navigation-panel .neighbors{color:#bdc9da}
+:root[data-review-theme="graphite"] #navigation-panel button,
+:root[data-review-theme="graphite"] #navigation-panel select{color:#e8eef7;border-color:#3c4b61;background:#22334d}
+:root[data-review-theme="graphite"] #navigation-panel button.active,
+:root[data-review-theme="graphite"] #navigation-panel .selected-employee{background:#2e4568;border-color:#627eaa}
+:root[data-review-theme="graphite"] #navigation-panel .firm{background:#22334d;border-color:#3c4b61}
+:root[data-review-theme="graphite"] #navigation-panel .firm small{color:#bdc9da}
+:root[data-review-theme]:not([data-review-theme="original"]) .calculation-summary [data-state="mismatch"]{border-color:#b54135}
