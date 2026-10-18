@@ -1,19 +1,30 @@
 import {translate} from './i18n.js';
 
 const paths={company:'M3 21V5l9-3 9 3v16M8 8h1m6 0h1M8 12h1m6 0h1M9 21v-5h6v5',department:'M12 3v5M5 21v-5h14v5M5 16v-5h14v5M12 11V8',projects:'M3 7h7l2-3h8v16H3Z',people:'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3a4 4 0 0 1 0 8m6 10v-2a4 4 0 0 0-3-3M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0',reports:'M5 3h10l4 4v14H5ZM14 3v5h5M8 12h8m-8 4h8',chat:'M21 11a8 8 0 0 1-8 8H7l-5 3 2-6a8 8 0 1 1 17-5Z',analytics:'M4 20V4m0 16h17M8 16v-5m5 5V7m5 9v-9',library:'M4 3h4v18H4ZM12 3h4v18h-4m7-16 3 15',graph:'M10 5h4m-8 4 4 9m8-9-4 9M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m12 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-6 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0',history:'M3 11a9 9 0 1 1 3 8M3 4v7h7m2-5v6l4 2',assistant:'m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z',settings:'M9 3h6l1 3 3 1 2 5-2 5-3 1-1 3H9l-1-3-3-1-2-5 2-5 3-1Zm6 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0',plus:'M12 4v16M4 12h16',menu:'M4 6h16M4 12h16M4 18h16',close:'m6 6 12 12M6 18 18 6',sun:'M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2m-1 5a6 6 0 1 1-12 0 6 6 0 0 1 12 0',moon:'M21 14a9 9 0 0 1-11-11 9 9 0 1 0 11 11'};
+Object.assign(paths,{left:'m14 6-6 6 6 6',right:'m10 6 6 6-6 6',down:'m6 9 6 6 6-6',arrowRight:'M4 12h16m-6-6 6 6-6 6',arrowUp:'M12 20V4m-6 6 6-6 6 6',arrowDown:'M12 4v16m-6-6 6 6 6-6',microphone:'M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1-6 0Zm-3 6v1a6 6 0 0 0 12 0v-1m-6 7v4m-4 0h8',video:'M3 6h12v12H3Zm12 4 6-4v12l-6-4M7 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4'});
 function icon(name){const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('aria-hidden','true');svg.classList.add('nav-icon');const p=document.createElementNS(svg.namespaceURI,'path');p.setAttribute('d',paths[name]||paths.reports);svg.append(p);return svg;}
+function refreshArrowIcons(){
+ for(const [selector,name] of [['#previous-company','left'],['#next-company','right'],['.send','arrowUp'],['#jump-latest','arrowDown']]){const target=document.querySelector(selector);if(target&&!target.querySelector('svg'))target.replaceChildren(icon(name));}
+ for(const selector of ['#content [data-department]','#content [data-section]','#base-values','#activity-action','#company-left','#company-right'])for(const target of document.querySelectorAll(selector)){
+  for(const node of [...target.childNodes])if(node.nodeType===Node.TEXT_NODE&&/[→↑↓‹›]/.test(node.textContent)){
+   const text=node.textContent,name=/↑/.test(text)?'arrowUp':/↓/.test(text)?'arrowDown':/‹/.test(text)?'left':/›/.test(text)?'right':'arrowRight',arrow=icon(name);arrow.classList.add('action-arrow');
+   node.textContent=text.replace(/[→↑↓‹›]/g,'').trim();if(/^[\s‹]/.test(text)&&name==='left')target.prepend(arrow);else target.append(arrow);
+  }
+ }
+ for(const summary of document.querySelectorAll('.workspace-disclosure>summary'))if(!summary.querySelector('.summary-chevron')){const arrow=icon('down');arrow.classList.add('summary-chevron');summary.append(arrow);}
+}
 function mark(el,name){if(el&&!el.querySelector(':scope>.nav-icon'))el.prepend(icon(name));}
 function labeledButton(id,text,name,fn){const b=document.createElement('button');b.type='button';b.id=id;b.append(icon(name),document.createTextNode(translate(text)));b.onclick=fn;return b;}
 
 export function initConversationLayout(){
  if(document.body.classList.contains('conversation-layout'))return;
  document.body.classList.add('conversation-layout');
- const sheet=document.createElement('link');sheet.rel='stylesheet';sheet.href=new URL('./conversation-layout.css?v=20261018-blue1',import.meta.url);document.head.append(sheet);
+ const sheet=document.createElement('link');sheet.rel='stylesheet';sheet.href=new URL('./conversation-layout.css?v=20261018-nav1',import.meta.url);document.head.append(sheet);
  const side=document.querySelector('#navigation-panel'),toggle=document.querySelector('#menu-toggle'),brand=document.querySelector('.brand-lockup');
  const heading=document.createElement('div');heading.className='nav-heading';toggle.replaceChildren(icon('close'));toggle.setAttribute('aria-label',translate('Скрыть навигацию'));heading.append(brand,toggle);
  const scroll=document.createElement('div');scroll.className='nav-scroll';scroll.append(...side.childNodes);side.append(heading,scroll);
  const reopen=labeledButton('reopen-navigation','Показать навигацию','menu',()=>toggle.click());document.body.append(reopen);
- const context=document.querySelector('.workspace-toolbar');if(context){const mobile=context.querySelector('.mobile-activity');if(mobile)mobile.hidden=true;scroll.prepend(context);}
+ const context=document.querySelector('.workspace-toolbar');if(context){const mobile=context.querySelector('.mobile-activity');if(mobile)mobile.hidden=true;context.hidden=true;scroll.prepend(context);}
  const sections=scroll.querySelector('.main-tabs'),analytic=document.querySelector('#analytics-access');
  if(analytic){sections.querySelector('[data-section="Аналитика"]')?.remove();analytic.dataset.section='Аналитика';sections.append(analytic);}
  const library=document.createElement('nav');library.className='nav-library';library.setAttribute('aria-label',translate('Материалы и история'));
@@ -36,8 +47,13 @@ export function initConversationLayout(){
  const labels={'Проекты':'projects','Персонал':'people','Отчёты':'reports','Чаты':'chat','Аналитика':'analytics'};
  const decorate=()=>{for(const item of side.querySelectorAll('[data-section]'))mark(item,labels[item.dataset.section]);for(const [id,name] of Object.entries({'history-access':'history','core-history-button':'library','core-graph-button':'graph','app-settings-button':'settings','assistant-mode':'assistant','team-mode':'chat','participants-button':'people','base-values':'reports','activity-button':'history'}))mark(document.getElementById(id),name);mark(document.querySelector('#company-disclosure>summary'),'company');for(const item of side.querySelectorAll('#subnav>button'))mark(item,'reports');};
  const refreshRecent=()=>{recent.replaceChildren();const state=window.deepAgentDemo.state(),history=window.deepAgentDemo.historySnapshot().chats[state.company_id];const threads=history?.threads||[];recent.hidden=!threads.length;if(!threads.length)return;const label=document.createElement('small');label.textContent=translate('Последние чаты');recent.append(label);for(const item of threads.slice(-4).reverse()){const b=labeledButton('',item.title,'chat',()=>{document.querySelector('#history-access').click();[...document.querySelectorAll('[data-open-chat]')].find(x=>x.dataset.openChat===item.id)?.click();});const text=b.lastChild,span=document.createElement('span');span.dataset.authored='true';span.textContent=text.textContent;text.replaceWith(span);recent.append(b);}};
- document.addEventListener('deepagent-section-rendered',()=>{decorate();refreshRecent();});document.addEventListener('deepagent-history-changed',refreshRecent);document.addEventListener('deepagent-language-change',()=>{decorate();setMode(mode);refreshRecent();});decorate();refreshRecent();
+ document.addEventListener('deepagent-section-rendered',()=>{decorate();refreshRecent();refreshArrowIcons();});document.addEventListener('deepagent-history-changed',refreshRecent);document.addEventListener('deepagent-language-change',()=>{decorate();setMode(mode);refreshRecent();refreshArrowIcons();});decorate();refreshRecent();refreshArrowIcons();
+ let arrowRefreshPending=false;new MutationObserver(()=>{if(arrowRefreshPending)return;arrowRefreshPending=true;requestAnimationFrame(()=>{arrowRefreshPending=false;refreshArrowIcons();});}).observe(document.querySelector('#content'),{childList:true,subtree:true});
  initAttachments();
+ const composer=document.querySelector('#ask-form'),send=composer.querySelector('.send');
+ for(const [id,label,name] of [['voice-input','Голосовое общение · планируется','microphone'],['video-record','Видеозапись · планируется','video']]){
+  const control=labeledButton(id,label,name,()=>window.DeepAgentAttachments.status(translate(label)));control.className='planned-composer-control';control.setAttribute('aria-label',translate(label));control.setAttribute('aria-disabled','true');control.title=translate(label);control.replaceChildren(icon(name));composer.insertBefore(control,send);
+ }
  const question=document.querySelector('#question');if(!question.onkeydown)question.onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();if(!document.querySelector('.send').disabled)document.querySelector('#ask-form').requestSubmit();}};
 }
 

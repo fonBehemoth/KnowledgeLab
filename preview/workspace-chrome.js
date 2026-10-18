@@ -1,4 +1,4 @@
-import {initConversationLayout} from './conversation-layout.js?v=20261018-blue1';
+import {initConversationLayout} from './conversation-layout.js?v=20261018-nav1';
 import {translate} from './i18n.js';
 
 // Native disclosures preserve tab order and existing button listeners.
@@ -22,7 +22,7 @@ export function disclosure(label,items=[],className=''){
 let initialized=false;
 export function initWorkspaceChrome(){
  if(initialized)return;initialized=true;document.body.classList.add('organized-workspace');
- const link=document.createElement('link');link.rel='stylesheet';link.href='./workspace-chrome.css?v=20261018-blue1';document.head.append(link);
+ const link=document.createElement('link');link.rel='stylesheet';link.href='./workspace-chrome.css?v=20261018-nav1';document.head.append(link);
  document.addEventListener('pointerdown',event=>{for(const menu of document.querySelectorAll('.workspace-disclosure[open]'))if(!menu.contains(event.target))menu.open=false;});
  const sidebar=document.querySelector('#navigation-panel'),controls=document.querySelector('.chat-controls');
  const resources=disclosure('Материалы и анализ',[], 'workspace-resources');resources.id='workspace-resources';
