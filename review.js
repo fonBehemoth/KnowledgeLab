@@ -18,6 +18,6 @@ async function openScreen(next){if(!ready||busy)return;busy=true;screen=next;doc
   }
   recolor();
  }catch(e){status.textContent=e.message;}finally{busy=false;document.querySelectorAll('[data-screen]').forEach(b=>b.disabled=false);}}
-frame.addEventListener('load',async()=>{try{const d=frame.contentDocument;const sheet=d.createElement('link');sheet.rel='stylesheet';sheet.href='./themes.css';d.head.append(sheet);await wait(()=>frame.contentWindow.deepAgentDemo&&d.querySelector('#analytics-access')&&d.querySelector('#company-name')?.textContent==='Вектор');const menu=d.querySelector('#menu-toggle');if(frame.clientWidth>=1000&&menu?.getAttribute('aria-expanded')==='false')menu.click();ready=true;recolor();await openScreen(screen);}catch(e){status.textContent=e.message;}});
+frame.addEventListener('load',async()=>{try{const d=frame.contentDocument;const sheet=d.createElement('link');sheet.rel='stylesheet';sheet.href='./themes.css?v=20261018-theme2';d.head.append(sheet);await wait(()=>frame.contentWindow.deepAgentDemo&&d.querySelector('#analytics-access')&&d.querySelector('#company-name')?.textContent==='Вектор');const menu=d.querySelector('#menu-toggle');if(frame.clientWidth>=1000&&menu?.getAttribute('aria-expanded')==='false')menu.click();ready=true;recolor();await openScreen(screen);}catch(e){status.textContent=e.message;}});
 document.querySelectorAll('[data-palette]').forEach(b=>b.onclick=()=>{palette=b.dataset.palette;if(ready)recolor();});
 document.querySelectorAll('[data-screen]').forEach(b=>b.onclick=()=>openScreen(b.dataset.screen));
