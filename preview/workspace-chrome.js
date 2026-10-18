@@ -1,3 +1,4 @@
+import {initConversationLayout} from './conversation-layout.js?v=20261018-chat2';
 import {translate} from './i18n.js';
 
 // Native disclosures preserve tab order and existing button listeners.
@@ -21,7 +22,7 @@ export function disclosure(label,items=[],className=''){
 let initialized=false;
 export function initWorkspaceChrome(){
  if(initialized)return;initialized=true;document.body.classList.add('organized-workspace');
- const link=document.createElement('link');link.rel='stylesheet';link.href='./workspace-chrome.css';document.head.append(link);
+ const link=document.createElement('link');link.rel='stylesheet';link.href='./workspace-chrome.css?v=20261018-chat2';document.head.append(link);
  document.addEventListener('pointerdown',event=>{for(const menu of document.querySelectorAll('.workspace-disclosure[open]'))if(!menu.contains(event.target))menu.open=false;});
  const sidebar=document.querySelector('#navigation-panel'),controls=document.querySelector('.chat-controls');
  const resources=disclosure('Материалы и анализ',[], 'workspace-resources');resources.id='workspace-resources';
@@ -47,5 +48,5 @@ export function initWorkspaceChrome(){
  const settings=document.getElementById('app-settings-button');if(settings)settings.textContent=translate('Настройки приложения');
  // The employee activity remains a direct action; the empty prompt is redundant.
  const activity=()=>{const selected=!!window.deepAgentDemo?.state().employee;document.getElementById('activity-button').hidden=!selected;document.body.classList.toggle('has-selected-employee',selected);updateMode();syncCompany();};
- document.addEventListener('deepagent-section-rendered',activity);document.addEventListener('deepagent-language-change',activity);activity();
+ document.addEventListener('deepagent-section-rendered',activity);document.addEventListener('deepagent-language-change',activity);activity();initConversationLayout();
 }
