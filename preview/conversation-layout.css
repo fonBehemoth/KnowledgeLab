@@ -1,5 +1,5 @@
 /* Messenger shell: one navigation panel, one conversation, no button frames. */
-html body.conversation-layout[data-conversation-mode][data-theme]{--bg:#fff;--panel:#fff;--inside:#f5f6f8;--text:#303842;--muted:#626b76;--line:#e4e7eb;--green:#af510d;--orange:#af510d;--accent-soft:#fff1e5;--accent-border:#e9c9ad;--icon-accent:#d66c16;--gold-soft:#fff3e7;--shadow:transparent;--header-height:0px;background:#fff!important;color:var(--text);font-family:"DIN Pro",Arial,sans-serif}
+html body.conversation-layout[data-conversation-mode][data-theme]{--bg:#fff;--panel:#fff;--inside:#f5f6f8;--text:#303842;--muted:#626b76;--line:#e4e7eb;--green:#086c9f;--orange:#086c9f;--accent-soft:#e7f5ff;--accent-border:#a9d9f2;--icon-accent:#48bcff;--gold-soft:#e7f5ff;--shadow:transparent;--header-height:0px;background:#fff!important;color:var(--text);font-family:"DIN Pro",Arial,sans-serif}
 html body.conversation-layout[data-conversation-mode="dark"][data-theme]{color-scheme:dark;--bg:#111418;--panel:#111418;--inside:#1c2229;--text:#e5e9ee;--muted:#a7b2bf;--line:#2a323d;--green:#64c8ff;--orange:#f5b47a;--accent-soft:#183347;--accent-border:#32647e;--icon-accent:#48bcff;--gold-soft:#3d2e24;background:#111418!important}
 .conversation-layout [hidden]{display:none!important}
 .conversation-layout>.body{display:grid;flex:1;grid-template-columns:280px minmax(0,1fr)!important;padding:0;gap:0;overflow:hidden}
@@ -43,7 +43,7 @@ html body.conversation-layout[data-conversation-mode="dark"][data-theme]{color-s
 .conversation-layout #question{background:transparent!important;resize:none;padding:6px 4px;min-height:40px;height:40px;font-size:16px;line-height:1.6;border-radius:0}
 .conversation-layout #attach-file,.conversation-layout .composer .send{display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;padding:0;border-radius:50%}
 .conversation-layout #attach-file{font-size:0}.conversation-layout #attach-file .nav-icon{width:24px;height:24px;color:var(--text)}
-.conversation-layout .composer .send{background:var(--icon-accent)!important;color:#fff!important;font-size:24px}.conversation-layout[data-conversation-mode="dark"] .composer .send{color:#102533!important}
+.conversation-layout .composer .send{background:var(--icon-accent)!important;color:#102533!important;font-size:24px}.conversation-layout[data-conversation-mode="dark"] .composer .send{color:#102533!important}
 .conversation-layout .chat-panel{max-width:960px;width:100%;margin:0 auto}.conversation-layout .chat-panel :is(.message,.message.user),.conversation-layout :is(.history-message,.history-message.own){border:0!important;box-shadow:none!important;background:transparent!important;color:var(--text)!important}
 .conversation-layout .chat-panel .message.user,.conversation-layout .history-message.own{background:var(--inside)!important}
 .conversation-layout .chat-empty{color:var(--muted)}.conversation-layout :is(.message-date,.history-day){background:transparent;color:var(--muted)}
@@ -53,3 +53,5 @@ html body.conversation-layout[data-conversation-mode="dark"][data-theme]{color-s
 .conversation-layout :is(dialog,.disclosure-panel){background:var(--panel)!important;color:var(--text);border:0!important;box-shadow:0 8px 35px #0003!important;backdrop-filter:none!important}.conversation-layout .company-disclosure>.disclosure-panel{position:static;max-height:none;margin-top:5px;box-shadow:none!important}.conversation-layout .history-layout{border:0}.conversation-layout .conversation-list{border-right:1px solid var(--line)}
 @media(max-width:900px){.conversation-layout .sidebar{position:fixed;top:0;bottom:0;left:0;width:min(290px,85vw);z-index:50}.conversation-layout>.body{grid-template-columns:minmax(0,1fr)!important}.conversation-layout .conversation-flow .content{padding:28px 20px 20px}.conversation-layout .composer #ask-form{width:calc(100% - 24px);margin-bottom:10px}.conversation-layout .nav-heading{padding-top:18px}.conversation-layout.nav-closed .conversation-flow .content{padding-top:64px}.conversation-layout .nav-footer{padding-bottom:12px}}
 @media(prefers-reduced-motion:reduce){.conversation-layout *{transition:none!important;animation:none!important}}
+
+.conversation-layout[data-conversation-mode="light"] :is(.notice,.badge){background:var(--accent-soft)!important;color:var(--green)!important;border-color:var(--accent-border)!important}
