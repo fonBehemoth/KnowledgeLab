@@ -11,6 +11,7 @@ const settings=document.createElement('dialog');settings.innerHTML='<div class="
 document.body.append(settings);settings.querySelector('.close-dialog').onclick=()=>settings.close();settings.querySelector('#reset-demo').onclick=()=>{localStorage.removeItem('deepagent-public-review-v1');location.reload();};
 const navSettings=document.createElement('div');navSettings.className='nav-settings';navSettings.append(button('app-settings-button','Настройки приложения',()=>settings.showModal()));$('#navigation-panel').append(navSettings);
 window.DeepAgentSearchProvider=async()=>[{kind:'Отчёты',title:'Продажи и операционные расходы',text:'Апрель — сентябрь 2026. Выручка 2 173 000 €. Операционные расходы 1 355 000 €. Рост выручки +30,6%.',detail:'Демонстрационный отчёт',open:()=>app.openAnalytics()}];
+window.DeepAgentHistoryProvider={materials:async()=>[{id:'demo-sales',title:'Продажи и операционные расходы',text:'Демонстрационный управленческий отчёт за апрель — сентябрь 2026. Выручка 2 173 000 €, операционные расходы 1 355 000 €.',kind:'Пример отчёта',open:()=>app.openAnalytics()}],versions:async()=>[]};
 initWorkspaceChrome();
 const months=['Апрель','Май','Июнь','Июль','Август','Сентябрь'],values=[320000,342000,331000,368000,394000,418000];
 const money=n=>n.toLocaleString('ru-RU')+' €';

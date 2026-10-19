@@ -43,7 +43,7 @@ export function initGlobalSearch(icon){
  close.onclick=closeSearch;
  function render(){
   for(const b of filters.children){b.classList.toggle('active',b.dataset.kind===kind);b.setAttribute('aria-pressed',String(b.dataset.kind===kind));}
-  const sections=['Проекты','Персонал','Отчёты','Чаты','Аналитика'].map(name=>({kind:'Разделы',title:name,text:'',detail:'',target:{kind:'section',section:name,company_id:app.state().company_id}}));
+  const sections=['Проекты','Персонал','Отчёты','Чаты','Аналитика','История'].map(name=>({kind:'Разделы',title:name,text:'',detail:'',target:{kind:'section',section:name,company_id:app.state().company_id}}));
   const matches=matchSearchEntries([...buildSearchEntries(app.organization(),app.historySnapshot()),...extra,...sections],input.value,kind);results.replaceChildren();
   status.textContent=(loading?translate('Материалы загружаются…')+' ':'')+(input.value.trim()?(matches.length?translate('Найдено')+': '+matches.length+(matches.length>50?' · '+translate('Показаны первые 50'):''):translate('Ничего не найдено')):translate('Поиск по всем компаниям, сотрудникам, задачам, текстам переписок и сохранённым материалам.'))+(warning?' '+warning:'');
   for(const item of matches.slice(0,50)){
