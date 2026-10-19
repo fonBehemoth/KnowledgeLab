@@ -22,7 +22,8 @@ html body.conversation-layout[data-conversation-mode="dark"][data-theme]{color-s
 .conversation-layout :is(button,summary):hover{background:var(--inside)!important}
 .conversation-layout :is(button,summary,input,select,textarea):focus-visible{outline:2px solid var(--icon-accent)!important;outline-offset:2px}
 .conversation-layout .sidebar :is(button,summary){display:flex;flex-direction:row;justify-content:flex-start;align-items:center;gap:10px;line-height:1.3;font-size:18px;font-weight:500;min-height:42px;text-align:left;color:var(--text)!important;background:transparent!important}
-.conversation-layout .sidebar :is(button,summary):hover,.conversation-layout .sidebar button.active{background:var(--inside)!important}
+.conversation-layout .sidebar :is(button,summary):hover{background:var(--inside)!important}
+.conversation-layout .sidebar button.active,.conversation-layout .sidebar button.active:hover{background:var(--accent-soft)!important;color:var(--green)!important}
 .conversation-layout .nav-icon{flex:0 0 21px;width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
 .conversation-layout .sidebar .nav-icon{color:var(--icon-accent);filter:drop-shadow(0 0 3px color-mix(in srgb,var(--icon-accent) 32%,transparent))}
 .conversation-layout .nav-heading #menu-toggle{padding:8px;min-width:32px;width:32px;flex:none}.conversation-layout .nav-heading #menu-toggle .nav-icon{color:var(--muted);filter:none}

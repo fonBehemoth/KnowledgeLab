@@ -29,7 +29,7 @@ export function initConversationLayout(){
  const oldCompany=document.querySelector('#company-disclosure'),companies=document.querySelector('#companies');
  if(oldCompany&&companies){const compact=document.createElement('section');compact.id='company-switcher';compact.setAttribute('aria-label',translate('Компания'));const firm=companies.querySelector('.firm'),caption=document.createElement('small');caption.className='company-caption';caption.textContent=translate('Компания');firm.prepend(icon('company'),caption);document.querySelector('#company-field').hidden=true;oldCompany.before(compact);compact.append(companies);oldCompany.hidden=true;}
  const sections=scroll.querySelector('.main-tabs'),analytic=document.querySelector('#analytics-access');
- if(analytic){sections.querySelector('[data-section="Аналитика"]')?.remove();analytic.dataset.section='Аналитика';sections.append(analytic);}
+ if(analytic){sections.querySelector('[data-section="Аналитика"]')?.remove();analytic.onclick=null;analytic.dataset.section='Аналитика';sections.append(analytic);}
  const library=document.createElement('nav');library.className='nav-library';library.setAttribute('aria-label',translate('Материалы и история'));
  for(const id of ['history-access','core-history-button','core-graph-button']){const item=document.getElementById(id);if(item)library.append(item);}
  scroll.append(library);document.querySelector('#workspace-resources')?.remove();
