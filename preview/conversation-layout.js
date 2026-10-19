@@ -36,16 +36,33 @@ export function initConversationLayout(){
  const recent=document.createElement('nav');recent.className='nav-recent';recent.setAttribute('aria-label',translate('Последние чаты'));scroll.append(recent);
  const dialogue=document.createElement('nav');dialogue.className='nav-dialogue';dialogue.setAttribute('aria-label',translate('Диалог'));
  for(const id of ['assistant-mode','team-mode','participants-button','base-values']){const item=document.getElementById(id);if(item)dialogue.append(item);}
- scroll.append(dialogue);document.querySelector('.chat-controls')?.remove();
+ const sectionChoice=scroll.querySelector('.section-choice');sectionChoice.before(dialogue);document.querySelector('.chat-controls')?.remove();
+ // Keep navigation stable. Context selection belongs to the working pane.
+ const flow=document.querySelector('#conversation-flow'),choices=document.createElement('section');
+ choices.id='workspace-choices';choices.setAttribute('aria-label',translate('Выбор в рабочем разделе'));flow.prepend(choices);
+ const departmentSelect=document.querySelector('#department-select'),departmentStep=departmentSelect.closest('.step');
+ departmentStep.hidden=true;choices.append(departmentStep);
+ const departmentChoices=document.createElement('nav');departmentChoices.id='workspace-departments';departmentChoices.setAttribute('aria-label',translate('Подразделения'));choices.append(departmentChoices);
+ const personnel=document.querySelector('#person-controls'),subnav=document.querySelector('#subnav');choices.append(personnel,subnav);
+ const refreshChoices=()=>{
+  const state=window.deepAgentDemo.state();document.body.dataset.workspaceSection=state.section||'';
+  departmentChoices.hidden=!state.department&&!state.section;
+  departmentChoices.replaceChildren();
+  if(!departmentChoices.hidden){const label=document.createElement('span');label.className='workspace-choice-label';label.textContent=translate('Подразделение');departmentChoices.append(label);
+   for(const option of departmentSelect.options){if(!option.value)continue;const b=document.createElement('button');b.type='button';b.dataset.department=option.value;b.textContent=option.textContent;b.classList.toggle('active',state.department===option.value);b.setAttribute('aria-pressed',String(state.department===option.value));departmentChoices.append(b);}
+  }
+  choices.hidden=departmentChoices.hidden&&personnel.hidden&&!subnav.childElementCount;
+ };
+ document.addEventListener('deepagent-section-rendered',refreshChoices);document.addEventListener('deepagent-language-change',refreshChoices);refreshChoices();
+ side.addEventListener('click',event=>{if(innerWidth<=900&&event.target.closest('[data-section],#history-access,#core-history-button,.nav-recent button')&&!document.body.classList.contains('nav-closed'))toggle.click();});
  const activity=document.getElementById('activity-button');if(activity)scroll.append(activity);
  const footer=document.createElement('div');footer.className='nav-footer';const settings=side.querySelector('.nav-settings');if(settings)footer.append(settings);
  const themeSelect=document.querySelector('#theme-select');if(themeSelect){themeSelect.replaceChildren();for(const [value,label] of [['light','Светлая тема'],['dark','Тёмная тема']]){const option=document.createElement('option');option.value=value;option.textContent=translate(label);themeSelect.append(option);}themeSelect.onchange=()=>setMode(themeSelect.value);}
  let mode='light';try{mode=localStorage.getItem('deepagent-conversation-mode')||mode;}catch{}
- const modeButton=labeledButton('conversation-theme','Тёмная тема','moon',()=>setMode(mode==='light'?'dark':'light'));
- function setMode(next){mode=next==='dark'?'dark':'light';document.body.dataset.conversationMode=mode;if(themeSelect)themeSelect.value=mode;modeButton.replaceChildren(icon(mode==='light'?'moon':'sun'),document.createTextNode(translate(mode==='light'?'Тёмная тема':'Светлая тема')));modeButton.setAttribute('aria-pressed',String(mode==='dark'));try{localStorage.setItem('deepagent-conversation-mode',mode);}catch{}}
- footer.append(modeButton);side.append(footer);setMode(mode);
+ function setMode(next){mode=next==='dark'?'dark':'light';document.body.dataset.conversationMode=mode;if(themeSelect)themeSelect.value=mode;try{localStorage.setItem('deepagent-conversation-mode',mode);}catch{}}
+ side.append(footer);setMode(mode);
  document.querySelector('body>header').hidden=true;
- const appearance=document.querySelector('.appearance-settings');if(appearance){const target=document.querySelector('#app-settings-button');const original=target?.onclick;if(target)target.onclick=e=>{original?.(e);const dialog=[...document.querySelectorAll('dialog')].find(d=>d.open);if(dialog&&!dialog.querySelector('#theme-select'))dialog.append(appearance);};}
+ const appearance=document.querySelector('.appearance-settings');if(appearance){appearance.open=true;const target=document.querySelector('#app-settings-button');const original=target?.onclick;if(target)target.onclick=e=>{original?.(e);const dialog=[...document.querySelectorAll('dialog')].find(d=>d.open);if(dialog&&!dialog.querySelector('#theme-select'))dialog.append(appearance);};}
  document.querySelector('.app-footer').hidden=true;
  const labels={'Проекты':'projects','Персонал':'people','Отчёты':'reports','Чаты':'chat','Аналитика':'analytics'};
  const decorate=()=>{for(const item of side.querySelectorAll('[data-section]'))mark(item,labels[item.dataset.section]);for(const [id,name] of Object.entries({'history-access':'history','core-history-button':'library','core-graph-button':'graph','app-settings-button':'settings','assistant-mode':'assistant','team-mode':'chat','participants-button':'people','base-values':'reports','activity-button':'history'}))mark(document.getElementById(id),name);mark(document.querySelector('#company-disclosure>summary'),'company');for(const item of side.querySelectorAll('#subnav>button'))mark(item,'reports');};

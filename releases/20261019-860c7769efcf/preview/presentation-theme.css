@@ -1,0 +1,46 @@
+/* Silver glass, cyan light and amber details from the business presentation.
+   Review palettes explicitly scope this theme so saved preferences cannot win. */
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body){
+ --bg:#dce1e6;--panel:#f6f8fbe8;--inside:#e9eef4;--line:#bccbd6;--green:#076b9e;--text:#263e4e;--muted:#536b7b;--orange:#a64807;--accent-soft:#def2fc;--accent-border:#8abed7;--gold-soft:#fff0df;--shadow:#263e4e12;
+ --glass-edge:#ffffffdd;--glass-blue:#2bb9f6;--glass-amber:#ff963e;
+ color:var(--text);background:radial-gradient(ellipse at 12% 28%,#d0edfa8a 0,transparent 40%),radial-gradient(ellipse at 92% 85%,#ffe2c359 0,transparent 38%),linear-gradient(128deg,#cdd4dc 0%,#f0f2f5 39%,#e4e8ed 68%,#d3dae2 100%);background-attachment:fixed;
+}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body)>header{
+ background:linear-gradient(110deg,#ffffffc9,#edf4f9b0);border-top:1px solid #fff;border-bottom:1px solid #ffffffb3;box-shadow:0 4px 22px #243d5010;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) .brand{color:#2d4352;letter-spacing:-.8px}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) .brand span{color:#086d9f}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.sidebar,.workspace){background:linear-gradient(145deg,#ffffffbf,#f4f7faad);border:1px solid var(--glass-edge);box-shadow:inset 0 1px 0 #fff,0 10px 30px #314b6412,0 1px 2px #405d7024;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) .sidebar{background:linear-gradient(145deg,#f4f8fcce,#dfe8f0b8)}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) .workspace{background:linear-gradient(125deg,#ffffffe0,#e2e8f0b3 64%,#f6f8fad6)}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.secondary,.arrow,.play,.base-values,.history-access,.workspace-disclosure>summary,.company-disclosure>summary){
+ background:linear-gradient(165deg,#ffffffec 0%,#e9f1f7c9 50%,#dce7f0d6 100%);border:1px solid #a9becd;border-top-color:#fff;border-radius:9px;color:#294a60;box-shadow:inset 0 1px 0 #fff,0 2px 6px #2e4b6410;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.secondary,.arrow,.play,.base-values,.workspace-disclosure>summary):hover{border-color:#53afe0;background:linear-gradient(165deg,#fff,#dceff9);box-shadow:inset 0 1px 0 #fff,0 0 0 1px #83d9ff45,0 0 14px #46bbef30}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.primary,.send){background:linear-gradient(155deg,#0878ae,#065b8b);color:#fff;border:1px solid #0878ae;border-top-color:#69c9f3;box-shadow:inset 0 1px 0 #99e5ff55,0 3px 9px #006d9e24,0 0 12px #2bb9f61c;text-shadow:none}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.primary,.send):hover{background:linear-gradient(155deg,#0988c4,#086a9b);box-shadow:inset 0 1px 0 #b4edff99,0 0 17px #26b9f64d}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is([data-action="assign"],[data-action="approve"]){background:linear-gradient(155deg,#ffce95,#f6a655);border-color:#db8a3a;color:#533008;box-shadow:inset 0 1px 0 #fff3df,0 0 15px #ff963e2b}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) .history-access{border-bottom:2px solid #eaa15d;box-shadow:inset 0 1px 0 #fff,inset 0 -2px 0 #ffad6555,0 3px 12px #e8a14a20}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) .main-tabs button{background:transparent;color:#365165;box-shadow:none}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.main-tabs button,.subnav button).active{background:linear-gradient(110deg,#ccecfb,#e6f4fc);color:#075c89;border:1px solid #a1cce1;box-shadow:inset 3px 0 0 #21a9e5,inset 0 1px 0 #fff}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.main-tabs button,.subnav button):hover{background:#e1eff8}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.firm,.task,.report-metric,.selected-employee,.employee-button,.department-grid button){background:linear-gradient(145deg,#fffffff0,#e8f0f7c9);border:1px solid #b8cad8;box-shadow:inset 0 1px 0 #fff,0 3px 10px #314b6410;color:var(--text)}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.selected-employee,.employee-button.active){border-color:#7dbbda;background:linear-gradient(145deg,#f7fcff,#dceff9);box-shadow:inset 3px 0 0 #2bb9f6,inset 0 1px 0 #fff}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.report-metric,.task){border-top-color:#fff}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) .report-metric strong{color:#263e4e}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) .report-metric:nth-child(3){border-top:2px solid #eda55e;box-shadow:inset 0 1px 0 #fff5e9,0 -3px 15px #ff9e4020}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) .report-metric:nth-child(3) strong{color:#97450c}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.composer,.conversation-flow){background:transparent;box-shadow:none}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) #ask-form{background:linear-gradient(155deg,#f9fcffed,#e2ecf5ed);border-top-color:#bdd1df;box-shadow:0 -6px 20px #3b66810a}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.text-input,input,select,textarea){background-color:#f5f8fc;color:#263e4e;border-color:#aec4d4}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) #question{background:transparent;box-shadow:none}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.message,.history-message){background:#f8fbfe;border:1px solid #d2dfe9;box-shadow:0 2px 5px #2e4b6409;color:#263e4e}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.message.user,.history-message.own){background:#dfeff9;border-color:#aed0e5;color:#253e50}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.notice,.badge){background:#fff0df;color:#84430d;border-color:#e1a56b}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.pill,.status){color:#08628f}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) .pill{background:#e4f2fa;border-color:#b3d3e5}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(.disclosure-panel,dialog){background:#f4f8fcf7;border:1px solid #a9becd;box-shadow:inset 0 1px 0 #fff,0 14px 40px #233e5433;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(th,.history-day,.message-date){color:#466175}
+:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(button,summary,input,select,textarea):focus-visible{outline:2px solid #0878ae;outline-offset:3px}
+@media(prefers-reduced-transparency:reduce){:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body) :is(header,.sidebar,.workspace,.disclosure-panel,dialog){background:#f1f5f9;backdrop-filter:none;-webkit-backdrop-filter:none}}
+@media print{:is(html:not([data-review-theme]) body[data-theme="glass"],html[data-review-theme="presentation"] body){background:#fff;color:#172b3a;--panel:#fff;--inside:#fff;--text:#172b3a}body :is(.workspace,.sidebar,.task,.report-metric){backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important}}

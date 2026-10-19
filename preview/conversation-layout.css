@@ -73,3 +73,38 @@ html body.conversation-layout[data-conversation-mode="dark"][data-theme]{color-s
 .conversation-layout #company-switcher #company-name{grid-column:2;font-size:18px;font-weight:500;line-height:1.4;overflow-wrap:anywhere;color:var(--text)!important}
 .conversation-layout #company-switcher .arrow{display:grid;place-items:center;width:24px;min-height:36px;height:36px;padding:0;gap:0;background:transparent!important}
 .conversation-layout #company-switcher .arrow .nav-icon{width:18px;height:18px;flex-basis:18px}
+/* Context controls live in the working pane; sidebar items never expand. */
+.conversation-layout #workspace-choices{flex:none;width:100%;max-width:1120px;margin:0 auto;padding:28px 40px 0}
+.conversation-layout.nav-closed #workspace-choices{padding-top:64px}
+.conversation-layout #workspace-departments{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:0 0 18px}
+.conversation-layout .workspace-choice-label{flex:0 0 100%;font-size:12px;color:var(--muted);margin-bottom:4px}
+.conversation-layout #workspace-choices button{font-family:"DIN Pro",Arial,sans-serif;font-size:16px;padding:9px 13px}
+.conversation-layout #workspace-choices button.active{background:var(--accent-soft)!important;color:var(--green)!important}
+.conversation-layout #workspace-choices #subnav{display:flex;flex-direction:row;flex-wrap:wrap;gap:5px;border:0;margin:16px 0 0;padding:0}
+.conversation-layout #workspace-choices #subnav:empty{display:none}
+.conversation-layout #workspace-choices #subnav button{flex:none;text-align:left;min-height:40px}
+.conversation-layout #workspace-choices #subnav .nav-icon{display:none}
+.conversation-layout #workspace-choices #person-controls{margin:0}
+.conversation-layout #person-controls>.step-label{display:none}
+.conversation-layout #employee-picker{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:7px 18px;align-items:start}
+.conversation-layout #employee-picker>.types{grid-column:1/-1;display:flex;justify-content:flex-start;gap:6px;margin:0 0 8px}
+.conversation-layout #employee-picker>.types button{flex:none}
+.conversation-layout #employee-picker>label[for="position-select"]{grid-column:1;grid-row:2;margin:0;font-size:12px}
+.conversation-layout #employee-picker>#position-select{grid-column:1;grid-row:3;margin:0;min-height:44px}
+.conversation-layout #employee-picker>label[for="employee-search"]{grid-column:2;grid-row:2;margin:0;font-size:12px}
+.conversation-layout #employee-picker>#employee-search{grid-column:2;grid-row:3;margin:0;min-height:44px}
+.conversation-layout #employee-picker>.employee-list{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px;max-height:320px;margin-top:8px}
+.conversation-layout #employee-picker .employee-button{display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding:15px;text-align:left;min-height:85px}
+.conversation-layout #employee-picker .employee-button strong{font-size:17px;font-weight:500}
+.conversation-layout #employee-picker .employee-button small{font-size:14px;margin:0}
+.conversation-layout #selected-employee{position:relative;margin:0;padding:16px 110px 16px 16px}
+.conversation-layout #selected-employee small{margin-bottom:0}
+.conversation-layout #change-employee{position:absolute;right:12px;top:14px}
+.conversation-layout[data-workspace-section="Персонал"] #content .person-head{display:none}
+.conversation-layout #workspace-choices:not([hidden])~#content{padding-top:24px}
+.conversation-layout .nav-dialogue{margin:4px 0 20px}
+.conversation-layout .history-layout>.conversation-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;border:0;background:transparent;padding:0 0 20px}
+.conversation-layout .conversation-list .conversation{background:var(--inside)!important}
+.conversation-layout .conversation-list .conversation.active{background:var(--accent-soft)!important}
+@media(max-width:900px){.conversation-layout #workspace-choices{padding:28px 20px 0}.conversation-layout.nav-closed #workspace-choices{padding-top:64px}.conversation-layout #workspace-choices:not([hidden])~#content{padding-top:20px}}
+@media(max-width:600px){.conversation-layout #employee-picker{grid-template-columns:minmax(0,1fr)}.conversation-layout #employee-picker>label[for="employee-search"]{grid-column:1;grid-row:4}.conversation-layout #employee-picker>#employee-search{grid-column:1;grid-row:5}.conversation-layout #employee-picker>.employee-list{grid-template-columns:minmax(0,1fr)}.conversation-layout #workspace-choices button{font-size:15px}.conversation-layout #workspace-departments{gap:4px}}
