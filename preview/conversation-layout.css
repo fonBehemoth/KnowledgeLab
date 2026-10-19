@@ -1,4 +1,34 @@
 /* Messenger shell: one navigation panel, one conversation, no button frames. */
+.conversation-layout .chat-tree{margin-top:18px}
+.conversation-layout .chat-tree-caption{display:block;padding:6px 10px;color:var(--muted);font-size:12px}
+.conversation-layout .chat-tree details{margin:3px 0}
+.conversation-layout .chat-tree details>details{margin-left:12px}
+.conversation-layout .sidebar .chat-tree summary{padding:8px 10px;font-size:16px;min-height:36px;cursor:pointer;list-style:none}
+.conversation-layout .chat-tree summary:after{content:none}
+.conversation-layout .chat-tree summary::-webkit-details-marker{display:none}
+.conversation-layout .sidebar .chat-tree summary>.tree-chevron{margin-left:auto;width:14px;height:14px;flex-basis:14px;transform:rotate(-90deg);color:var(--muted);filter:none}
+.conversation-layout .sidebar .chat-tree details[open]>summary>.tree-chevron{transform:none}
+.conversation-layout .chat-tree .chat-tree-item{margin-left:10px;width:calc(100% - 10px);padding:8px;font-size:15px;min-height:38px}
+.conversation-layout .chat-tree-item span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conversation-layout .chat-tree-empty{display:block;padding:8px 20px;color:var(--muted);font-size:12px}
+.conversation-layout.has-chat-tree .history-layout>.conversation-list{display:none}
+.conversation-layout main>.composer{position:relative}
+.conversation-layout.has-chat-map .conversation-flow{padding-right:40px}
+.conversation-layout #chat-map{position:absolute;right:7px;top:78px;bottom:135px;width:25px;max-height:480px;z-index:12}
+.conversation-layout .chat-map-marks{display:flex;flex-direction:column;justify-content:space-between;height:100%}
+.conversation-layout .chat-map-mark{position:relative;display:block;width:25px;flex:1;min-height:14px;padding:0;border-radius:4px}
+.conversation-layout .chat-map-mark:after{content:'';display:block;width:12px;height:2px;margin:auto;background:var(--muted);opacity:.45;border-radius:3px}
+.conversation-layout .chat-map-mark.active:after,.conversation-layout .chat-map-mark:hover:after{width:23px;background:var(--icon-accent);opacity:1}
+.conversation-layout .chat-map-mark[data-kind="task"]:after{height:4px;width:19px;background:var(--icon-accent);opacity:1}
+.conversation-layout .chat-map-mark[data-kind="decision"]:after{height:5px;width:19px;background:var(--green);opacity:1}
+.conversation-layout .chat-map-mark[data-kind="attachment"]:after{height:7px;width:7px;border-radius:50%;background:var(--icon-accent);opacity:1}
+.conversation-layout .chat-map-preview{position:absolute;right:33px;top:0;width:min(310px,calc(100vw - 86px));padding:15px;border-radius:12px;background:var(--panel);box-shadow:0 5px 24px #0003;overflow-wrap:anywhere}
+.conversation-layout .chat-map-preview p{margin:0 0 10px;font-size:14px;line-height:1.5;white-space:pre-wrap}
+.conversation-layout .chat-map-preview button{padding:8px;font-size:13px}
+.conversation-layout .chat-map-preview select{width:100%;padding:8px;margin-bottom:8px;font-size:13px}
+.conversation-layout .chat-map-target{outline:2px solid var(--icon-accent)!important;outline-offset:3px}
+.conversation-layout.global-search-open #chat-map{display:none!important}
+@media(max-width:600px){.conversation-layout.has-chat-map .conversation-flow{padding-right:30px}.conversation-layout #chat-map{right:3px;top:70px;bottom:145px}}
 .conversation-layout #global-search-button{width:100%;padding:10px;margin-bottom:12px}
 .conversation-layout #global-search-panel{width:100%;max-width:1120px;margin:0 auto;padding:28px 40px 32px}
 .conversation-layout.nav-closed #global-search-panel{padding-top:64px}
