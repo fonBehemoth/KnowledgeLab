@@ -1,4 +1,18 @@
 /* Messenger shell: one navigation panel, one conversation, no button frames. */
+.conversation-layout #global-search-button{width:100%;padding:10px;margin-bottom:12px}
+.conversation-layout #global-search-panel{width:100%;max-width:1120px;margin:0 auto;padding:28px 40px 32px}
+.conversation-layout.nav-closed #global-search-panel{padding-top:64px}
+.conversation-layout .global-search-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.conversation-layout .global-search-head h1{font-size:28px;margin:0 0 18px}
+.conversation-layout #global-search-input{width:100%;padding:14px 16px;border-radius:12px;font-size:18px}
+.conversation-layout .global-search-filters{display:flex;flex-wrap:wrap;gap:4px;margin:14px 0}
+.conversation-layout .global-search-filters button{padding:8px 11px}
+.conversation-layout .global-search-filters button.active{background:var(--accent-soft)!important;color:var(--green)!important}
+.conversation-layout .global-search-result{display:flex;flex-direction:column;align-items:flex-start;text-align:left;width:100%;padding:16px;margin-bottom:8px;background:var(--inside)!important;gap:7px;overflow-wrap:anywhere}
+.conversation-layout .global-search-result small,.conversation-layout .global-search-result span{color:var(--muted);font-size:14px;white-space:pre-wrap}
+.conversation-layout .global-search-result strong{font-size:18px;font-weight:500}
+.conversation-layout.global-search-open :is(#workspace-choices,#content,#chat-panel){display:none!important}
+@media(max-width:900px){.conversation-layout #global-search-panel{padding:28px 20px}.conversation-layout.nav-closed #global-search-panel{padding-top:64px}}
 html body.conversation-layout[data-conversation-mode][data-theme]{--bg:#fff;--panel:#fff;--inside:#f5f6f8;--text:#303842;--muted:#626b76;--line:#e4e7eb;--green:#086c9f;--orange:#086c9f;--accent-soft:#e7f5ff;--accent-border:#a9d9f2;--icon-accent:#48bcff;--gold-soft:#e7f5ff;--shadow:transparent;--header-height:0px;background:#fff!important;color:var(--text);font-family:"DIN Pro",Arial,sans-serif}
 html body.conversation-layout[data-conversation-mode="dark"][data-theme]{color-scheme:dark;--bg:#111418;--panel:#111418;--inside:#1c2229;--text:#e5e9ee;--muted:#a7b2bf;--line:#2a323d;--green:#64c8ff;--orange:#f5b47a;--accent-soft:#183347;--accent-border:#32647e;--icon-accent:#48bcff;--gold-soft:#3d2e24;background:#111418!important}
 .conversation-layout [hidden]{display:none!important}
