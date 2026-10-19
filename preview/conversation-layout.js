@@ -19,12 +19,15 @@ function labeledButton(id,text,name,fn){const b=document.createElement('button')
 export function initConversationLayout(){
  if(document.body.classList.contains('conversation-layout'))return;
  document.body.classList.add('conversation-layout');
- const sheet=document.createElement('link');sheet.rel='stylesheet';sheet.href=new URL('./conversation-layout.css?v=20261018-nav2',import.meta.url);document.head.append(sheet);
+ const sheet=document.createElement('link');sheet.rel='stylesheet';sheet.href=new URL('./conversation-layout.css?v=20261019-company1',import.meta.url);document.head.append(sheet);
  const side=document.querySelector('#navigation-panel'),toggle=document.querySelector('#menu-toggle'),brand=document.querySelector('.brand-lockup');
  const heading=document.createElement('div');heading.className='nav-heading';toggle.replaceChildren(icon('close'));toggle.setAttribute('aria-label',translate('Скрыть навигацию'));heading.append(brand,toggle);
  const scroll=document.createElement('div');scroll.className='nav-scroll';scroll.append(...side.childNodes);side.append(heading,scroll);
  const reopen=labeledButton('reopen-navigation','Показать навигацию','menu',()=>toggle.click());document.body.append(reopen);
  const context=document.querySelector('.workspace-toolbar');if(context){const mobile=context.querySelector('.mobile-activity');if(mobile)mobile.hidden=true;context.hidden=true;scroll.prepend(context);}
+ // Reuse the carousel's original controls and gesture handlers in one visible row.
+ const oldCompany=document.querySelector('#company-disclosure'),companies=document.querySelector('#companies');
+ if(oldCompany&&companies){const compact=document.createElement('section');compact.id='company-switcher';compact.setAttribute('aria-label',translate('Компания'));const firm=companies.querySelector('.firm'),caption=document.createElement('small');caption.className='company-caption';caption.textContent=translate('Компания');firm.prepend(icon('company'),caption);document.querySelector('#company-field').hidden=true;oldCompany.before(compact);compact.append(companies);oldCompany.hidden=true;}
  const sections=scroll.querySelector('.main-tabs'),analytic=document.querySelector('#analytics-access');
  if(analytic){sections.querySelector('[data-section="Аналитика"]')?.remove();analytic.dataset.section='Аналитика';sections.append(analytic);}
  const library=document.createElement('nav');library.className='nav-library';library.setAttribute('aria-label',translate('Материалы и история'));
