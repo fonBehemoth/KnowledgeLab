@@ -261,3 +261,4 @@ html body.conversation-layout[data-conversation-mode="dark"][data-theme]{--insid
 .conversation-layout[data-conversation-mode="dark"] .workspace #workspace-context :is(#department-trigger,#selected-employee,#subsection-trigger){background:rgba(43,55,70,.56)!important}
 .conversation-layout #content>.subtitle{display:none!important}
 .conversation-layout :is(.history-storage-note,.conversation-detail>.hint){display:none!important}
+.conversation-layout #base-values{display:none!important}
