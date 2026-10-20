@@ -7,36 +7,7 @@ export function groupMessageIndices(count,limit=24){
 }
 
 export function initChatNavigation(tree,icon){
- document.body.classList.add('has-chat-tree');const app=window.deepAgentDemo,expanded=new Map();tree.className='chat-tree';tree.setAttribute('aria-label',translate('Чаты по компаниям'));
- const fold=(key,label,parent,open)=>{const details=document.createElement('details');details.open=expanded.has(key)?expanded.get(key):open;const summary=document.createElement('summary');summary.append(icon('projects'),document.createTextNode(label));const chevron=icon('down');chevron.classList.add('tree-chevron');summary.append(chevron);details.append(summary);details.addEventListener('toggle',()=>expanded.set(key,details.open));parent.append(details);return details;};
- function refreshTree(){
-  const org=app.organization(),history=app.historySnapshot(),state=app.state();tree.replaceChildren();
-  const label=document.createElement('small');label.className='chat-tree-caption';label.textContent=translate('Чаты по компаниям');tree.append(label);
-  for(const company of (org?.companies||[]).filter(x=>!x.archived)){
-   const threads=history.chats[company.id]?.threads||[],companyNode=fold('c:'+company.id,company.name,tree,company.id===state.company_id),groups=new Map();
-   const teamMessages=history.teams[company.id]?.messages||[];
-   if(!threads.length&&!teamMessages.length){const empty=document.createElement('small');empty.className='chat-tree-empty';empty.textContent=translate('Переписок пока нет');companyNode.append(empty);}
-   if(teamMessages.length){const team=document.createElement('button');team.type='button';team.className='chat-tree-item';team.append(icon('people'),document.createTextNode(translate('Чат менеджеров')));team.classList.toggle('active',company.id===state.company_id&&state.chatMode==='team'&&state.section==='Чаты');team.onclick=()=>{app.openSearchTarget({kind:'team',company_id:company.id});if(innerWidth<=900&&!document.body.classList.contains('nav-closed'))document.querySelector('#menu-toggle').click();};companyNode.append(team);}
-   for(const thread of threads){
-    const department=org.departments.find(d=>d.id===thread.department_id&&d.company_id===company.id),person=org.people.find(p=>p.id===thread.employee_id&&p.company_id===company.id);
-    // Older conversations have no context metadata. Do not infer a department from their text.
-    const group=thread.project_id?'p:'+thread.project_id:department?'d:'+department.id:'general';
-    if(!groups.has(group)){const name=thread.project_id?(org.projects?.find(p=>p.id===thread.project_id)?.name||translate('Проект')):department?.name||translate('Общие чаты');groups.set(group,{name,items:[]});}
-    groups.get(group).items.push({thread,person});
-   }
-   for(const [key,group] of groups){
-    const groupNode=fold(company.id+':'+key,group.name,companyNode,group.items.some(x=>x.thread.id===state.conversation_id));
-    for(const {thread,person} of group.items.sort((a,b)=>String(b.thread.messages.at(-1)?.at||'').localeCompare(String(a.thread.messages.at(-1)?.at||'')))){
-     const b=document.createElement('button');b.type='button';b.className='chat-tree-item';b.append(icon('chat'));const text=document.createElement('span');text.textContent=thread.title;text.dataset.authored='true';b.append(text);b.title=[thread.title,person?.name].filter(Boolean).join(' · ');
-     const current=state.section==='Чаты'&&company.id===state.company_id&&thread.id===state.conversation_id;b.classList.toggle('active',current);if(current)b.setAttribute('aria-current','page');
-     b.onclick=()=>{app.openSearchTarget({kind:'chat',company_id:company.id,chat_id:thread.id});if(innerWidth<=900&&!document.body.classList.contains('nav-closed'))document.querySelector('#menu-toggle').click();};groupNode.append(b);
-    }
-   }
-  }
- }
- document.addEventListener('deepagent-section-rendered',refreshTree);document.addEventListener('deepagent-history-changed',refreshTree);document.addEventListener('deepagent-language-change',refreshTree);refreshTree();
- for(const id of ['assistant-mode','team-mode'])document.getElementById(id)?.addEventListener('click',refreshTree);
-
+ tree.hidden=true;
  const composer=document.querySelector('main>.composer'),flow=document.querySelector('#conversation-flow');
  const map=document.createElement('nav');map.id='chat-map';map.hidden=true;map.setAttribute('aria-label',translate('Переходы по переписке'));
  const marks=document.createElement('div');marks.className='chat-map-marks';const preview=document.createElement('div');preview.className='chat-map-preview';preview.hidden=true;map.append(marks,preview);composer.append(map);

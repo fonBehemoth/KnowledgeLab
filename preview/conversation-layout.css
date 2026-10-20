@@ -243,3 +243,17 @@ html body.conversation-layout[data-conversation-mode="dark"][data-theme]{--insid
 .conversation-layout .composer-input-surface #question::-webkit-scrollbar{display:none}
 .conversation-layout .composer-input-surface #question::placeholder{white-space:nowrap;text-overflow:ellipsis}
 .conversation-layout .composer-input-surface:focus-within{box-shadow:0 3px 20px #2233440a,0 0 0 2px #48bcff16}
+/* Floating context capsules, with no opaque header strip. */
+.conversation-layout #workspace-context{position:absolute;top:0;left:50%;transform:translateX(-50%);background:transparent!important;pointer-events:none}
+.conversation-layout #workspace-context>*{pointer-events:auto}
+.conversation-layout .conversation-flow{padding-top:calc(var(--context-height,60px) + 8px)}
+.conversation-layout #workspace-context :is(#department-trigger,#selected-employee,#subsection-trigger){background:rgba(232,239,244,.58)!important;backdrop-filter:blur(20px) saturate(135%)!important;-webkit-backdrop-filter:blur(20px) saturate(135%);box-shadow:0 3px 20px #2233440a!important}
+.conversation-layout[data-conversation-mode="dark"] #workspace-context :is(#department-trigger,#selected-employee,#subsection-trigger){background:rgba(43,55,70,.56)!important}
+.conversation-layout #ask-form{position:relative}
+.conversation-layout #composer-add-menu{position:absolute;bottom:calc(100% + 9px);left:0;display:flex;flex-direction:column;gap:4px;width:280px;max-width:calc(100vw - 32px);padding:8px;border:0;border-radius:22px;background:color-mix(in srgb,var(--panel) 82%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 8px 35px #0002;z-index:50}
+.conversation-layout #composer-add-menu button{display:flex;align-items:center;gap:12px;text-align:left;min-height:44px;padding:10px 12px;border-radius:16px;background:transparent!important;font-size:15px;width:100%}
+.conversation-layout #composer-add-menu button:hover,.conversation-layout #composer-add-menu button:focus-visible{background:var(--inside)!important}
+.conversation-layout #composer-add-menu .nav-icon{color:var(--icon-accent);width:21px;height:21px;flex:0 0 21px}
+.conversation-layout :is(.breadcrumb,#ai-context,#chat-demo-note){display:none!important}
+.conversation-layout[data-chat-mode="assistant"] #chat-participants{display:none!important}
+.conversation-layout .chat-empty{display:none!important}
