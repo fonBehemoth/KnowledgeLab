@@ -18,5 +18,5 @@
  window.addEventListener('error',error,true);
  window.addEventListener('unhandledrejection',error);
  const timeout=setTimeout(()=>{if(!ready)error();},15000);
- window.DeepAgentPublicBoot={ready(){ready=true;clearTimeout(timeout);if(!failed)document.getElementById('demo-load-status')?.remove();}};
+ window.DeepAgentPublicBoot={ready(){ready=true;clearTimeout(timeout);if(!failed)document.getElementById('demo-load-status')?.remove();if(window.parent!==window)window.parent.postMessage({type:'deepagent-ready',release},location.origin);const settings=document.querySelector('#reset-demo')?.closest('dialog');if(settings&&!settings.querySelector('#public-release')){const label=document.createElement('p');label.id='public-release';label.textContent='Версия интерфейса: '+release;settings.append(label);}}};
 })();
