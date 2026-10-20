@@ -266,3 +266,4 @@ html body.conversation-layout[data-conversation-mode="dark"][data-theme]{--insid
 .conversation-layout #context-subsection.scroll-docked{animation:context-dock-in .18s ease-out}
 @keyframes context-dock-in{from{opacity:.35;transform:translate(-8px,5px)}to{opacity:1;transform:translate(0,0)}}
 @media(prefers-reduced-motion:reduce){.conversation-layout #context-subsection.scroll-docked{animation:none}}
+.conversation-layout #subnav-slot{display:flow-root}
