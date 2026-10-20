@@ -257,3 +257,7 @@ html body.conversation-layout[data-conversation-mode="dark"][data-theme]{--insid
 .conversation-layout :is(.breadcrumb,#ai-context,#chat-demo-note){display:none!important}
 .conversation-layout[data-chat-mode="assistant"] #chat-participants{display:none!important}
 .conversation-layout .chat-empty{display:none!important}
+.conversation-layout .workspace #workspace-context :is(#department-trigger,#selected-employee,#subsection-trigger){background:rgba(232,239,244,.58)!important;backdrop-filter:blur(20px) saturate(135%)!important;box-shadow:0 3px 20px #2233440a!important}
+.conversation-layout[data-conversation-mode="dark"] .workspace #workspace-context :is(#department-trigger,#selected-employee,#subsection-trigger){background:rgba(43,55,70,.56)!important}
+.conversation-layout #content>.subtitle{display:none!important}
+.conversation-layout :is(.history-storage-note,.conversation-detail>.hint){display:none!important}
