@@ -39,7 +39,8 @@ export function initConversationLayout(){
  scroll.append(library);document.querySelector('#workspace-resources')?.remove();
  const recent=document.createElement('nav');recent.className='nav-recent';recent.setAttribute('aria-label',translate('Последние чаты'));scroll.append(recent);
  const dialogue=document.createElement('nav');dialogue.className='nav-dialogue';dialogue.setAttribute('aria-label',translate('Диалог'));
- for(const id of ['assistant-mode','team-mode','base-values']){const item=document.getElementById(id);if(item)dialogue.append(item);}
+ for(const id of ['assistant-mode','team-mode']){const item=document.getElementById(id);if(item)dialogue.append(item);}
+ const baseValues=document.getElementById('base-values');if(baseValues){baseValues.hidden=true;document.body.append(baseValues);}
  const participantAction=document.getElementById('participants-button');if(participantAction)document.body.append(participantAction);
  const sectionChoice=scroll.querySelector('.section-choice');sectionChoice.before(dialogue);document.querySelector('.chat-controls')?.remove();
  // Keep navigation stable. Context selection belongs to the working pane.
