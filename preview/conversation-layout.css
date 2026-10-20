@@ -190,3 +190,46 @@ html body.conversation-layout[data-conversation-mode="dark"][data-theme]{--insid
 .conversation-layout .workspace .unified-history-card button{background:var(--accent-soft)!important;box-shadow:inset 0 0 0 1px var(--selection-ring)!important}
 @media(max-width:600px){.conversation-layout #workspace-choices #department-trigger{gap:8px;padding:11px 13px;flex-wrap:wrap}.conversation-layout #department-trigger strong{font-size:17px}.conversation-layout #department-trigger span{font-size:15px}.conversation-layout #department-options{flex-basis:100%}}
 .conversation-layout .workspace #selected-employee:not([hidden]){background:var(--accent-soft)!important;box-shadow:inset 0 0 0 1px var(--selection-ring)!important}
+/* Fixed, compact context controls and a borderless floating-style composer. */
+.conversation-layout #workspace-context{display:flex;align-items:center;flex-wrap:wrap;gap:8px;flex:0 0 auto;position:relative;z-index:25;width:100%;max-width:1120px;min-height:60px;margin:0 auto;padding:11px 40px;background:transparent}
+.conversation-layout #workspace-context #workspace-departments{position:relative;display:flex;flex:0 1 auto;width:auto;margin:0;gap:0;min-width:0}
+.conversation-layout .workspace #workspace-context #department-trigger{display:flex;align-items:center;gap:7px;max-width:280px;min-height:38px;padding:8px 12px;border-radius:20px;background:var(--inside)!important;box-shadow:none!important;white-space:nowrap}
+.conversation-layout #workspace-context #department-trigger strong{font-size:16px;font-weight:500}
+.conversation-layout #workspace-context #department-trigger span{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conversation-layout #workspace-context #department-trigger>.nav-icon{width:17px;height:17px;flex-basis:17px}
+.conversation-layout #workspace-context #department-trigger>.nav-icon:last-child{width:13px;height:13px;flex-basis:13px}
+.conversation-layout #workspace-context #department-options,.conversation-layout #context-subsection>#subnav{position:absolute;top:calc(100% + 7px);left:0;z-index:40;max-height:min(300px,45vh);overflow:auto;min-width:220px;width:max-content;max-width:min(620px,calc(100vw - 44px));margin:0;padding:9px;gap:5px;border-radius:18px;background:color-mix(in srgb,var(--panel) 88%,transparent);backdrop-filter:blur(18px)!important;box-shadow:0 6px 28px #0002!important}
+.conversation-layout #workspace-context #department-options{display:flex;flex-wrap:wrap}
+.conversation-layout #workspace-context #department-options button{padding:8px 12px;border-radius:18px;font-size:15px}
+.conversation-layout #workspace-context #department-options button.active,.conversation-layout #context-subsection>#subnav button.active{background:var(--accent-soft)!important;color:var(--green)!important}
+.conversation-layout .workspace #workspace-context #selected-employee{display:flex;align-items:center;position:relative;flex:0 1 auto;width:auto;min-width:100px;max-width:310px;min-height:38px;margin:0;padding:8px 32px 8px 12px;border-radius:20px;background:var(--inside)!important;box-shadow:none!important;backdrop-filter:blur(12px)!important}
+.conversation-layout #workspace-context #selected-employee>.step-label,.conversation-layout #workspace-context #selected-employee-position{display:none!important}
+.conversation-layout #workspace-context #selected-employee-name{font-size:15px;font-weight:500;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.conversation-layout #workspace-context #change-employee{position:absolute;inset:0;width:100%;height:100%;min-height:0;display:flex;align-items:center;justify-content:flex-end;margin:0;padding:8px 11px;font-size:0;background:transparent!important;border-radius:20px}
+.conversation-layout #workspace-context #change-employee .nav-icon{width:13px;height:13px;flex-basis:13px;color:var(--muted)}
+.conversation-layout #workspace-context #change-employee[aria-expanded="true"] .nav-icon{transform:rotate(180deg)}
+.conversation-layout #context-subsection{position:relative;min-width:0;max-width:min(380px,100%)}
+.conversation-layout #subsection-trigger{display:flex;align-items:center;gap:8px;padding:8px 12px;min-height:38px;max-width:100%;background:var(--inside)!important;border-radius:20px;font-size:15px}
+.conversation-layout #subsection-trigger span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.conversation-layout #subsection-trigger .nav-icon{width:13px;height:13px;flex-basis:13px;color:var(--muted)}
+.conversation-layout #context-subsection>#subnav{display:flex;flex-direction:column;min-width:250px}
+.conversation-layout #context-subsection>#subnav button{display:block;flex:none;text-align:left;min-height:38px;padding:9px 12px;font-size:15px;border-radius:16px}
+.conversation-layout #context-subsection>#subnav .nav-icon{display:none}
+.conversation-layout #workspace-choices,.conversation-layout.nav-closed #workspace-choices{padding-top:12px}
+.conversation-layout .conversation-flow .content,.conversation-layout.nav-closed .conversation-flow .content{padding-top:22px}
+.conversation-layout .conversation-flow{padding-bottom:24px;scroll-padding-bottom:24px}
+.conversation-layout .nav-library{margin-top:2px}
+.conversation-layout .nav-dialogue{margin-bottom:8px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.conversation-layout .chat-tree{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.conversation-layout .sidebar #activity-button{margin-top:12px;padding-top:14px!important;border-top:1px solid var(--line)!important}
+.conversation-layout .composer #ask-form{background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;padding:4px 0;gap:8px;margin:6px auto 10px;width:calc(100% - 40px);align-items:center}
+.conversation-layout .composer-input-surface{display:flex;align-items:center;gap:6px;flex:1;min-width:0;min-height:48px;padding:3px 8px 3px 14px;border:0;border-radius:28px;background:rgba(220,229,237,.32);backdrop-filter:blur(16px);box-shadow:0 1px 8px #00000004}
+.conversation-layout[data-conversation-mode="dark"] .composer-input-surface{background:rgba(68,84,103,.3)}
+.conversation-layout .composer-input-surface #question{flex:1;width:100%;min-width:0;padding:5px 0;min-height:38px;height:38px;border:0!important;box-shadow:none!important;border-radius:0;background:transparent!important}
+.conversation-layout .composer #attach-file{flex:0 0 38px;width:38px;height:38px;background:var(--inside)!important;color:var(--text)!important}
+.conversation-layout .composer #voice-input{border-radius:50%;background:var(--inside)!important}
+.conversation-layout #chat-map{top:calc(var(--context-height,60px) + 12px)}
+.conversation-layout.global-search-open #workspace-context{display:none!important}
+@media(max-width:900px){.conversation-layout #workspace-context{padding:10px 20px}.conversation-layout.nav-closed #workspace-context{padding-left:56px}.conversation-layout .composer #ask-form{width:calc(100% - 24px);gap:5px}.conversation-layout .composer-input-surface{padding-left:12px}}
+@media(max-width:600px){.conversation-layout #workspace-context{gap:6px}.conversation-layout .workspace #workspace-context #selected-employee{max-width:calc(100vw - 210px);min-width:80px}.conversation-layout #context-subsection{max-width:100%}.conversation-layout #workspace-context #department-options{width:min(300px,calc(100vw - 70px));min-width:180px}.conversation-layout #context-subsection>#subnav{width:min(300px,calc(100vw - 70px));min-width:200px}.conversation-layout .composer-input-surface{min-height:44px}.conversation-layout .composer #ask-form{gap:4px}.conversation-layout .composer #attach-file{flex-basis:32px;width:32px;height:34px}.conversation-layout #voice-input{flex-basis:28px;width:28px}.conversation-layout .composer .send{flex-basis:34px;width:34px;height:36px}}
+@media(max-width:600px){.conversation-layout #workspace-context{flex-wrap:nowrap;min-height:58px}.conversation-layout #workspace-context #workspace-departments,.conversation-layout .workspace #workspace-context #selected-employee,.conversation-layout #context-subsection{flex:1 1 0;min-width:0;max-width:100%}.conversation-layout .workspace #workspace-context #department-trigger{width:100%;min-width:0;padding:8px;gap:4px}.conversation-layout #workspace-context #department-trigger>.nav-icon:first-child{display:none}.conversation-layout #workspace-context #department-trigger strong,.conversation-layout #workspace-context #department-trigger span,.conversation-layout #workspace-context #selected-employee-name,.conversation-layout #subsection-trigger{font-size:13px}.conversation-layout #workspace-context #department-trigger strong{overflow:hidden;text-overflow:ellipsis}.conversation-layout .workspace #workspace-context #selected-employee{padding-left:9px;padding-right:23px}.conversation-layout #subsection-trigger{width:100%;padding:8px;gap:4px}}

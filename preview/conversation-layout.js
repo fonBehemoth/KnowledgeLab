@@ -44,25 +44,39 @@ export function initConversationLayout(){
  // Keep navigation stable. Context selection belongs to the working pane.
  const flow=document.querySelector('#conversation-flow'),choices=document.createElement('section');
  choices.id='workspace-choices';choices.setAttribute('aria-label',translate('Выбор в рабочем разделе'));flow.prepend(choices);
+ const contextBar=document.createElement('div');contextBar.id='workspace-context';contextBar.setAttribute('role','toolbar');contextBar.setAttribute('aria-label',translate('Рабочий контекст'));flow.before(contextBar);
+ new ResizeObserver(()=>flow.parentElement.style.setProperty('--context-height',contextBar.offsetHeight+'px')).observe(contextBar);
  const departmentSelect=document.querySelector('#department-select'),departmentStep=departmentSelect.closest('.step');
  departmentStep.hidden=true;choices.append(departmentStep);
- const departmentChoices=document.createElement('nav');departmentChoices.id='workspace-departments';departmentChoices.setAttribute('aria-label',translate('Подразделения'));choices.append(departmentChoices);
+ const departmentChoices=document.createElement('nav');departmentChoices.id='workspace-departments';departmentChoices.setAttribute('aria-label',translate('Подразделения'));contextBar.append(departmentChoices);
  const departmentButton=document.createElement('button');departmentButton.type='button';departmentButton.id='department-trigger';departmentButton.setAttribute('aria-controls','department-options');
  const departmentCaption=document.createElement('strong'),departmentValue=document.createElement('span');departmentCaption.textContent=translate('Подразделение');departmentButton.append(icon('department'),departmentCaption,departmentValue,icon('down'));
  const departmentOptions=document.createElement('div');departmentOptions.id='department-options';departmentOptions.hidden=true;departmentChoices.append(departmentButton,departmentOptions);
  let departmentOpen=false,lastDepartmentCompany=null,lastDepartment=null;
- const toggleDepartments=()=>{departmentOptions.hidden=!departmentOpen;departmentButton.setAttribute('aria-expanded',String(departmentOpen));};
+ const placePopup=(panel,anchor)=>{if(panel.hidden)return;const area=flow.parentElement.getBoundingClientRect(),rect=anchor.getBoundingClientRect(),width=panel.getBoundingClientRect().width;panel.style.left=(Math.max(area.left+12,Math.min(rect.left,area.right-width-12))-rect.left)+'px';};
+ const toggleDepartments=()=>{departmentOptions.hidden=!departmentOpen;departmentButton.setAttribute('aria-expanded',String(departmentOpen));if(departmentOpen)placePopup(departmentOptions,departmentChoices);};
  departmentButton.onclick=()=>{departmentOpen=!departmentOpen;toggleDepartments();};departmentOptions.addEventListener('click',event=>{if(event.target.closest('[data-department]')){departmentOpen=false;toggleDepartments();departmentButton.focus({preventScroll:true});}});
  document.addEventListener('click',event=>{if(departmentOpen&&!departmentChoices.contains(event.target)){departmentOpen=false;toggleDepartments();}});
  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&departmentOpen){departmentOpen=false;toggleDepartments();departmentButton.focus({preventScroll:true});}});
- const personnel=document.querySelector('#person-controls'),subnav=document.querySelector('#subnav');choices.append(personnel,subnav);
+ const personnel=document.querySelector('#person-controls'),subnav=document.querySelector('#subnav'),selectedEmployee=document.querySelector('#selected-employee');choices.append(personnel,subnav);contextBar.append(selectedEmployee);
+ const subsectionBox=document.createElement('div');subsectionBox.id='context-subsection';const subsectionButton=document.createElement('button');subsectionButton.type='button';subsectionButton.id='subsection-trigger';subsectionButton.setAttribute('aria-controls','subnav');const subsectionValue=document.createElement('span');subsectionButton.append(subsectionValue,icon('down'));subsectionBox.append(subsectionButton);contextBar.append(subsectionBox);
+ let subsectionOpen=false,lastSubsection='';const toggleSubsection=()=>{subsectionButton.setAttribute('aria-expanded',String(subsectionOpen));if(subnav.parentElement===subsectionBox){subnav.hidden=!subsectionOpen;if(subsectionOpen)placePopup(subnav,subsectionBox);}};subsectionButton.onclick=()=>{subsectionOpen=!subsectionOpen;toggleSubsection();};
+ window.addEventListener('resize',()=>{if(departmentOpen)placePopup(departmentOptions,departmentChoices);if(subsectionOpen)placePopup(subnav,subsectionBox);});
+ subnav.addEventListener('click',event=>{if(event.target.closest('[data-sub]')){subsectionOpen=false;toggleSubsection();}});
+ document.addEventListener('click',event=>{if(subsectionOpen&&!subsectionBox.contains(event.target)){subsectionOpen=false;toggleSubsection();}});document.addEventListener('keydown',event=>{if(event.key==='Escape'&&subsectionOpen){subsectionOpen=false;toggleSubsection();subsectionButton.focus();}});
+
  const refreshChoices=()=>{
   const state=window.deepAgentDemo.state();document.body.dataset.workspaceSection=state.section||'';
   departmentChoices.hidden=!state.company_id;
   if(state.company_id!==lastDepartmentCompany||state.department!==lastDepartment){departmentOpen=false;lastDepartmentCompany=state.company_id;lastDepartment=state.department;}
-  departmentCaption.textContent=translate('Подразделение');departmentValue.textContent=state.department?departmentSelect.selectedOptions[0]?.textContent||state.department:translate('Выбрать');departmentValue.dataset.authored=state.department&&state.department!=='Все отделы'?'true':'false';departmentButton.classList.toggle('has-value',!!state.department);
+  departmentCaption.hidden=!!state.department;departmentValue.hidden=!state.department;departmentButton.setAttribute('aria-label',translate('Подразделение')+(state.department?': '+(departmentSelect.selectedOptions[0]?.textContent||state.department):''));departmentCaption.textContent=translate('Подразделение');departmentValue.textContent=state.department?departmentSelect.selectedOptions[0]?.textContent||state.department:translate('Выбрать');departmentValue.dataset.authored=state.department&&state.department!=='Все отделы'?'true':'false';departmentButton.classList.toggle('has-value',!!state.department);
   departmentOptions.replaceChildren();for(const option of departmentSelect.options){if(!option.value)continue;const b=document.createElement('button');b.type='button';b.dataset.department=option.value;b.textContent=option.textContent;b.classList.toggle('active',state.department===option.value);b.setAttribute('aria-pressed',String(state.department===option.value));departmentOptions.append(b);}
-  toggleDepartments();choices.hidden=departmentChoices.hidden&&personnel.hidden&&!subnav.childElementCount;
+  toggleDepartments();selectedEmployee.hidden=state.section!=='Персонал'||!state.employee;
+  selectedEmployee.title=document.querySelector('#selected-employee-name').textContent;const changeEmployee=document.querySelector('#change-employee');changeEmployee.setAttribute('aria-label',translate('Изменить сотрудника')+': '+selectedEmployee.title);changeEmployee.title=translate('Изменить сотрудника');changeEmployee.replaceChildren(icon('down'));
+  const hasSubsection=!!state.sub&&state.section!=='Аналитика'&&subnav.childElementCount>0;subsectionBox.hidden=!hasSubsection;
+  if(lastSubsection!==state.section+'|'+state.sub){subsectionOpen=false;lastSubsection=state.section+'|'+state.sub;}
+  if(hasSubsection){subsectionValue.textContent=state.section==='Чаты'&&state.sub==='Все чаты'?translate('История переписок'):translate(state.sub);subsectionButton.setAttribute('aria-label',translate('Выбор действия')+': '+subsectionValue.textContent);subsectionBox.append(subnav);toggleSubsection();}else{choices.append(subnav);subnav.style.removeProperty('left');subnav.hidden=false;}
+  contextBar.hidden=!state.company_id;choices.hidden=(personnel.hidden||document.querySelector('#employee-picker').hidden)&&(hasSubsection||!subnav.childElementCount);
  };
  document.addEventListener('deepagent-section-rendered',refreshChoices);document.addEventListener('deepagent-language-change',refreshChoices);refreshChoices();
  side.addEventListener('click',event=>{if(innerWidth<=900&&event.target.closest('[data-section],#history-access,#core-history-button,.nav-recent button')&&!document.body.classList.contains('nav-closed'))toggle.click();});
@@ -86,7 +100,8 @@ export function initConversationLayout(){
  for(const [id,label,name] of [['voice-input','Голосовое общение · планируется','microphone'],['video-record','Видеозапись · планируется','video']]){
   const control=labeledButton(id,label,name,()=>window.DeepAgentAttachments.status(translate(label)));control.className='planned-composer-control';control.setAttribute('aria-label',translate(label));control.setAttribute('aria-disabled','true');control.title=translate(label);control.replaceChildren(icon(name));composer.insertBefore(control,send);
  }
- const question=document.querySelector('#question');if(!question.onkeydown)question.onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();if(!document.querySelector('.send').disabled)document.querySelector('#ask-form').requestSubmit();}};
+ const question=document.querySelector('#question'),inputSurface=document.createElement('div');inputSurface.className='composer-input-surface';question.before(inputSurface);inputSurface.append(question,document.querySelector('#video-record'));
+ if(!question.onkeydown)question.onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();if(!document.querySelector('.send').disabled)document.querySelector('#ask-form').requestSubmit();}};
  window.deepAgentDemo.refresh();
 }
 
