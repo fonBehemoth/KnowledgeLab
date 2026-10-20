@@ -101,6 +101,7 @@ export function initConversationLayout(){
   const control=labeledButton(id,label,name,()=>window.DeepAgentAttachments.status(translate(label)));control.className='planned-composer-control';control.setAttribute('aria-label',translate(label));control.setAttribute('aria-disabled','true');control.title=translate(label);control.replaceChildren(icon(name));composer.insertBefore(control,send);
  }
  const question=document.querySelector('#question'),inputSurface=document.createElement('div');inputSurface.className='composer-input-surface';question.before(inputSurface);inputSurface.append(question,document.querySelector('#video-record'));
+ const inputDock=document.createElement('div');inputDock.className='composer-input-dock';composer.before(inputDock);for(const target of ['#chat-attachments','#attachment-status','#ask-form','#chat-demo-note','.core-feedback','.history-persistence-status']){const item=document.querySelector(target);if(item)inputDock.append(item);}new ResizeObserver(()=>flow.style.setProperty('--input-dock-height',inputDock.offsetHeight+'px')).observe(inputDock);
  if(!question.onkeydown)question.onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();if(!document.querySelector('.send').disabled)document.querySelector('#ask-form').requestSubmit();}};
  window.deepAgentDemo.refresh();
 }
