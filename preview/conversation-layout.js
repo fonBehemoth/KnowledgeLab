@@ -47,15 +47,22 @@ export function initConversationLayout(){
  const departmentSelect=document.querySelector('#department-select'),departmentStep=departmentSelect.closest('.step');
  departmentStep.hidden=true;choices.append(departmentStep);
  const departmentChoices=document.createElement('nav');departmentChoices.id='workspace-departments';departmentChoices.setAttribute('aria-label',translate('Подразделения'));choices.append(departmentChoices);
+ const departmentButton=document.createElement('button');departmentButton.type='button';departmentButton.id='department-trigger';departmentButton.setAttribute('aria-controls','department-options');
+ const departmentCaption=document.createElement('strong'),departmentValue=document.createElement('span');departmentCaption.textContent=translate('Подразделение');departmentButton.append(icon('department'),departmentCaption,departmentValue,icon('down'));
+ const departmentOptions=document.createElement('div');departmentOptions.id='department-options';departmentOptions.hidden=true;departmentChoices.append(departmentButton,departmentOptions);
+ let departmentOpen=false,lastDepartmentCompany=null,lastDepartment=null;
+ const toggleDepartments=()=>{departmentOptions.hidden=!departmentOpen;departmentButton.setAttribute('aria-expanded',String(departmentOpen));};
+ departmentButton.onclick=()=>{departmentOpen=!departmentOpen;toggleDepartments();};departmentOptions.addEventListener('click',event=>{if(event.target.closest('[data-department]')){departmentOpen=false;toggleDepartments();departmentButton.focus({preventScroll:true});}});
+ document.addEventListener('click',event=>{if(departmentOpen&&!departmentChoices.contains(event.target)){departmentOpen=false;toggleDepartments();}});
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&departmentOpen){departmentOpen=false;toggleDepartments();departmentButton.focus({preventScroll:true});}});
  const personnel=document.querySelector('#person-controls'),subnav=document.querySelector('#subnav');choices.append(personnel,subnav);
  const refreshChoices=()=>{
   const state=window.deepAgentDemo.state();document.body.dataset.workspaceSection=state.section||'';
-  departmentChoices.hidden=!state.department&&!state.section;
-  departmentChoices.replaceChildren();
-  if(!departmentChoices.hidden){const label=document.createElement('span');label.className='workspace-choice-label';label.textContent=translate('Подразделение');departmentChoices.append(label);
-   for(const option of departmentSelect.options){if(!option.value)continue;const b=document.createElement('button');b.type='button';b.dataset.department=option.value;b.textContent=option.textContent;b.classList.toggle('active',state.department===option.value);b.setAttribute('aria-pressed',String(state.department===option.value));departmentChoices.append(b);}
-  }
-  choices.hidden=departmentChoices.hidden&&personnel.hidden&&!subnav.childElementCount;
+  departmentChoices.hidden=!state.company_id;
+  if(state.company_id!==lastDepartmentCompany||state.department!==lastDepartment){departmentOpen=false;lastDepartmentCompany=state.company_id;lastDepartment=state.department;}
+  departmentCaption.textContent=translate('Подразделение');departmentValue.textContent=state.department?departmentSelect.selectedOptions[0]?.textContent||state.department:translate('Выбрать');departmentValue.dataset.authored=state.department&&state.department!=='Все отделы'?'true':'false';departmentButton.classList.toggle('has-value',!!state.department);
+  departmentOptions.replaceChildren();for(const option of departmentSelect.options){if(!option.value)continue;const b=document.createElement('button');b.type='button';b.dataset.department=option.value;b.textContent=option.textContent;b.classList.toggle('active',state.department===option.value);b.setAttribute('aria-pressed',String(state.department===option.value));departmentOptions.append(b);}
+  toggleDepartments();choices.hidden=departmentChoices.hidden&&personnel.hidden&&!subnav.childElementCount;
  };
  document.addEventListener('deepagent-section-rendered',refreshChoices);document.addEventListener('deepagent-language-change',refreshChoices);refreshChoices();
  side.addEventListener('click',event=>{if(innerWidth<=900&&event.target.closest('[data-section],#history-access,#core-history-button,.nav-recent button')&&!document.body.classList.contains('nav-closed'))toggle.click();});
@@ -80,6 +87,7 @@ export function initConversationLayout(){
   const control=labeledButton(id,label,name,()=>window.DeepAgentAttachments.status(translate(label)));control.className='planned-composer-control';control.setAttribute('aria-label',translate(label));control.setAttribute('aria-disabled','true');control.title=translate(label);control.replaceChildren(icon(name));composer.insertBefore(control,send);
  }
  const question=document.querySelector('#question');if(!question.onkeydown)question.onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();if(!document.querySelector('.send').disabled)document.querySelector('#ask-form').requestSubmit();}};
+ window.deepAgentDemo.refresh();
 }
 
 function initAttachments(){

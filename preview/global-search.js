@@ -28,7 +28,7 @@ export function matchSearchEntries(entries,query,kind='Все'){
 
 export function initGlobalSearch(icon){
  const app=window.deepAgentDemo,side=document.querySelector('.nav-scroll'),flow=document.querySelector('#conversation-flow');
- const button=document.createElement('button');button.id='global-search-button';button.type='button';button.append(icon('search'),document.createTextNode(translate('Поиск по программе')));side.prepend(button);
+ const button=document.createElement('button');button.id='global-search-button';button.type='button';button.append(icon('search'));button.setAttribute('aria-label',translate('Поиск по программе'));button.title=translate('Поиск по программе')+' · Ctrl+K';document.querySelector('.nav-heading').insertBefore(button,document.querySelector('#menu-toggle'));
  const panel=document.createElement('section');panel.id='global-search-panel';panel.hidden=true;panel.setAttribute('aria-label',translate('Поиск по программе'));flow.prepend(panel);
  const head=document.createElement('div');head.className='global-search-head';const title=document.createElement('h1');title.textContent=translate('Поиск по программе');
  const close=document.createElement('button');close.type='button';close.textContent=translate('Закрыть поиск');head.append(title,close);

@@ -165,3 +165,28 @@ html body.conversation-layout[data-conversation-mode="dark"][data-theme]{color-s
 .conversation-layout .conversation-list .conversation.active{background:var(--accent-soft)!important}
 @media(max-width:900px){.conversation-layout #workspace-choices{padding:28px 20px 0}.conversation-layout.nav-closed #workspace-choices{padding-top:64px}.conversation-layout #workspace-choices:not([hidden])~#content{padding-top:20px}}
 @media(max-width:600px){.conversation-layout #employee-picker{grid-template-columns:minmax(0,1fr)}.conversation-layout #employee-picker>label[for="employee-search"]{grid-column:1;grid-row:4}.conversation-layout #employee-picker>#employee-search{grid-column:1;grid-row:5}.conversation-layout #employee-picker>.employee-list{grid-template-columns:minmax(0,1fr)}.conversation-layout #workspace-choices button{font-size:15px}.conversation-layout #workspace-departments{gap:4px}}
+/* Deliberate choices and translucent working surfaces. */
+html body.conversation-layout[data-conversation-mode][data-theme]{--inside:rgba(203,215,226,.18);--accent-soft:rgba(72,188,255,.11);--selection-ring:rgba(72,188,255,.36);--surface-ring:rgba(125,150,175,.13)}
+html body.conversation-layout[data-conversation-mode="dark"][data-theme]{--inside:rgba(61,78,96,.25);--accent-soft:rgba(72,188,255,.13);--selection-ring:rgba(72,188,255,.4);--surface-ring:rgba(148,175,200,.14)}
+.conversation-layout .nav-heading{gap:4px;padding:20px 12px 16px}
+.conversation-layout .nav-heading .brand-lockup{min-width:0}
+.conversation-layout .nav-heading .brand{font-size:22px}
+.conversation-layout .nav-heading #global-search-button{display:grid;place-items:center;flex:0 0 30px;width:30px;min-width:30px;height:32px;min-height:32px;padding:5px;margin:0;border-radius:50%}
+.conversation-layout .nav-heading #menu-toggle{width:28px;min-width:28px;flex-basis:28px;padding:5px}
+.conversation-layout #workspace-departments{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.conversation-layout #workspace-choices #department-trigger{display:flex;align-items:center;gap:10px;padding:12px 17px;border-radius:24px;background:var(--inside)!important;box-shadow:inset 0 0 0 1px var(--surface-ring)!important;text-align:left;min-height:50px;max-width:100%}
+.conversation-layout #department-trigger strong{font-size:18px;font-weight:600}
+.conversation-layout #department-trigger span{font-size:16px;color:var(--muted);overflow-wrap:anywhere}
+.conversation-layout #department-trigger>.nav-icon{color:var(--icon-accent);flex-shrink:0}
+.conversation-layout #department-trigger>.nav-icon:last-child{width:16px;height:16px;flex-basis:16px;transition:transform .15s}
+.conversation-layout #department-trigger[aria-expanded="true"]>.nav-icon:last-child{transform:rotate(180deg)}
+.conversation-layout #workspace-choices #department-trigger.has-value{background:var(--accent-soft)!important;box-shadow:inset 0 0 0 1px var(--selection-ring)!important}
+.conversation-layout #department-trigger.has-value span{color:var(--green)}
+.conversation-layout #department-options{display:flex;flex-wrap:wrap;align-items:center;gap:6px;flex:1;min-width:min(260px,100%)}
+.conversation-layout .workspace #workspace-choices button{border-radius:22px}
+.conversation-layout .workspace #workspace-choices button.active{background:var(--accent-soft)!important;box-shadow:inset 0 0 0 1px var(--selection-ring)!important;color:var(--green)!important}
+.conversation-layout .workspace :is(.task,.report-metric,.selected-employee,.employee-button,.department-grid button,.report-filter,.history-filters,.unified-history-card,.global-search-result,.message.user,.history-message.own){background:var(--inside)!important;border-radius:22px;backdrop-filter:blur(12px)!important;box-shadow:inset 0 0 0 1px var(--surface-ring)!important}
+.conversation-layout .workspace :is(button,summary){border-radius:20px}
+.conversation-layout .workspace .unified-history-card button{background:var(--accent-soft)!important;box-shadow:inset 0 0 0 1px var(--selection-ring)!important}
+@media(max-width:600px){.conversation-layout #workspace-choices #department-trigger{gap:8px;padding:11px 13px;flex-wrap:wrap}.conversation-layout #department-trigger strong{font-size:17px}.conversation-layout #department-trigger span{font-size:15px}.conversation-layout #department-options{flex-basis:100%}}
+.conversation-layout .workspace #selected-employee:not([hidden]){background:var(--accent-soft)!important;box-shadow:inset 0 0 0 1px var(--selection-ring)!important}
