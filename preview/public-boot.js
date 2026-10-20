@@ -14,7 +14,7 @@
   }
   box.querySelector('.load-message').textContent=message;
  }
- function error(){failed=true;show('Не удалось загрузить или открыть раздел демо. Перезагрузите страницу. Если ошибка повторится, сообщите номер выпуска.');}
+ function error(event){if(event?.message==='ResizeObserver loop completed with undelivered notifications.'||event?.message==='ResizeObserver loop limit exceeded')return;failed=true;show('Не удалось загрузить или открыть раздел демо. Перезагрузите страницу. Если ошибка повторится, сообщите номер выпуска.');console.error('DeepAgent UI load:',event?.message||event?.reason?.message||event?.target?.src||event?.target?.href||'initialization timeout');}
  window.addEventListener('error',error,true);
  window.addEventListener('unhandledrejection',error);
  const timeout=setTimeout(()=>{if(!ready)error();},15000);
