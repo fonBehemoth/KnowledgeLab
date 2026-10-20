@@ -1,0 +1,52 @@
+.organized-workspace{--header-height:64px}
+.organized-workspace>header{height:var(--header-height);flex-basis:var(--header-height);flex-wrap:nowrap;gap:12px;padding:8px 18px}
+.organized-workspace .workspace-toolbar{order:initial;flex:1;min-width:0;margin-left:0}
+.organized-workspace .workspace-toolbar .work-top{min-height:22px;font-size:12px}
+.organized-workspace .workspace-toolbar .connection,.organized-workspace .prototype{display:none}
+.organized-workspace .header-right{width:auto;gap:8px;flex-wrap:nowrap;margin-left:auto;min-width:0}
+.organized-workspace .header-right .activity-button{max-width:180px}
+.organized-workspace .header-right>#app-settings-button{padding:8px 10px;font-size:12px}
+.organized-workspace .body{grid-template-columns:260px minmax(0,1fr)}
+.organized-workspace.nav-closed .body{grid-template-columns:minmax(0,1fr)}
+.organized-workspace .sidebar{padding:14px}
+.workspace-disclosure{position:relative;min-width:0;font-size:13px}
+.workspace-disclosure>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:8px 11px;border:1px solid var(--line);border-radius:7px;color:var(--text);background:var(--panel);white-space:nowrap}
+.workspace-disclosure>summary::-webkit-details-marker{display:none}
+.workspace-disclosure>summary:after{content:'⌄';font-size:14px;color:var(--muted);margin-left:auto}
+.workspace-disclosure[open]>summary{border-color:var(--green)}
+.workspace-disclosure>summary:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.disclosure-panel{position:absolute;right:0;top:calc(100% + 7px);z-index:80;min-width:210px;max-width:min(360px,calc(100vw - 24px));max-height:min(420px,60dvh);overflow:auto;padding:6px;background:var(--panel);border:1px solid var(--line);border-radius:9px;box-shadow:0 12px 35px #18233224}
+.disclosure-panel>button{display:block;width:100%;text-align:left;border:0;background:transparent;color:var(--text);padding:10px 12px;border-radius:5px;font:inherit;white-space:normal}
+.disclosure-panel>button:hover,.disclosure-panel>button:focus-visible,.disclosure-panel>button.active{background:var(--accent-soft);color:var(--green)}
+.organized-workspace .company-disclosure>summary{display:block;white-space:normal;position:relative;padding:10px 30px 10px 12px;background:var(--inside)}
+.company-disclosure>summary small{display:block;font-size:11px;color:var(--muted);margin-bottom:3px}
+.company-disclosure>summary strong{display:block;font-size:17px;overflow-wrap:anywhere}
+.company-disclosure>summary:after{position:absolute;right:12px;top:20px}
+.organized-workspace .company-disclosure>.disclosure-panel{left:0;right:0;min-width:0}
+.organized-workspace .company-disclosure #add-company{font-size:12px;padding:8px}
+.organized-workspace .company-disclosure .firms{grid-template-columns:28px 1fr 28px;gap:5px;margin-top:5px}
+.organized-workspace .company-disclosure .firm{padding:9px 4px}.organized-workspace .company-disclosure .firm strong{font-size:15px}
+.organized-workspace .sidebar .step{margin-top:16px}.organized-workspace .step-label{font-size:11px;letter-spacing:0}
+.organized-workspace .main-tabs{display:flex;flex-direction:column;gap:3px;margin-top:0}
+.organized-workspace .main-tabs button{flex:none;padding:9px 11px;border:0;border-radius:6px;background:transparent;text-align:left;font-size:14px}
+.organized-workspace .main-tabs button.active{background:var(--accent-soft);color:var(--green)}
+.organized-workspace .subnav{margin-top:12px;padding:0 0 0 10px;border-left:1px solid var(--line);gap:2px}
+.organized-workspace .subnav button{border:0;border-radius:5px;background:transparent;padding:8px 9px;font-size:13px}
+.organized-workspace .subnav button.active{background:var(--accent-soft);color:var(--green)}
+.organized-workspace .nav-settings:empty{display:none}
+.organized-workspace .nav-settings{margin-top:20px;padding-top:12px;border-top:1px solid var(--line)}
+.organized-workspace .nav-settings>button{width:100%;text-align:left;border:0;background:transparent;padding:9px 11px;font-size:13px}
+.organized-workspace .chat-controls{display:flex;flex:0 0 auto;align-items:center;gap:8px;padding:7px 16px 0;margin:0;min-width:0;overflow:visible}
+.organized-workspace .chat-controls .disclosure-panel{top:auto;bottom:calc(100% + 7px);left:0;right:auto}
+.organized-workspace .chat-controls>button,.organized-workspace .chat-controls summary{font-size:12px;padding:6px 10px}
+.organized-workspace .chat-controls #base-values{margin-left:auto}
+.organized-workspace #analytics-result>.actions{position:relative;gap:8px;align-items:center}
+.organized-workspace #analytics-result>.actions>button{padding:8px 12px;font-size:13px}
+.report-export>.disclosure-panel,.report-more>.disclosure-panel{left:0;right:auto}
+.organized-workspace .analytics-new-analysis,.organized-workspace .analytics-library-section{margin:14px 0;border-bottom:1px solid var(--line);padding-bottom:12px}
+.organized-workspace .analytics-new-analysis>summary,.organized-workspace .analytics-library-section>summary{cursor:pointer;font-size:15px;font-weight:500;padding:7px 0}
+.organized-workspace .analytics-new-analysis>.analytics-form{margin-top:14px}
+@media(max-width:1300px){.organized-workspace{--header-height:64px}.organized-workspace .brand-lockup .maker{display:none}.organized-workspace .brand-lockup .brand{font-size:23px}.organized-workspace .header-right .activity-button{display:none}}
+@media(max-width:1300px){.organized-workspace.has-selected-employee .workspace-toolbar .mobile-activity{display:block;font-size:11px;padding:4px 7px}}
+@media(max-width:900px){.organized-workspace .body{grid-template-columns:minmax(0,1fr)}.organized-workspace .sidebar{top:var(--header-height);bottom:30px;width:270px}.organized-workspace .header-right>#app-settings-button{font-size:11px;padding:7px}.organized-workspace .brand-lockup{display:none}.organized-workspace .chat-controls{padding:6px 10px 0}.organized-workspace .workspace-toolbar .mobile-activity{display:none}}
+@media(max-width:600px){.organized-workspace{--header-height:88px}.organized-workspace>header{flex-wrap:wrap;align-content:center;gap:5px 8px;padding:7px 10px}.organized-workspace .workspace-toolbar{order:4;flex:1 0 100%;margin:0}.organized-workspace .header-right{flex:1;justify-content:flex-end}.organized-workspace .workspace-resources>summary{font-size:11px;padding:7px 8px}.organized-workspace .history-access strong{font-size:11px}.organized-workspace .chat-controls{gap:5px}.organized-workspace .chat-controls>button,.organized-workspace .chat-controls summary{font-size:11px;padding:6px 8px}.organized-workspace #base-values{max-width:145px;white-space:normal}}

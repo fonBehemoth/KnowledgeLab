@@ -239,3 +239,7 @@ html body.conversation-layout[data-conversation-mode="dark"][data-theme]{--insid
 .conversation-layout .conversation-flow{padding-bottom:calc(var(--input-dock-height,100px) + 24px);scroll-padding-bottom:calc(var(--input-dock-height,100px) + 24px)}
 .conversation-layout .composer-input-surface{background:rgba(232,239,244,.58);backdrop-filter:blur(20px) saturate(135%);-webkit-backdrop-filter:blur(20px) saturate(135%);box-shadow:0 3px 20px #2233440a}
 .conversation-layout[data-conversation-mode="dark"] .composer-input-surface{background:rgba(43,55,70,.56);box-shadow:0 3px 20px #0002}
+.conversation-layout .composer-input-surface #question{outline:none!important;line-height:22px;scrollbar-width:none}
+.conversation-layout .composer-input-surface #question::-webkit-scrollbar{display:none}
+.conversation-layout .composer-input-surface #question::placeholder{white-space:nowrap;text-overflow:ellipsis}
+.conversation-layout .composer-input-surface:focus-within{box-shadow:0 3px 20px #2233440a,0 0 0 2px #48bcff16}
