@@ -5,13 +5,15 @@
         "id": "vector",
         "name": "Вектор",
         "field": "Производство и торговля",
-        "currency": "EUR"
+        "currency": "EUR",
+        "group_id": "vector-group"
       },
       {
         "id": "horizon",
         "name": "Горизонт",
         "field": "Логистика и склад",
-        "currency": "EUR"
+        "currency": "EUR",
+        "group_id": "vector-group"
       }
     ],
     "people": [
@@ -362,7 +364,13 @@
         "company_id": "vector"
       }
     ],
-    "selected_company_id": "vector"
+    "selected_company_id": "vector",
+    "groups": [
+      {
+        "id": "vector-group",
+        "name": "Группа компаний «Вектор»"
+      }
+    ]
   },
   "history": {
     "records": {

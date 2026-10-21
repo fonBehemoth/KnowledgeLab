@@ -1,0 +1,1 @@
+export function descendants(departments,id){const result=new Set([id]);let changed=true;while(changed){changed=false;for(const d of departments)if(result.has(d.parent_id)&&!result.has(d.id)){result.add(d.id);changed=true;}}return result;}

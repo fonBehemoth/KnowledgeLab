@@ -10,3 +10,4 @@
 @media(max-width:600px){.conversation-layout #workspace-context{padding-right:62px}.conversation-layout #people-drawer-toggle{right:12px;width:36px;height:36px;top:11px}.people-drawer{padding:16px}.org-canvas{max-height:58vh}.conversation-layout .org-card{width:190px}}
 
 .conversation-layout #activity-button{display:none!important}
+.org-stage{position:relative}.org-scene{position:absolute;top:0;left:0;width:max-content;transform-origin:top left}.org-view-tabs{align-items:center}.org-view-tabs small{min-width:40px;text-align:center}
