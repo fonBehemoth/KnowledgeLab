@@ -1,3 +1,4 @@
+import {normalizeWorkEmail} from './email-addresses.js';
 // Public presentation identity: synthetic data only; never an authentication provider.
 const storageKey='deepagent-public-profile-v1';
 export function createPublicUserCabinet(organization,storage){
@@ -7,9 +8,8 @@ export function createPublicUserCabinet(organization,storage){
  const defaults={name:person.name,email:person.email||'',about:'Руковожу развитием компании, координирую работу подразделений и контролирую выполнение ключевых задач.',photo_data:''};
  let value={...defaults},revision='initial';
  function clean(input){
-  const name=String(input.name||'').trim(),email=String(input.email||'').trim(),about=String(input.about||'').trim(),photo_data=String(input.photo_data||'');
+  const name=String(input.name||'').trim(),email=normalizeWorkEmail(input.email),about=String(input.about||'').trim(),photo_data=String(input.photo_data||'');
   if(!name||name.length>160||email.length>254||about.length>2000)throw Error('Проверьте заполнение профиля.');
-  if(email&&(email.split('@').length!==2||!email.split('@').every(Boolean)||/\s/.test(email)))throw Error('Укажите корректный адрес почты.');
   if(photo_data&&(!/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(photo_data)||photo_data.length>340000))throw Error('Выберите фотографию JPG, PNG или WebP.');
   return {name,email,about,photo_data};
  }

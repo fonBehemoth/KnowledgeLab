@@ -1,3 +1,4 @@
+import {bindWorkEmail,normalizeWorkEmail} from './email-addresses.js';
 import {el,button} from './company-ui.js';
 import {photoEditor} from './profile-photo.js';
 const roles={owner:'Владелец',observer:'Наблюдатель',employee:'Сотрудник',manager:'Руководитель',structure_admin:'Администратор структуры'};
@@ -13,8 +14,13 @@ export async function renderUserCabinet(drawer,isCurrent){
   let profile=await provider.profile();if(!isCurrent())return;body.replaceChildren();
   const account=el('p',profile.account.login+' · '+(roles[profile.account.role]||profile.account.role));body.append(account);
   const form=el('form');body.append(form);const photo=photoEditor(form,profile.photo_data),name=field(form,'ФИО',profile.name),email=field(form,'Рабочая почта',profile.email,'email'),about=field(form,'О себе',profile.about,'textarea');name.required=true;name.maxLength=160;email.maxLength=254;about.maxLength=2000;
-  const save=el('button','Сохранить профиль');save.type='submit';const result=el('p');result.setAttribute('role','status');form.append(save,result);
-  form.onsubmit=async event=>{event.preventDefault();save.disabled=true;result.textContent='';try{profile=await provider.saveProfile({revision:profile.revision,name:name.value,email:email.value,about:about.value,photo_data:photo()});result.textContent=profile.refresh_warning||profile.save_message||'Профиль сохранён.';}catch(error){result.textContent=error.message;}finally{save.disabled=false;}};
+  bindWorkEmail(email);
+  const mailLink=el('a'),editMail=button('Изменить',()=>{email.hidden=false;mailLink.hidden=true;editMail.hidden=true;email.focus();});editMail.setAttribute('aria-label','Изменить рабочую почту');
+  const mailContact=el('span',null,'profile-mail-contact');mailContact.append(mailLink,editMail);email.parentElement.append(mailContact);
+  function showMail(){const address=profile.email||'';email.value=address;email.hidden=!!address;mailLink.hidden=editMail.hidden=!address;mailLink.textContent=address;mailLink.href='mailto:'+encodeURIComponent(address).replace('%40','@');mailLink.setAttribute('aria-label','Написать письмо: '+address);mailLink.title='Написать письмо';}
+  showMail();
+  const save=el('button','Сохранить профиль');save.type='submit';const result=el('p');result.setAttribute('role','status');form.append(save,result);form.addEventListener('input',()=>{result.textContent='';});
+  form.onsubmit=async event=>{event.preventDefault();save.disabled=true;result.textContent='';try{profile=await provider.saveProfile({revision:profile.revision,name:name.value,email:normalizeWorkEmail(email.value),about:about.value,photo_data:photo()});showMail();result.textContent=profile.refresh_warning||profile.save_message||'Профиль сохранён.';}catch(error){result.textContent=error.message;}finally{save.disabled=false;}};
   if(profile.employee){const card=el('section');card.append(el('h3','Работа'));for(const [key,label] of [['company','Компания'],['department','Подразделение'],['position','Должность'],['manager','Руководитель'],['work_schedule','Время работы'],['duties','Обязанности']])if(profile.employee[key])card.append(el('p',label+': '+profile.employee[key]));body.append(card);}
   if(typeof provider.changePassword==='function'){
   const security=el('details'),summary=el('summary','Сменить пароль'),passwordForm=el('form');security.append(summary,passwordForm);body.append(security);
