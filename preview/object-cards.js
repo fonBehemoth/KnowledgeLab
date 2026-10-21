@@ -38,5 +38,5 @@ export function initObjectCards(app){
   const draftData=app.linkedTaskDraft();const form=document.querySelector('#task-title')?.closest('.task');if(draftData&&form&&!form.querySelector('.draft-source-link')){const b=button('Открыть источник',async()=>{try{await openSource(draftData.source);}catch(error){shell('Источник',t('Источник недоступен')).append(el('p',error.message));}});b.className='draft-source-link';form.append(b);}
  }
  const schedule=()=>{if(!scheduled){scheduled=true;requestAnimationFrame(enhance);}};new MutationObserver(schedule).observe(document.querySelector('#content'),{childList:true,subtree:true});new MutationObserver(schedule).observe(document.querySelector('#chat-thread'),{childList:true,subtree:true});document.addEventListener('deepagent-section-rendered',schedule);document.addEventListener('deepagent-history-changed',schedule);document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!drawer.hidden)close();});schedule();
- window.DeepAgentObjects={openTask:task,openMaterial:material,draft,openSource};
+ window.DeepAgentObjects={close,openTask:task,openMaterial:material,draft,openSource};
 }

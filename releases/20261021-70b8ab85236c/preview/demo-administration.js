@@ -15,7 +15,7 @@ function validate(org){
 export function initDemoAdministration(app,initial,settings){
     let organization=structuredClone(initial);
     try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved){validate(saved);organization=saved;app.applyOrganization(organization);}}catch{}
-    const actions=el('div');actions.className='demo-admin-actions';actions.append(btn('Компании и структура',()=>{settings.close();structure();}),btn('Права доступа',()=>{settings.close();permissions();}));settings.querySelector('.dialog-head').after(actions);
+    const actions=el('div');actions.className='demo-admin-actions';const manage=btn('Компании и структура',()=>{settings.close();structure();});manage.id='organization-settings-button';actions.append(manage,btn('Права доступа',()=>{settings.close();permissions();}));settings.querySelector('.dialog-head').after(actions);
     settings.querySelector('#reset-demo').addEventListener('click',()=>{localStorage.removeItem(KEY);localStorage.removeItem(POLICY);},true);
     function save(next){validate(next);localStorage.setItem(KEY,JSON.stringify(next));organization=next;app.applyOrganization(organization);app.refresh();}
     function structure(){const d=modal('Компании и структура');const tabs=el('div'),body=el('div');tabs.className='demo-admin-actions';d.append(tabs,body);let current='companies';

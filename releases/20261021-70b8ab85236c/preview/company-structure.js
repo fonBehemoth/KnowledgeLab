@@ -5,7 +5,7 @@ export function createStructureView(app,showPeople){
  let context,view='departments',selectedCompany='',expanded=new Map();
  function render(host){
   const {company,people,departments}=context;host.replaceChildren();const tools=el('div',null,'org-view-tabs');
-  for(const [id,label] of [['departments','Подразделения'],['people','Подчинённость сотрудников']]){const b=button(label,()=>{view=id;render(host);});b.classList.toggle('active',view===id);b.setAttribute('aria-pressed',String(view===id));tools.append(b);}tools.append(button('Список сотрудников',()=>showPeople()));host.append(tools);
+  for(const [id,label] of [['departments','Подразделения'],['people','Подчинённость сотрудников']]){const b=button(label,()=>{view=id;render(host);});b.classList.toggle('active',view===id);b.setAttribute('aria-pressed',String(view===id));tools.append(b);}host.append(tools);
   const board=el('section',null,'org-board');board.setAttribute('aria-label',company?.name||t('Структура компании'));host.append(board);
   const items=view==='departments'?departments:people,key=view==='departments'?'parent_id':'supervisor_id',ids=new Set(items.map(x=>x.id)),seen=new Set(),children=new Map();
   for(const item of items){const parent=ids.has(item[key])&&item[key]!==item.id?item[key]:null;if(!children.has(parent))children.set(parent,[]);children.get(parent).push(item);}

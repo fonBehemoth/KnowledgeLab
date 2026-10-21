@@ -269,3 +269,7 @@ html body.conversation-layout[data-conversation-mode="dark"][data-theme]{--insid
 .conversation-layout #subnav-slot{display:flow-root}
 
 .conversation-layout #team-mode{display:none!important}
+
+.conversation-layout .nav-recent{border-top:1px solid var(--line);padding-top:8px}.conversation-layout .nav-recent .recent-chat{display:block;width:100%;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:8px 10px;border:0;border-radius:12px;min-height:34px}.recent-empty{font-size:12px;padding:6px 10px;color:var(--muted)}.direct-delivery-status{color:var(--muted);font-size:13px;padding:10px 0}
+
+.conversation-layout .sidebar>.nav-recent{flex:0 0 auto;margin:0 12px;max-height:min(26vh,220px);overflow:auto;scrollbar-width:thin;padding:8px 0}.conversation-layout .sidebar>.nav-recent>small{position:sticky;top:0;background:var(--panel);z-index:1}.conversation-layout .sidebar .nav-recent button{font-size:15px;font-weight:400;min-height:34px}

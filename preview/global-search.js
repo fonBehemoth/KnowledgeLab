@@ -37,15 +37,15 @@ export function initGlobalSearch(icon){
  const status=document.createElement('p');status.setAttribute('role','status');const results=document.createElement('div');results.id='global-search-results';
  panel.append(head,input,filters,status,results);
  let kind='Все',extra=[],loading=false,warning='',epoch=0;
- const kinds=['Все','Компании','Отделы','Сотрудники','Задачи','Переписки','Письма','Материалы','Отчёты','Разделы'];
+ const kinds=['Все','Компании','Задачи','Переписки','Письма','Материалы','Отчёты','Разделы'];
  for(const name of kinds){const b=document.createElement('button');b.type='button';b.textContent=translate(name);b.dataset.kind=name;b.onclick=()=>{kind=name;render();};filters.append(b);}
  function closeSearch(){panel.hidden=true;document.body.classList.remove('global-search-open');button.focus({preventScroll:true});}
  close.onclick=closeSearch;
  function render(){
   for(const b of filters.children){b.classList.toggle('active',b.dataset.kind===kind);b.setAttribute('aria-pressed',String(b.dataset.kind===kind));}
   const sections=['Проекты','Персонал','Отчёты','Чаты','Аналитика','История'].map(name=>({kind:'Разделы',title:name,text:'',detail:'',target:{kind:'section',section:name,company_id:app.state().company_id}}));
-  const matches=matchSearchEntries([...buildSearchEntries(app.organization(),app.historySnapshot()),...extra,...sections],input.value,kind);results.replaceChildren();
-  status.textContent=(loading?translate('Материалы загружаются…')+' ':'')+(input.value.trim()?(matches.length?translate('Найдено')+': '+matches.length+(matches.length>50?' · '+translate('Показаны первые 50'):''):translate('Ничего не найдено')):translate('Поиск по всем компаниям, сотрудникам, задачам, текстам переписок и сохранённым материалам.'))+(warning?' '+warning:'');
+  const matches=matchSearchEntries([...buildSearchEntries(app.organization(),app.historySnapshot()).filter(item=>!['Сотрудники','Отделы'].includes(item.kind)),...extra,...sections],input.value,kind);results.replaceChildren();
+  status.textContent=(loading?translate('Материалы загружаются…')+' ':'')+(input.value.trim()?(matches.length?translate('Найдено')+': '+matches.length+(matches.length>50?' · '+translate('Показаны первые 50'):''):translate('Ничего не найдено')):translate('Поиск по доступным компаниям, задачам, перепискам и материалам. Поиск сотрудников находится в разделе «Персонал».'))+(warning?' '+warning:'');
   for(const item of matches.slice(0,50)){
    const b=document.createElement('button');b.type='button';b.className='global-search-result';const tag=document.createElement('small');tag.textContent=[translate(item.kind),item.detail].filter(Boolean).join(' · ');const label=document.createElement('strong');label.textContent=item.title;const snippet=document.createElement('span');
    const text=String(item.text||''),term=input.value.trim().split(/\s+/)[0].toLocaleLowerCase(),at=text.toLocaleLowerCase().indexOf(term);snippet.textContent=(at>60?'…':'')+text.slice(Math.max(0,at-60),Math.max(0,at-60)+230);b.append(tag,label,snippet);
