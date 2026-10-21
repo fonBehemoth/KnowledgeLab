@@ -16,7 +16,7 @@ export function buildSearchEntries(org={},history={}){
   if(record.task)add('Задачи',record.task.title,[record.task.detail,record.result,record.rules].filter(Boolean).join('\n'),record._company_id,target);
   if(record.questions?.length)add('Переписки',record.task?.title||'Рабочий диалог',record.questions.map(m=>m.text).join('\n'),record._company_id,{...target,kind:'record'});
  }
- for(const [company,team] of Object.entries(history.teams||{}))if(names.has(company)&&team.messages?.length)add('Переписки','Чат менеджеров',team.messages.map(m=>m.text).join('\n'),company,{kind:'team'});
+ for(const [company,team] of Object.entries(history.teams||{}))if(names.has(company)&&team.messages?.length)add('Переписки','Групповой чат',team.messages.map(m=>m.text).join('\n'),company,{kind:'team'});
  return entries;
 }
 export function matchSearchEntries(entries,query,kind='Все'){

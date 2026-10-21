@@ -40,7 +40,7 @@ export function initConversationLayout(){
  scroll.append(library);document.querySelector('#workspace-resources')?.remove();
  const recent=document.createElement('nav');recent.className='nav-recent';recent.setAttribute('aria-label',translate('Последние чаты'));scroll.append(recent);
  const dialogue=document.createElement('nav');dialogue.className='nav-dialogue';dialogue.setAttribute('aria-label',translate('Диалог'));
- for(const id of ['assistant-mode','team-mode']){const item=document.getElementById(id);if(item)dialogue.append(item);}
+ const assistantMode=document.getElementById('assistant-mode');if(assistantMode)dialogue.append(assistantMode);const legacyTeamMode=document.getElementById('team-mode');if(legacyTeamMode){legacyTeamMode.hidden=true;document.body.append(legacyTeamMode);}
  const baseValues=document.getElementById('base-values');if(baseValues){baseValues.hidden=true;document.body.append(baseValues);}
  const participantAction=document.getElementById('participants-button');if(participantAction)document.body.append(participantAction);
  const sectionChoice=scroll.querySelector('.section-choice');sectionChoice.before(dialogue);document.querySelector('.chat-controls')?.remove();
@@ -82,7 +82,7 @@ export function initConversationLayout(){
   selectedEmployee.title=document.querySelector('#selected-employee-name').textContent;const changeEmployee=document.querySelector('#change-employee');changeEmployee.setAttribute('aria-label',translate('Изменить сотрудника')+': '+selectedEmployee.title);changeEmployee.title=translate('Изменить сотрудника');changeEmployee.replaceChildren(icon('down'));
   const hasSubsection=!!state.sub&&state.section!=='Аналитика'&&subnav.childElementCount>0;selectedAction=hasSubsection;
   const selectionKey=[state.company_id,state.department,state.employee,state.section,state.sub].join('|');if(lastSubsection!==selectionKey){subsectionOpen=false;scrollCollapsed=false;subnavSlot.style.removeProperty('min-height');lastSubsection=selectionKey;}
-  subsectionValue.textContent=hasSubsection?(state.section==='Чаты'&&state.sub==='Все чаты'?translate('История переписок'):translate(state.sub)):translate('Выбор действия');subsectionButton.setAttribute('aria-label',translate('Выбор действия')+(hasSubsection?': '+subsectionValue.textContent:''));arrangeSubnav();
+  subsectionValue.textContent=hasSubsection?(state.section==='Чаты'&&state.sub==='Все чаты'?translate('Переписки'):translate(state.sub)):translate('Выбор действия');subsectionButton.setAttribute('aria-label',translate('Выбор действия')+(hasSubsection?': '+subsectionValue.textContent:''));arrangeSubnav();
   contextBar.hidden=!state.company_id;choices.hidden=(personnel.hidden||document.querySelector('#employee-picker').hidden)&&(hasSubsection||!subnav.childElementCount);
   scheduleDock();
  };
