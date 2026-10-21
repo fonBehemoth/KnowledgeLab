@@ -1,3 +1,4 @@
+import {initRecentChats} from './recent-chats.js';
 import {translate} from './i18n.js';
 import {initGlobalSearch} from './global-search.js';
 import {initChatNavigation} from './chat-navigation.js';
@@ -74,11 +75,11 @@ export function initConversationLayout(){
 
  const refreshChoices=()=>{
   const state=window.deepAgentDemo.state();document.body.dataset.workspaceSection=state.section||'';document.body.dataset.chatMode=state.chatMode;
-  departmentChoices.hidden=!state.company_id||state.section==='Структура компании';
+  departmentChoices.hidden=!state.company_id||(state.section==='Структура компании'||state.section==='Персонал'&&state.sub==='Структура компании');
   if(state.company_id!==lastDepartmentCompany||state.department!==lastDepartment){departmentOpen=false;lastDepartmentCompany=state.company_id;lastDepartment=state.department;}
   departmentCaption.hidden=!!state.department;departmentValue.hidden=!state.department;departmentButton.setAttribute('aria-label',translate('Подразделение')+(state.department?': '+(departmentSelect.selectedOptions[0]?.textContent||state.department):''));departmentCaption.textContent=translate('Подразделение');departmentValue.textContent=state.department?departmentSelect.selectedOptions[0]?.textContent||state.department:translate('Выбрать');departmentValue.dataset.authored=state.department&&state.department!=='Все отделы'?'true':'false';departmentButton.classList.toggle('has-value',!!state.department);
   departmentOptions.replaceChildren();for(const option of departmentSelect.options){if(!option.value)continue;const b=document.createElement('button');b.type='button';b.dataset.department=option.value;b.textContent=option.textContent;b.classList.toggle('active',state.department===option.value);b.setAttribute('aria-pressed',String(state.department===option.value));departmentOptions.append(b);}
-  toggleDepartments();selectedEmployee.hidden=state.section!=='Персонал'||!state.employee;
+  toggleDepartments();selectedEmployee.hidden=state.section!=='Персонал'||!state.employee||state.sub==='Структура компании';
   selectedEmployee.title=document.querySelector('#selected-employee-name').textContent;const changeEmployee=document.querySelector('#change-employee');changeEmployee.setAttribute('aria-label',translate('Изменить сотрудника')+': '+selectedEmployee.title);changeEmployee.title=translate('Изменить сотрудника');changeEmployee.replaceChildren(icon('down'));
   const hasSubsection=!!state.sub&&state.section!=='Аналитика'&&subnav.childElementCount>0;selectedAction=hasSubsection;
   const selectionKey=[state.company_id,state.department,state.employee,state.section,state.sub].join('|');if(lastSubsection!==selectionKey){subsectionOpen=false;scrollCollapsed=false;subnavSlot.style.removeProperty('min-height');lastSubsection=selectionKey;}
@@ -99,7 +100,7 @@ export function initConversationLayout(){
  document.querySelector('.app-footer').hidden=true;
  const labels={'Проекты':'projects','Персонал':'people','Отчёты':'reports','Чаты':'chat','Аналитика':'analytics','История':'history'};
  const decorate=()=>{for(const item of side.querySelectorAll('[data-section]'))mark(item,labels[item.dataset.section]);for(const [id,name] of Object.entries({'history-access':'history','core-history-button':'library','core-graph-button':'graph','app-settings-button':'settings','assistant-mode':'assistant','team-mode':'chat','participants-button':'people','base-values':'reports','activity-button':'history'}))mark(document.getElementById(id),name);mark(document.querySelector('#company-disclosure>summary'),'company');for(const item of side.querySelectorAll('#subnav>button'))mark(item,'reports');};
- initChatNavigation(recent,icon);recent.hidden=true;document.body.classList.remove('has-chat-tree');initHistoryWorkspace();
+ initChatNavigation(recent,icon);initRecentChats(recent,window.deepAgentDemo);document.body.classList.remove('has-chat-tree');initHistoryWorkspace();
  document.addEventListener('deepagent-section-rendered',()=>{decorate();refreshArrowIcons();});document.addEventListener('deepagent-language-change',()=>{decorate();setMode(mode);refreshArrowIcons();});decorate();refreshArrowIcons();
  let arrowRefreshPending=false;new MutationObserver(()=>{if(arrowRefreshPending)return;arrowRefreshPending=true;requestAnimationFrame(()=>{arrowRefreshPending=false;refreshArrowIcons();});}).observe(document.querySelector('#content'),{childList:true,subtree:true});
  initAttachments();

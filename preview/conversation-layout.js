@@ -94,7 +94,7 @@ export function initConversationLayout(){
  const themeSelect=document.querySelector('#theme-select');if(themeSelect){themeSelect.replaceChildren();for(const [value,label] of [['light','Светлая тема'],['dark','Тёмная тема']]){const option=document.createElement('option');option.value=value;option.textContent=translate(label);themeSelect.append(option);}themeSelect.onchange=()=>setMode(themeSelect.value);}
  let mode='light';try{mode=localStorage.getItem('deepagent-conversation-mode')||mode;}catch{}
  function setMode(next){mode=next==='dark'?'dark':'light';document.body.dataset.conversationMode=mode;if(themeSelect)themeSelect.value=mode;try{localStorage.setItem('deepagent-conversation-mode',mode);}catch{}}
- side.append(recent,footer);setMode(mode);
+ side.append(footer);setMode(mode);
  document.querySelector('body>header').hidden=true;
  const appearance=document.querySelector('.appearance-settings');if(appearance){appearance.open=true;const target=document.querySelector('#app-settings-button');const original=target?.onclick;if(target)target.onclick=e=>{original?.(e);const dialog=[...document.querySelectorAll('dialog')].find(d=>d.open);if(dialog&&!dialog.querySelector('#theme-select'))dialog.append(appearance);};}
  document.querySelector('.app-footer').hidden=true;
