@@ -21,5 +21,5 @@ export async function renderUserCabinet(drawer,isCurrent){
   const change=el('button','Сохранить пароль');change.type='submit';const notice=el('p');notice.setAttribute('role','status');passwordForm.append(change,notice);
   passwordForm.onsubmit=async event=>{event.preventDefault();change.disabled=true;notice.textContent='';try{if(next.value!==confirm.value)throw Error('Пароли не совпадают.');await provider.changePassword(old.value,next.value);passwordForm.reset();notice.textContent='Пароль изменён. Другие сеансы завершены.';}catch(error){notice.textContent=error.message;}finally{change.disabled=false;}};
   body.append(button('Выйти из учётной записи',()=>provider.logout()));
- }catch(error){if(isCurrent())body.replaceChildren(el('p',error.message),button('Повторить',()=>{body.remove();renderUserCabinet(drawer,isCurrent);}));}
+ }catch(error){if(isCurrent())body.replaceChildren(el('p',error.message),error.status===401?button('Войти снова',()=>location.reload()):button('Повторить',()=>{body.remove();renderUserCabinet(drawer,isCurrent);}));}
 }

@@ -34,3 +34,5 @@
 .personnel-tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}.personnel-tools>button{border:0;border-radius:20px;padding:8px 14px;background:var(--inside);color:var(--text);font:inherit;font-size:14px}.personnel-tools #personnel-directory{margin:0}
 
 .user-cabinet{display:flex;flex-direction:column;gap:20px}.user-cabinet form,.user-cabinet label{display:flex;flex-direction:column;gap:8px}.user-cabinet form{gap:16px}.user-cabinet :is(input,textarea){font:inherit;color:inherit;background:var(--inside);border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0;max-width:100%;box-sizing:border-box}.user-cabinet textarea{min-height:90px;resize:vertical}.user-cabinet summary{cursor:pointer;padding:12px 0}.user-cabinet [role=status]{font-size:14px}.user-cabinet button{padding:12px;border-radius:14px}
+
+.current-user-drawer .people-drawer-head{flex-shrink:0}.current-user-drawer .user-cabinet{flex:1;min-height:0;overflow:auto;padding-right:4px;scrollbar-width:thin}
