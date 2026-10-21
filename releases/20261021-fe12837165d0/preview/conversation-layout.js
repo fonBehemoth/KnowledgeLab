@@ -74,7 +74,7 @@ export function initConversationLayout(){
 
  const refreshChoices=()=>{
   const state=window.deepAgentDemo.state();document.body.dataset.workspaceSection=state.section||'';document.body.dataset.chatMode=state.chatMode;
-  departmentChoices.hidden=!state.company_id;
+  departmentChoices.hidden=!state.company_id||state.section==='Структура компании';
   if(state.company_id!==lastDepartmentCompany||state.department!==lastDepartment){departmentOpen=false;lastDepartmentCompany=state.company_id;lastDepartment=state.department;}
   departmentCaption.hidden=!!state.department;departmentValue.hidden=!state.department;departmentButton.setAttribute('aria-label',translate('Подразделение')+(state.department?': '+(departmentSelect.selectedOptions[0]?.textContent||state.department):''));departmentCaption.textContent=translate('Подразделение');departmentValue.textContent=state.department?departmentSelect.selectedOptions[0]?.textContent||state.department:translate('Выбрать');departmentValue.dataset.authored=state.department&&state.department!=='Все отделы'?'true':'false';departmentButton.classList.toggle('has-value',!!state.department);
   departmentOptions.replaceChildren();for(const option of departmentSelect.options){if(!option.value)continue;const b=document.createElement('button');b.type='button';b.dataset.department=option.value;b.textContent=option.textContent;b.classList.toggle('active',state.department===option.value);b.setAttribute('aria-pressed',String(state.department===option.value));departmentOptions.append(b);}
