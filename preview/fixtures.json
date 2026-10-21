@@ -23,7 +23,10 @@
         "company_id": "vector",
         "department_id": "sales",
         "is_manager": false,
-        "duties": "Проверка отчётов о продажах и первичных документов\nПодготовка управленческой аналитики\nОбъяснение расхождений и контроль качества расчётов\nСогласование исправлений с руководителем"
+        "duties": "Проверка отчётов о продажах и первичных документов\nПодготовка управленческой аналитики\nОбъяснение расхождений и контроль качества расчётов\nСогласование исправлений с руководителем",
+        "supervisor_id": "orlov",
+        "email": "novikov@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
       },
       {
         "id": "orlov",
@@ -33,7 +36,10 @@
         "company_id": "vector",
         "department_id": "sales",
         "is_manager": true,
-        "duties": "Контроль работы подразделения\nСогласование поручений и результатов"
+        "duties": "Контроль работы подразделения\nСогласование поручений и результатов",
+        "supervisor_id": "commercial-director",
+        "email": "orlov@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
       },
       {
         "id": "ai-analyst",
@@ -43,34 +49,317 @@
         "company_id": "vector",
         "department_id": "sales",
         "is_manager": false,
-        "duties": "Проверка расчётов\nПодготовка аналитических отчётов\nОбъяснение расхождений"
+        "duties": "Проверка расчётов\nПодготовка аналитических отчётов\nОбъяснение расхождений",
+        "supervisor_id": "orlov",
+        "email": "",
+        "work_schedule": "Запуск по поручению руководителя"
+      },
+      {
+        "id": "director",
+        "name": "Андрей Николаевич Воронцов",
+        "position": "Генеральный директор",
+        "company_id": "vector",
+        "department_id": "management",
+        "supervisor_id": null,
+        "kind": "human",
+        "is_manager": true,
+        "email": "director@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "commercial-director",
+        "name": "Елена Викторовна Соколова",
+        "position": "Коммерческий директор",
+        "company_id": "vector",
+        "department_id": "commercial",
+        "supervisor_id": "director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "commercial-director@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "sales-manager",
+        "name": "Мария Андреевна Белова",
+        "position": "Менеджер по продажам",
+        "company_id": "vector",
+        "department_id": "sales",
+        "supervisor_id": "orlov",
+        "kind": "human",
+        "is_manager": false,
+        "email": "sales-manager@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "b2b-lead",
+        "name": "Дмитрий Игоревич Крылов",
+        "position": "Руководитель корпоративных продаж",
+        "company_id": "vector",
+        "department_id": "b2b",
+        "supervisor_id": "orlov",
+        "kind": "human",
+        "is_manager": true,
+        "email": "b2b-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "b2b-manager",
+        "name": "Анна Олеговна Морозова",
+        "position": "Менеджер по ключевым клиентам",
+        "company_id": "vector",
+        "department_id": "b2b",
+        "supervisor_id": "b2b-lead",
+        "kind": "human",
+        "is_manager": false,
+        "email": "b2b-manager@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "purchase-lead",
+        "name": "Ольга Петровна Лебедева",
+        "position": "Руководитель закупок",
+        "company_id": "vector",
+        "department_id": "purchasing",
+        "supervisor_id": "commercial-director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "purchase-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "buyer",
+        "name": "Илья Романович Волков",
+        "position": "Специалист по закупкам",
+        "company_id": "vector",
+        "department_id": "purchasing",
+        "supervisor_id": "purchase-lead",
+        "kind": "human",
+        "is_manager": false,
+        "email": "buyer@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "finance-director",
+        "name": "Наталья Сергеевна Кузнецова",
+        "position": "Финансовый директор",
+        "company_id": "vector",
+        "department_id": "finance",
+        "supervisor_id": "director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "finance-director@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "accountant",
+        "name": "Светлана Юрьевна Павлова",
+        "position": "Главный бухгалтер",
+        "company_id": "vector",
+        "department_id": "finance",
+        "supervisor_id": "finance-director",
+        "kind": "human",
+        "is_manager": false,
+        "email": "accountant@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "operations-director",
+        "name": "Сергей Александрович Громов",
+        "position": "Операционный директор",
+        "company_id": "vector",
+        "department_id": "operations",
+        "supervisor_id": "director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "operations-director@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "production-lead",
+        "name": "Виктор Михайлович Фомин",
+        "position": "Начальник производства",
+        "company_id": "vector",
+        "department_id": "production",
+        "supervisor_id": "operations-director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "production-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "engineer",
+        "name": "Михаил Евгеньевич Титов",
+        "position": "Инженер-технолог",
+        "company_id": "vector",
+        "department_id": "production",
+        "supervisor_id": "production-lead",
+        "kind": "human",
+        "is_manager": false,
+        "email": "engineer@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "warehouse-lead",
+        "name": "Александр Олегович Миронов",
+        "position": "Начальник склада",
+        "company_id": "vector",
+        "department_id": "warehouse",
+        "supervisor_id": "operations-director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "warehouse-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "warehouse-worker",
+        "name": "Ирина Алексеевна Зайцева",
+        "position": "Специалист складского учёта",
+        "company_id": "vector",
+        "department_id": "warehouse",
+        "supervisor_id": "warehouse-lead",
+        "kind": "human",
+        "is_manager": false,
+        "email": "warehouse-worker@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "logistics-lead",
+        "name": "Юлия Владимировна Романова",
+        "position": "Руководитель логистики",
+        "company_id": "vector",
+        "department_id": "logistics",
+        "supervisor_id": "operations-director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "logistics-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "dispatcher",
+        "name": "Роман Викторович Егоров",
+        "position": "Логист-диспетчер",
+        "company_id": "vector",
+        "department_id": "logistics",
+        "supervisor_id": "logistics-lead",
+        "kind": "human",
+        "is_manager": false,
+        "email": "dispatcher@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "hr-lead",
+        "name": "Татьяна Игоревна Васильева",
+        "position": "Руководитель по персоналу",
+        "company_id": "vector",
+        "department_id": "hr",
+        "supervisor_id": "director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "hr-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "it-lead",
+        "name": "Денис Андреевич Смирнов",
+        "position": "Руководитель информационных систем",
+        "company_id": "vector",
+        "department_id": "it",
+        "supervisor_id": "director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "it-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
       }
     ],
     "departments": [
       {
         "id": "sales",
         "name": "Продажи",
-        "company_id": "vector"
+        "company_id": "vector",
+        "parent_id": "commercial",
+        "manager_id": "orlov"
       },
       {
         "id": "finance",
-        "name": "Бухгалтерия",
-        "company_id": "vector"
+        "name": "Финансы и бухгалтерия",
+        "company_id": "vector",
+        "parent_id": "management",
+        "manager_id": "finance-director"
       },
       {
         "id": "production",
         "name": "Производство",
-        "company_id": "vector"
+        "company_id": "vector",
+        "parent_id": "operations",
+        "manager_id": "production-lead"
       },
       {
         "id": "warehouse",
         "name": "Склад",
-        "company_id": "vector"
+        "company_id": "vector",
+        "parent_id": "operations",
+        "manager_id": "warehouse-lead"
       },
       {
         "id": "h-logistics",
         "name": "Логистика",
         "company_id": "horizon"
+      },
+      {
+        "id": "management",
+        "name": "Дирекция",
+        "parent_id": null,
+        "manager_id": "director",
+        "company_id": "vector"
+      },
+      {
+        "id": "commercial",
+        "name": "Коммерческий блок",
+        "parent_id": "management",
+        "manager_id": "commercial-director",
+        "company_id": "vector"
+      },
+      {
+        "id": "b2b",
+        "name": "Корпоративные продажи",
+        "parent_id": "sales",
+        "manager_id": "b2b-lead",
+        "company_id": "vector"
+      },
+      {
+        "id": "purchasing",
+        "name": "Закупки",
+        "parent_id": "commercial",
+        "manager_id": "purchase-lead",
+        "company_id": "vector"
+      },
+      {
+        "id": "operations",
+        "name": "Операционный блок",
+        "parent_id": "management",
+        "manager_id": "operations-director",
+        "company_id": "vector"
+      },
+      {
+        "id": "logistics",
+        "name": "Логистика",
+        "parent_id": "operations",
+        "manager_id": "logistics-lead",
+        "company_id": "vector"
+      },
+      {
+        "id": "hr",
+        "name": "Персонал и развитие",
+        "parent_id": "management",
+        "manager_id": "hr-lead",
+        "company_id": "vector"
+      },
+      {
+        "id": "it",
+        "name": "Информационные системы",
+        "parent_id": "management",
+        "manager_id": "it-lead",
+        "company_id": "vector"
       }
     ],
     "selected_company_id": "vector"

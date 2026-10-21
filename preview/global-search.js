@@ -6,7 +6,7 @@ export function buildSearchEntries(org={},history={}){
  const add=(kind,title,text,company,target)=>entries.push({kind,title:title||kind,text:text||'',detail:names.get(company)||'',target:{company_id:company,...target}});
  for(const c of companies)add('Компании',c.name,c.field,c.id,{kind:'company'});
  for(const d of org?.departments||[])if(!d.archived&&names.has(d.company_id))add('Отделы',d.name,'',d.company_id,{kind:'department',department_id:d.id});
- for(const p of org?.people||[])if(!p.archived&&names.has(p.company_id))add('Сотрудники',p.name,[p.position,p.duties,p.kind==='ai'?'ИИ-агент':''].join(' '),p.company_id,{kind:'person',employee_id:p.id,department_id:p.department_id});
+ for(const p of org?.people||[])if(!p.archived&&names.has(p.company_id))add('Сотрудники',p.name,[p.position,p.email,p.work_schedule,p.duties,p.kind==='ai'?'ИИ-агент':''].join(' '),p.company_id,{kind:'person',employee_id:p.id,department_id:p.department_id});
  for(const [company,chats] of Object.entries(history.chats||{}))if(names.has(company)){
   for(const chat of chats.threads||[])add('Переписки',chat.title,(chat.messages||[]).map(m=>m.text).join('\n'),company,{kind:'chat',chat_id:chat.id});
   for(const mail of chats.mails||[])add('Письма',mail.subject,[mail.to,mail.text].join('\n'),company,{kind:'mail',mail_id:mail.id});

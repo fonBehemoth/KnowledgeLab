@@ -2,6 +2,7 @@ import {translate} from './i18n.js';
 import {initGlobalSearch} from './global-search.js';
 import {initChatNavigation} from './chat-navigation.js';
 import {initHistoryWorkspace} from './history-workspace.js';
+import {initCompanyWorkspace} from './company-workspace.js';
 
 const paths={company:'M3 21V5l9-3 9 3v16M8 8h1m6 0h1M8 12h1m6 0h1M9 21v-5h6v5',department:'M12 3v5M5 21v-5h14v5M5 16v-5h14v5M12 11V8',projects:'M3 7h7l2-3h8v16H3Z',people:'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3a4 4 0 0 1 0 8m6 10v-2a4 4 0 0 0-3-3M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0',reports:'M5 3h10l4 4v14H5ZM14 3v5h5M8 12h8m-8 4h8',chat:'M21 11a8 8 0 0 1-8 8H7l-5 3 2-6a8 8 0 1 1 17-5Z',analytics:'M4 20V4m0 16h17M8 16v-5m5 5V7m5 9v-9',library:'M4 3h4v18H4ZM12 3h4v18h-4m7-16 3 15',graph:'M10 5h4m-8 4 4 9m8-9-4 9M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m12 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-6 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0',history:'M3 11a9 9 0 1 1 3 8M3 4v7h7m2-5v6l4 2',assistant:'m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z',settings:'M9 3h6l1 3 3 1 2 5-2 5-3 1-1 3H9l-1-3-3-1-2-5 2-5 3-1Zm6 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0',plus:'M12 4v16M4 12h16',menu:'M4 6h16M4 12h16M4 18h16',close:'m6 6 12 12M6 18 18 6',sun:'M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2m-1 5a6 6 0 1 1-12 0 6 6 0 0 1 12 0',moon:'M21 14a9 9 0 0 1-11-11 9 9 0 1 0 11 11'};
 Object.assign(paths,{left:'m14 6-6 6 6 6',right:'m10 6 6 6-6 6',down:'m6 9 6 6 6-6',arrowRight:'M4 12h16m-6-6 6 6-6 6',arrowUp:'M12 20V4m-6 6 6-6 6 6',arrowDown:'M12 4v16m-6-6 6 6 6-6',microphone:'M9 5a3 3 0 0 1 6 0v7a3 3 0 0 1-6 0Zm-3 6v1a6 6 0 0 0 12 0v-1m-6 7v4m-4 0h8',video:'M3 6h12v12H3Zm12 4 6-4v12l-6-4M7 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4'});
@@ -118,6 +119,7 @@ export function initConversationLayout(){
  addMenu.addEventListener('keydown',event=>{const items=[...addMenu.querySelectorAll('[role="menuitem"]')];let index=items.indexOf(document.activeElement);if(event.key==='Escape'){event.preventDefault();closeAddMenu();addTrigger.focus();}else if(['ArrowDown','ArrowUp','Home','End'].includes(event.key)){event.preventDefault();index=event.key==='Home'?0:event.key==='End'?items.length-1:(index+(event.key==='ArrowDown'?1:-1)+items.length)%items.length;items[index]?.focus();}else if(event.key==='Tab')closeAddMenu();});
  const inputDock=document.createElement('div');inputDock.className='composer-input-dock';composer.before(inputDock);for(const target of ['#chat-attachments','#attachment-status','#ask-form','#chat-demo-note','.core-feedback','.history-persistence-status']){const item=document.querySelector(target);if(item)inputDock.append(item);}new ResizeObserver(()=>flow.style.setProperty('--input-dock-height',inputDock.offsetHeight+'px')).observe(inputDock);
  if(!question.onkeydown)question.onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();if(!document.querySelector('.send').disabled)document.querySelector('#ask-form').requestSubmit();}};
+ initCompanyWorkspace(icon);
  window.deepAgentDemo.refresh();
 }
 

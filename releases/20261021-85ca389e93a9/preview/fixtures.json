@@ -1,0 +1,498 @@
+{
+  "organization": {
+    "companies": [
+      {
+        "id": "vector",
+        "name": "Вектор",
+        "field": "Производство и торговля",
+        "currency": "EUR"
+      },
+      {
+        "id": "horizon",
+        "name": "Горизонт",
+        "field": "Логистика и склад",
+        "currency": "EUR"
+      }
+    ],
+    "people": [
+      {
+        "id": "novikov",
+        "name": "Павел Викторович Новиков",
+        "position": "Аналитик",
+        "kind": "human",
+        "company_id": "vector",
+        "department_id": "sales",
+        "is_manager": false,
+        "duties": "Проверка отчётов о продажах и первичных документов\nПодготовка управленческой аналитики\nОбъяснение расхождений и контроль качества расчётов\nСогласование исправлений с руководителем",
+        "supervisor_id": "orlov",
+        "email": "novikov@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "orlov",
+        "name": "Алексей Сергеевич Орлов",
+        "position": "Руководитель отдела продаж",
+        "kind": "human",
+        "company_id": "vector",
+        "department_id": "sales",
+        "is_manager": true,
+        "duties": "Контроль работы подразделения\nСогласование поручений и результатов",
+        "supervisor_id": "commercial-director",
+        "email": "orlov@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "ai-analyst",
+        "name": "ИИ-аналитик",
+        "position": "Аналитик",
+        "kind": "ai",
+        "company_id": "vector",
+        "department_id": "sales",
+        "is_manager": false,
+        "duties": "Проверка расчётов\nПодготовка аналитических отчётов\nОбъяснение расхождений",
+        "supervisor_id": "orlov",
+        "email": "",
+        "work_schedule": "Запуск по поручению руководителя"
+      },
+      {
+        "id": "director",
+        "name": "Андрей Николаевич Воронцов",
+        "position": "Генеральный директор",
+        "company_id": "vector",
+        "department_id": "management",
+        "supervisor_id": null,
+        "kind": "human",
+        "is_manager": true,
+        "email": "director@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "commercial-director",
+        "name": "Елена Викторовна Соколова",
+        "position": "Коммерческий директор",
+        "company_id": "vector",
+        "department_id": "commercial",
+        "supervisor_id": "director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "commercial-director@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "sales-manager",
+        "name": "Мария Андреевна Белова",
+        "position": "Менеджер по продажам",
+        "company_id": "vector",
+        "department_id": "sales",
+        "supervisor_id": "orlov",
+        "kind": "human",
+        "is_manager": false,
+        "email": "sales-manager@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "b2b-lead",
+        "name": "Дмитрий Игоревич Крылов",
+        "position": "Руководитель корпоративных продаж",
+        "company_id": "vector",
+        "department_id": "b2b",
+        "supervisor_id": "orlov",
+        "kind": "human",
+        "is_manager": true,
+        "email": "b2b-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "b2b-manager",
+        "name": "Анна Олеговна Морозова",
+        "position": "Менеджер по ключевым клиентам",
+        "company_id": "vector",
+        "department_id": "b2b",
+        "supervisor_id": "b2b-lead",
+        "kind": "human",
+        "is_manager": false,
+        "email": "b2b-manager@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "purchase-lead",
+        "name": "Ольга Петровна Лебедева",
+        "position": "Руководитель закупок",
+        "company_id": "vector",
+        "department_id": "purchasing",
+        "supervisor_id": "commercial-director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "purchase-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "buyer",
+        "name": "Илья Романович Волков",
+        "position": "Специалист по закупкам",
+        "company_id": "vector",
+        "department_id": "purchasing",
+        "supervisor_id": "purchase-lead",
+        "kind": "human",
+        "is_manager": false,
+        "email": "buyer@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "finance-director",
+        "name": "Наталья Сергеевна Кузнецова",
+        "position": "Финансовый директор",
+        "company_id": "vector",
+        "department_id": "finance",
+        "supervisor_id": "director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "finance-director@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "accountant",
+        "name": "Светлана Юрьевна Павлова",
+        "position": "Главный бухгалтер",
+        "company_id": "vector",
+        "department_id": "finance",
+        "supervisor_id": "finance-director",
+        "kind": "human",
+        "is_manager": false,
+        "email": "accountant@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "operations-director",
+        "name": "Сергей Александрович Громов",
+        "position": "Операционный директор",
+        "company_id": "vector",
+        "department_id": "operations",
+        "supervisor_id": "director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "operations-director@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "production-lead",
+        "name": "Виктор Михайлович Фомин",
+        "position": "Начальник производства",
+        "company_id": "vector",
+        "department_id": "production",
+        "supervisor_id": "operations-director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "production-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "engineer",
+        "name": "Михаил Евгеньевич Титов",
+        "position": "Инженер-технолог",
+        "company_id": "vector",
+        "department_id": "production",
+        "supervisor_id": "production-lead",
+        "kind": "human",
+        "is_manager": false,
+        "email": "engineer@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "warehouse-lead",
+        "name": "Александр Олегович Миронов",
+        "position": "Начальник склада",
+        "company_id": "vector",
+        "department_id": "warehouse",
+        "supervisor_id": "operations-director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "warehouse-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "warehouse-worker",
+        "name": "Ирина Алексеевна Зайцева",
+        "position": "Специалист складского учёта",
+        "company_id": "vector",
+        "department_id": "warehouse",
+        "supervisor_id": "warehouse-lead",
+        "kind": "human",
+        "is_manager": false,
+        "email": "warehouse-worker@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "logistics-lead",
+        "name": "Юлия Владимировна Романова",
+        "position": "Руководитель логистики",
+        "company_id": "vector",
+        "department_id": "logistics",
+        "supervisor_id": "operations-director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "logistics-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "dispatcher",
+        "name": "Роман Викторович Егоров",
+        "position": "Логист-диспетчер",
+        "company_id": "vector",
+        "department_id": "logistics",
+        "supervisor_id": "logistics-lead",
+        "kind": "human",
+        "is_manager": false,
+        "email": "dispatcher@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "hr-lead",
+        "name": "Татьяна Игоревна Васильева",
+        "position": "Руководитель по персоналу",
+        "company_id": "vector",
+        "department_id": "hr",
+        "supervisor_id": "director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "hr-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "it-lead",
+        "name": "Денис Андреевич Смирнов",
+        "position": "Руководитель информационных систем",
+        "company_id": "vector",
+        "department_id": "it",
+        "supervisor_id": "director",
+        "kind": "human",
+        "is_manager": true,
+        "email": "it-lead@vector.example",
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      }
+    ],
+    "departments": [
+      {
+        "id": "sales",
+        "name": "Продажи",
+        "company_id": "vector",
+        "parent_id": "commercial",
+        "manager_id": "orlov"
+      },
+      {
+        "id": "finance",
+        "name": "Финансы и бухгалтерия",
+        "company_id": "vector",
+        "parent_id": "management",
+        "manager_id": "finance-director"
+      },
+      {
+        "id": "production",
+        "name": "Производство",
+        "company_id": "vector",
+        "parent_id": "operations",
+        "manager_id": "production-lead"
+      },
+      {
+        "id": "warehouse",
+        "name": "Склад",
+        "company_id": "vector",
+        "parent_id": "operations",
+        "manager_id": "warehouse-lead"
+      },
+      {
+        "id": "h-logistics",
+        "name": "Логистика",
+        "company_id": "horizon"
+      },
+      {
+        "id": "management",
+        "name": "Дирекция",
+        "parent_id": null,
+        "manager_id": "director",
+        "company_id": "vector"
+      },
+      {
+        "id": "commercial",
+        "name": "Коммерческий блок",
+        "parent_id": "management",
+        "manager_id": "commercial-director",
+        "company_id": "vector"
+      },
+      {
+        "id": "b2b",
+        "name": "Корпоративные продажи",
+        "parent_id": "sales",
+        "manager_id": "b2b-lead",
+        "company_id": "vector"
+      },
+      {
+        "id": "purchasing",
+        "name": "Закупки",
+        "parent_id": "commercial",
+        "manager_id": "purchase-lead",
+        "company_id": "vector"
+      },
+      {
+        "id": "operations",
+        "name": "Операционный блок",
+        "parent_id": "management",
+        "manager_id": "operations-director",
+        "company_id": "vector"
+      },
+      {
+        "id": "logistics",
+        "name": "Логистика",
+        "parent_id": "operations",
+        "manager_id": "logistics-lead",
+        "company_id": "vector"
+      },
+      {
+        "id": "hr",
+        "name": "Персонал и развитие",
+        "parent_id": "management",
+        "manager_id": "hr-lead",
+        "company_id": "vector"
+      },
+      {
+        "id": "it",
+        "name": "Информационные системы",
+        "parent_id": "management",
+        "manager_id": "it-lead",
+        "company_id": "vector"
+      }
+    ],
+    "selected_company_id": "vector"
+  },
+  "history": {
+    "records": {
+      "[\"vector\",\"person\",\"novikov\"]": {
+        "_company_id": "vector",
+        "_department_id": "sales",
+        "_employee_id": "novikov",
+        "task": {
+          "id": "review-task",
+          "title": "Проверить расчёт по поставке А",
+          "detail": "Сопоставить исходные документы с отчётом. В строке 2 указано 36 000 €, пересчёт даёт 30 000 €. До согласования исходный файл не менять.",
+          "deadline": "2026-10-20",
+          "assignee_id": "novikov",
+          "status": "assigned"
+        },
+        "submitted": false,
+        "approved": false,
+        "questions": [],
+        "rules": "Исправления согласует руководитель."
+      }
+    },
+    "activities": {
+      "novikov": [
+        {
+          "at": "2026-10-18T09:15:00Z",
+          "text": "Получено поручение: проверить расчёт по поставке А",
+          "detail": "Срок: 20 октября 2026"
+        }
+      ]
+    },
+    "teams": {},
+    "chats": {
+      "vector": {
+        "selected": "sales-review",
+        "start": "",
+        "end": "",
+        "threads": [
+          {
+            "id": "sales-review",
+            "kind": "assistant",
+            "title": "Проверка отчёта о продажах",
+            "messages": [
+              {
+                "author": "Вы",
+                "text": "Проверь отчёт о продажах за сентябрь. Какие показатели требуют внимания?",
+                "at": "2026-10-17T09:10:00Z"
+              },
+              {
+                "author": "DeepAgent AI",
+                "text": "В поставке А обнаружено расхождение: 240 × 125 = 30 000 €, в отчёте указано 36 000 €. Разница — 6 000 €. Источник: Продажи-сентябрь.csv, строка 2, ячейка D2.",
+                "at": "2026-10-17T09:12:00Z"
+              },
+              {
+                "author": "Вы",
+                "text": "Это уже подтверждённая ошибка или пока расхождение, которое нужно проверить?",
+                "at": "2026-10-17T09:14:00Z"
+              },
+              {
+                "author": "DeepAgent AI",
+                "text": "Арифметическое расхождение подтверждено пересчётом. Причина пока не установлена. Нужно проверить условия поставки, первичные документы и применимость формулы без налогов и скидок.",
+                "at": "2026-10-17T09:16:00Z"
+              },
+              {
+                "author": "Вы",
+                "text": "Кому поручить проверку документов?",
+                "at": "2026-10-17T09:18:00Z"
+              },
+              {
+                "author": "DeepAgent AI",
+                "text": "Павлу Викторовичу Новикову, аналитику отдела продаж. В поручении следует указать исходный файл, строку 2 и расхождение 6 000 €. Исправление нужно согласовать с руководителем.",
+                "at": "2026-10-17T09:20:00Z"
+              },
+              {
+                "author": "Вы",
+                "text": "Добавь срок — 20 октября. До согласования исходный файл не менять.",
+                "at": "2026-10-17T10:22:00Z"
+              },
+              {
+                "author": "DeepAgent AI",
+                "text": "Требования к проекту поручения: проверить документы по поставке А до 20 октября; объяснить расхождение; подготовить исправленный отчёт. Изменение исходных данных — после согласования.",
+                "at": "2026-10-17T10:24:00Z"
+              },
+              {
+                "author": "Вы",
+                "text": "А что с общей динамикой продаж?",
+                "at": "2026-10-18T10:26:00Z"
+              },
+              {
+                "author": "DeepAgent AI",
+                "text": "В отдельном управленческом отчёте выручка выросла с 320 000 € в апреле до 418 000 € в сентябре. Это другой набор данных; рост не является результатом исправления найденного расхождения.",
+                "at": "2026-10-18T10:28:00Z"
+              },
+              {
+                "author": "Вы",
+                "text": "Покажи структуру затрат и подготовь график для совещания.",
+                "at": "2026-10-18T10:30:00Z"
+              },
+              {
+                "author": "DeepAgent AI",
+                "text": "Статьи затрат: сырьё — 680 000 €, оплата труда — 290 000 €, логистика — 180 000 €, аренда — 110 000 €, прочие — 95 000 €. Всего 1 355 000 €. Эти значения доступны в аналитическом отчёте.",
+                "at": "2026-10-18T10:32:00Z"
+              },
+              {
+                "author": "Вы",
+                "text": "Сохрани ссылки на источники вместе с обсуждением.",
+                "at": "2026-10-18T11:34:00Z"
+              },
+              {
+                "author": "DeepAgent AI",
+                "text": "В обсуждении указаны исходный CSV и управленческий отчёт за апрель–сентябрь. К предыдущим сообщениям можно вернуться по датам. Это демонстрационные данные для сравнения оформления.",
+                "at": "2026-10-18T11:36:00Z"
+              }
+            ]
+          },
+          {
+            "id": "costs",
+            "kind": "assistant",
+            "title": "Структура затрат",
+            "messages": [
+              {
+                "author": "Вы",
+                "text": "Сравни статьи затрат за период.",
+                "at": "2026-10-16T08:30:00Z"
+              }
+            ]
+          }
+        ],
+        "mails": [],
+        "editing": null
+      }
+    }
+  }
+}
