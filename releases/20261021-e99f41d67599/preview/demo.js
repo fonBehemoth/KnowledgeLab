@@ -1,15 +1,18 @@
+import {createPublicUserCabinet} from './public-user-cabinet.js';
 import {initDemoAdministration} from './demo-administration.js';
 import {initWorkspaceChrome,disclosure} from './workspace-chrome.js?v=20261019-company1';
 const $=s=>document.querySelector(s),app=window.deepAgentDemo;
 const fixture=await fetch('./fixtures.json').then(r=>{if(!r.ok)throw Error('Не удалось загрузить демо');return r.json();});
 app.applyOrganization(fixture.organization);
+let profileStorage;try{profileStorage=window.localStorage;}catch{}
+window.DeepAgentIdentityProvider=createPublicUserCabinet(fixture.organization,profileStorage);
 let saved;try{saved=JSON.parse(localStorage.getItem('deepagent-public-review-v1'));}catch{}
 app.restoreHistory(saved||fixture.history);
 document.addEventListener('deepagent-history-changed',e=>{try{localStorage.setItem('deepagent-public-review-v1',JSON.stringify(e.detail));}catch{}});
 function button(id,label,action){const b=document.createElement('button');b.id=id;b.className='secondary';b.textContent=label;b.onclick=action;return b;}
 $('.header-right').append(button('core-history-button','Материалы и история',()=>$('#history-access').click()),button('analytics-access','Аналитика',()=>app.openAnalytics()));
-const settings=document.createElement('dialog');settings.id='app-settings-dialog';settings.innerHTML='<div class="dialog-head"><h2>Настройки приложения</h2><button class="close-dialog" aria-label="Закрыть">×</button></div><details><summary>О версии</summary><p>Изменения структуры и настроек сохраняются в этом браузере. Применение прав доступа, учётные записи, доставка сообщений и обработка рабочих данных требуют приложения с сервером. Публичная страница не ограничивает доступ к своим данным.</p></details><button class="secondary" id="reset-demo">Сбросить изменения</button>';
-document.body.append(settings);settings.querySelector('.close-dialog').onclick=()=>settings.close();settings.querySelector('#reset-demo').onclick=()=>{localStorage.removeItem('deepagent-public-review-v1');location.reload();};
+const settings=document.createElement('dialog');settings.id='app-settings-dialog';settings.innerHTML='<div class="dialog-head"><h2>Настройки приложения</h2><button class="close-dialog" aria-label="Закрыть">×</button></div><details><summary>О версии</summary><p>Изменения структуры и настроек сохраняются в этом браузере. Применение прав доступа, учётные записи, доставка сообщений и обработка рабочих данных требуют приложения с сервером. Публичная страница не ограничивает доступ к своим данным. В кабинете показан вымышленный пользователь; изменения его профиля сохраняются только в этом браузере.</p></details><button class="secondary" id="reset-demo">Сбросить изменения</button>';
+document.body.append(settings);settings.querySelector('.close-dialog').onclick=()=>settings.close();settings.querySelector('#reset-demo').onclick=()=>{localStorage.removeItem('deepagent-public-review-v1');window.DeepAgentIdentityProvider.reset();location.reload();};
 const navSettings=document.createElement('div');navSettings.className='nav-settings';navSettings.append(button('app-settings-button','Настройки приложения',()=>settings.showModal()));$('#navigation-panel').append(navSettings);
 window.DeepAgentSearchProvider=async()=>[{kind:'Отчёты',title:'Продажи и операционные расходы',text:'Апрель — сентябрь 2026. Выручка 2 173 000 €. Операционные расходы 1 355 000 €. Рост выручки +30,6%.',detail:'Демонстрационный отчёт',open:()=>app.openAnalytics()}];
 window.DeepAgentHistoryProvider={materials:async()=>[{id:'demo-sales',title:'Продажи и операционные расходы',text:'Демонстрационный управленческий отчёт за апрель — сентябрь 2026. Выручка 2 173 000 €, операционные расходы 1 355 000 €.',kind:'Пример отчёта',open:()=>app.openAnalytics()}],versions:async()=>[]};
