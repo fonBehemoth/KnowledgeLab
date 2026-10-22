@@ -1,0 +1,23 @@
+/* A diagram uses the workspace height; regular personnel screens keep their layout. */
+.conversation-layout.structure-open #workspace-context{display:none!important}
+.conversation-layout.structure-open .conversation-flow{display:flex;flex-direction:column;min-height:0;overflow:hidden;padding:8px 20px calc(var(--input-dock-height,80px) + 8px)!important;scroll-padding:0}
+.conversation-layout.structure-open .conversation-flow #content{position:relative;display:flex;flex-direction:column;flex:1;min-height:0;max-width:none;width:100%;margin:0;padding:0!important}
+.conversation-layout.structure-open #content>.personnel-tools{position:absolute;right:60px;top:0;margin:0;padding:0;z-index:40}
+.conversation-layout.structure-open .personnel-tools>button{padding:6px 10px;min-height:30px;font-size:14px}
+.conversation-layout.structure-open #content>h1{flex:0 0 auto;font-size:22px;line-height:1.2;margin:4px 210px 8px 0;min-height:30px}
+.conversation-layout.structure-open #company-structure-host{display:flex;flex-direction:column;flex:1;min-height:0}
+.conversation-layout.structure-open #company-structure-host>.hint{display:none}
+.conversation-layout.structure-open .org-view-tabs{flex:0 0 auto;margin:0 0 8px;gap:6px}
+.conversation-layout.structure-open .org-view-tabs button{padding:6px 10px;font-size:14px;min-height:30px}
+.conversation-layout.structure-open .org-board{flex:1;min-height:0;max-height:none;overflow:auto;padding:8px 4px 16px}
+.conversation-layout.structure-open.nav-closed #content>h1{padding-left:36px}
+@media(max-width:600px){.conversation-layout.structure-open .conversation-flow{padding-left:10px!important;padding-right:10px!important}.conversation-layout.structure-open .personnel-tools>button,.conversation-layout.structure-open .org-view-tabs button{font-size:13px;padding:5px 7px}.conversation-layout.structure-open #content>h1{font-size:20px}}
+
+.conversation-layout.structure-open .conversation-flow>.chat-panel,.conversation-layout.structure-open #chat-map,.conversation-layout.structure-open #jump-latest{display:none!important}
+
+.conversation-layout .personnel-menu{position:relative}
+.conversation-layout .personnel-menu>summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;padding:6px 12px;min-height:32px;font-size:14px;border-radius:18px;background:var(--inside)!important}
+.personnel-menu>summary::-webkit-details-marker{display:none}.personnel-menu[open]>summary>span{transform:rotate(180deg)}
+.conversation-layout .personnel-menu-items{position:absolute;right:0;top:calc(100% + 6px);width:250px;max-width:calc(100vw - 40px);padding:7px;border:1px solid var(--line);border-radius:16px;background:var(--panel);box-shadow:0 6px 26px #0002}
+.conversation-layout .personnel-menu-items>button{display:block;width:100%;text-align:left;padding:10px 12px;font-size:14px;min-height:38px;border-radius:10px;white-space:normal}
+@media(max-width:600px){.conversation-layout.structure-open #content>h1{margin-right:170px;font-size:18px}.conversation-layout.structure-open #content>.personnel-tools{right:44px}.conversation-layout .personnel-menu>summary{padding:6px 9px;font-size:13px}.conversation-layout .personnel-menu-items{width:230px}}

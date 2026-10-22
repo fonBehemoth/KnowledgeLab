@@ -1,3 +1,4 @@
+@import url('./structure-focus.css');
 @import url('./digital-specialists.css');
 .conversation-layout #current-user-button{position:absolute;right:18px;top:10px;z-index:30;width:42px;height:42px;min-height:42px;border:0;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft)!important;box-shadow:0 2px 16px #0001!important;color:var(--icon-accent)}
 #current-user-button .nav-icon{width:23px;height:23px}#current-user-button small{position:absolute;right:-4px;bottom:-2px;border-radius:12px;padding:1px 5px;background:var(--panel);color:var(--text);font-size:11px}
