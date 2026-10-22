@@ -42,6 +42,7 @@ export async function openSystemConnection(app,companyId,system){
  }catch(error){status.textContent=error.message;}
 }
 export async function openCompanyMail(app,companyId){
+ if(window.DeepAgentMailbox){await window.DeepAgentMailbox.open({settings:true});return;}
  const company=companyById(app,companyId),node=dialog(t('Корпоративная почта')+' · '+company.name);
  if(window.DeepAgentMailProvider){try{await window.DeepAgentMailProvider.open(node,companyId);}catch(error){node.append(el('p',error.message));}}
  else node.append(el('p',t('Настройка и синхронизация почты доступны в установленном приложении.')),el('p',t('Корпоративные серверы и почтовые сервисы с защищённым доступом IMAP/SMTP.')));
@@ -52,7 +53,7 @@ export function openIntegrationCenter(app){
  label.append(select);node.append(label,host);
  const render=()=>{host.replaceChildren();for(const [system,[name,detail]] of Object.entries(accountingSystems)){
   const card=el('article',null,'system-card');card.append(el('h3',system+' · '+t(name)),el('p',t(detail)),button('Настроить подключение',()=>openSystemConnection(app,select.value,system)));host.append(card);
- }const mail=el('article',null,'system-card');mail.append(el('h3',t('Почта')),el('p',t('Корпоративная почта и почтовые сервисы.')),button('Настроить почту',()=>openCompanyMail(app,select.value)));host.append(mail);};select.onchange=render;render();
+ }const mail=el('article',null,'system-card');mail.append(el('h3',t('Почта')),el('p',t('Личный или корпоративный ящик текущего пользователя.')),button('Настроить почту',()=>openCompanyMail(app,select.value)));host.append(mail);};select.onchange=render;render();
 }
 function openRegulations(app){
  const company=companyById(app,app.state().company_id),node=dialog(t('Регламенты компании')+' · '+company.name),records=Object.values(app.employeeRecords()).filter(r=>r._company_id===company.id&&r.rules);

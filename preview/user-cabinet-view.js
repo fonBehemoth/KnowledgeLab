@@ -45,7 +45,7 @@ export async function renderUserCabinet(drawer,isCurrent){
    const edit=button('Редактировать профиль',editProfile);edit.className='profile-edit-action';body.append(edit);
    if(message){const status=el('p',message);status.setAttribute('role','status');body.append(status);}
    if(profile.email){
-    const contact=el('section',null,'profile-contact'),address=el('a',profile.email);address.href='mailto:'+encodeURIComponent(profile.email).replace(/%40/gi,'@');address.title='Написать письмо';address.setAttribute('aria-label','Написать письмо: '+profile.email);contact.append(el('h3','Рабочая почта'),address);body.append(contact);
+    const contact=el('section',null,'profile-contact'),address=el('a',profile.email);address.href='mailto:'+encodeURIComponent(profile.email).replace(/%40/gi,'@');address.title='Открыть почту';address.setAttribute('aria-label','Открыть почту: '+profile.email);address.onclick=event=>{if(window.DeepAgentMailbox){event.preventDefault();window.DeepAgentMailbox.open();}};contact.append(el('h3','Рабочая почта'),address);body.append(contact);
    }
    if(profile.about){const about=el('section',null,'profile-about');about.append(el('h3','О себе'),el('p',profile.about));body.append(about);}
    if(profile.employee)body.append(workDetails(profile));
