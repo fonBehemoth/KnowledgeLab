@@ -45,14 +45,14 @@
       },
       {
         "id": "ai-analyst",
-        "name": "ИИ-аналитик",
+        "name": "Аналитик",
         "position": "Аналитик",
         "kind": "ai",
         "company_id": "vector",
         "department_id": "sales",
         "is_manager": false,
         "duties": "Проверка расчётов\nПодготовка аналитических отчётов\nОбъяснение расхождений",
-        "supervisor_id": "orlov",
+        "supervisor_id": "ai-coordinator",
         "email": "",
         "work_schedule": "Запуск по поручению руководителя"
       },
@@ -271,6 +271,83 @@
         "is_manager": true,
         "email": "it-lead@vector.example",
         "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+      },
+      {
+        "id": "ai-coordinator",
+        "name": "Координатор",
+        "position": "Координатор цифровых специалистов",
+        "company_id": "vector",
+        "department_id": "it",
+        "kind": "ai",
+        "supervisor_id": "it-lead",
+        "is_manager": false,
+        "duties": "Распределение задач между специализированными агентами и контроль результатов."
+      },
+      {
+        "id": "ai-financier",
+        "name": "Финансист",
+        "position": "Финансовый аналитик",
+        "company_id": "vector",
+        "department_id": "finance",
+        "kind": "ai",
+        "supervisor_id": "ai-coordinator",
+        "is_manager": false,
+        "duties": "Проверка бюджета, анализ денежных потоков и подготовка финансовых сводок."
+      },
+      {
+        "id": "ai-planner",
+        "name": "Планировщик",
+        "position": "Планировщик производства",
+        "company_id": "vector",
+        "department_id": "production",
+        "kind": "ai",
+        "supervisor_id": "ai-coordinator",
+        "is_manager": false,
+        "duties": "Расчёт производственного плана и потребности в ресурсах."
+      },
+      {
+        "id": "ai-auditor",
+        "name": "Контролёр расчётов",
+        "position": "Проверка расчётов",
+        "company_id": "vector",
+        "department_id": "finance",
+        "kind": "ai",
+        "supervisor_id": "ai-financier",
+        "is_manager": false,
+        "duties": "Проверка исходных расчётов и выявление расхождений."
+      },
+      {
+        "id": "ai-accountant",
+        "name": "Бухгалтер",
+        "position": "Бухгалтер",
+        "company_id": "vector",
+        "department_id": "finance",
+        "kind": "ai",
+        "supervisor_id": "ai-financier",
+        "is_manager": false,
+        "duties": "Подготовка и проверка материалов по своей специализации."
+      },
+      {
+        "id": "ai-logistician",
+        "name": "Логист",
+        "position": "Логист",
+        "company_id": "vector",
+        "department_id": "logistics",
+        "kind": "ai",
+        "supervisor_id": "ai-coordinator",
+        "is_manager": false,
+        "duties": "Подготовка и проверка материалов по своей специализации."
+      },
+      {
+        "id": "ai-buyer",
+        "name": "Закупщик",
+        "position": "Специалист по закупкам",
+        "company_id": "vector",
+        "department_id": "purchasing",
+        "kind": "ai",
+        "supervisor_id": "ai-coordinator",
+        "is_manager": false,
+        "duties": "Подготовка и проверка материалов по своей специализации."
       }
     ],
     "departments": [

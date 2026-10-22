@@ -1,6 +1,6 @@
 import {translate as t} from './i18n.js';
 export function avatarFace(person){
- const face=document.createElement('span');face.className='person-avatar-face';face.textContent=person.kind==='ai'?'AI':person.name.split(/\s+/).slice(0,2).map(s=>s[0]).join('');
+ const face=document.createElement('span');face.className='person-avatar-face'+(person.kind==='ai'?' is-digital':'');face.textContent=person.kind==='ai'?'AI':person.name.split(/\s+/).slice(0,2).map(s=>s[0]).join('');
  if(/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(person.photo_data||'')){const image=document.createElement('img');image.src=person.photo_data;image.alt='';image.onload=()=>face.replaceChildren(image);image.onerror=()=>image.remove();}return face;
 }
 export function personAvatar(person,onOpen,{leader=false}={}){

@@ -1,0 +1,16 @@
+/* A diagram uses the workspace height; regular personnel screens keep their layout. */
+.conversation-layout.structure-open #workspace-context{display:none!important}
+.conversation-layout.structure-open .conversation-flow{display:flex;flex-direction:column;min-height:0;overflow:hidden;padding:8px 20px calc(var(--input-dock-height,80px) + 8px)!important;scroll-padding:0}
+.conversation-layout.structure-open .conversation-flow #content{display:flex;flex-direction:column;flex:1;min-height:0;max-width:none;width:100%;margin:0;padding:0!important}
+.conversation-layout.structure-open #content>.personnel-tools{position:static;flex:0 0 auto;margin:0 56px 4px 0;gap:4px}
+.conversation-layout.structure-open .personnel-tools>button{padding:6px 10px;min-height:30px;font-size:14px}
+.conversation-layout.structure-open #content>h1{flex:0 0 auto;font-size:22px;line-height:1.2;margin:4px 0 8px}
+.conversation-layout.structure-open #company-structure-host{display:flex;flex-direction:column;flex:1;min-height:0}
+.conversation-layout.structure-open #company-structure-host>.hint{display:none}
+.conversation-layout.structure-open .org-view-tabs{flex:0 0 auto;margin:0 0 8px;gap:6px}
+.conversation-layout.structure-open .org-view-tabs button{padding:6px 10px;font-size:14px;min-height:30px}
+.conversation-layout.structure-open .org-board{flex:1;min-height:0;max-height:none;overflow:auto;padding:8px 4px 16px}
+.conversation-layout.structure-open.nav-closed .personnel-tools{padding-left:36px}
+@media(max-width:600px){.conversation-layout.structure-open .conversation-flow{padding-left:10px!important;padding-right:10px!important}.conversation-layout.structure-open .personnel-tools>button,.conversation-layout.structure-open .org-view-tabs button{font-size:13px;padding:5px 7px}.conversation-layout.structure-open #content>h1{font-size:20px}}
+
+.conversation-layout.structure-open .conversation-flow>.chat-panel,.conversation-layout.structure-open #chat-map,.conversation-layout.structure-open #jump-latest{display:none!important}
