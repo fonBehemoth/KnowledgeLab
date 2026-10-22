@@ -1,0 +1,17 @@
+/* Digital specialists share one semantic accent across directory and hierarchy. */
+:root{--digital-accent:#b94a00;--digital-soft:#fff0df;--digital-glow:#ff8a245c}
+body[data-theme="dark"],body[data-theme="night"]{--digital-accent:#ffab57;--digital-soft:#352315;--digital-glow:#ff8a2466}
+@media(prefers-color-scheme:dark){body:not([data-theme]){--digital-accent:#ffab57;--digital-soft:#352315}}
+.conversation-layout .workspace #employee-picker .types button[data-type="ИИ-агенты"]{color:var(--digital-accent)!important}
+.conversation-layout .workspace #employee-picker .types button[data-type="ИИ-агенты"].active{color:var(--digital-accent)!important;background:var(--digital-soft)!important;border-color:#ff8a24!important;box-shadow:0 0 0 1px #ff8a2480,0 0 15px var(--digital-glow)!important}
+.digital-badge{display:inline-flex;align-items:center;gap:5px;width:fit-content;padding:3px 8px;border:1px solid #ff8a24;border-radius:14px;background:var(--digital-soft);color:var(--digital-accent);font-size:12px;font-weight:600;line-height:1.3;box-shadow:0 0 8px var(--digital-glow);white-space:nowrap}.digital-badge:before{content:'✦';font-size:11px}
+.person-avatar-face.is-digital{background:var(--digital-soft);color:var(--digital-accent);outline:1px solid #ff8a24;box-shadow:0 0 10px var(--digital-glow)}
+.org-department-card.is-digital{border-color:#ff8a24;box-shadow:0 0 10px var(--digital-glow)}
+.conversation-layout .workspace #employee-picker .employee-button.is-digital{border:1px solid #ff8a2480!important;box-shadow:0 0 9px var(--digital-glow)!important}.employee-button .digital-badge{margin-top:7px}.staff-card.is-digital{border:1px solid #ff8a2480}.org-person-name .digital-badge{margin-top:7px}
+.conversation-layout #employee-picker[data-kind="ai"] #position-select:focus,.conversation-layout #employee-picker[data-kind="ai"] #employee-search:focus{border-color:#ff8a24!important;box-shadow:0 0 10px var(--digital-glow)!important}
+
+html[data-color-scheme="dark"] body{--digital-accent:#ffab57;--digital-soft:#352315;--digital-glow:#ff8a2466}
+
+body.conversation-layout[data-conversation-mode="dark"]{--digital-accent:#ffab57;--digital-soft:#352315;--digital-glow:#ff8a2466}
+
+.digital-avatar{color:var(--digital-accent)!important;background:var(--digital-soft)!important;box-shadow:0 0 12px var(--digital-glow);outline:1px solid #ff8a24}
