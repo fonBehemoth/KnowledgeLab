@@ -5,42 +5,42 @@
         "id": "vector",
         "name": "Вектор",
         "field": "Производство и торговля",
-        "currency": "EUR",
+        "currency": "CHF",
         "group_id": "vector-group"
       },
       {
         "id": "horizon",
         "name": "Горизонт",
         "field": "Логистика и склад",
-        "currency": "EUR",
+        "currency": "CHF",
         "group_id": "vector-group"
       }
     ],
     "people": [
       {
         "id": "novikov",
-        "name": "Павел Викторович Новиков",
+        "name": "Luca Meier",
         "position": "Аналитик",
         "kind": "human",
         "company_id": "vector",
         "department_id": "sales",
         "is_manager": false,
-        "duties": "Проверка отчётов о продажах и первичных документов\nПодготовка управленческой аналитики\nОбъяснение расхождений и контроль качества расчётов\nСогласование исправлений с руководителем",
+        "duties": "Проверка первичных документов и отчётов о продажах\nАнализ отклонений плана от факта\nПодготовка управленческих сводок",
         "supervisor_id": "orlov",
-        "email": "novikov@vector.example",
+        "email": "luca.meier@vector.example",
         "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
       },
       {
         "id": "orlov",
-        "name": "Алексей Сергеевич Орлов",
+        "name": "Oliver Hughes",
         "position": "Руководитель отдела продаж",
         "kind": "human",
         "company_id": "vector",
         "department_id": "sales",
         "is_manager": true,
-        "duties": "Контроль работы подразделения\nСогласование поручений и результатов",
+        "duties": "Управление командой продаж\nСогласование условий сделок\nКонтроль воронки и дебиторской задолженности",
         "supervisor_id": "commercial-director",
-        "email": "orlov@vector.example",
+        "email": "oliver.hughes@vector.example",
         "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
       },
       {
@@ -58,7 +58,7 @@
       },
       {
         "id": "director",
-        "name": "Андрей Николаевич Воронцов",
+        "name": "Daniel Keller",
         "position": "Генеральный директор",
         "company_id": "vector",
         "department_id": "management",
@@ -66,11 +66,12 @@
         "kind": "human",
         "is_manager": true,
         "email": "director@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Определение стратегии компании\nУтверждение бюджета и ключевых решений\nКонтроль результатов подразделений"
       },
       {
         "id": "commercial-director",
-        "name": "Елена Викторовна Соколова",
+        "name": "Charlotte Bennett",
         "position": "Коммерческий директор",
         "company_id": "vector",
         "department_id": "commercial",
@@ -78,11 +79,12 @@
         "kind": "human",
         "is_manager": true,
         "email": "commercial-director@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Планирование выручки и коммерческой политики\nКоординация продаж и закупок\nКонтроль выполнения плана"
       },
       {
         "id": "sales-manager",
-        "name": "Мария Андреевна Белова",
+        "name": "Sophie Weber",
         "position": "Менеджер по продажам",
         "company_id": "vector",
         "department_id": "sales",
@@ -90,11 +92,12 @@
         "kind": "human",
         "is_manager": false,
         "email": "sales-manager@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Работа с запросами клиентов\nПодготовка коммерческих предложений\nСопровождение заказов и оплат"
       },
       {
         "id": "b2b-lead",
-        "name": "Дмитрий Игоревич Крылов",
+        "name": "James Carter",
         "position": "Руководитель корпоративных продаж",
         "company_id": "vector",
         "department_id": "b2b",
@@ -102,11 +105,12 @@
         "kind": "human",
         "is_manager": true,
         "email": "b2b-lead@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Развитие корпоративных клиентов\nСогласование рамочных договоров\nКонтроль выполнения B2B-плана"
       },
       {
         "id": "b2b-manager",
-        "name": "Анна Олеговна Морозова",
+        "name": "Emma Fischer",
         "position": "Менеджер по ключевым клиентам",
         "company_id": "vector",
         "department_id": "b2b",
@@ -114,11 +118,12 @@
         "kind": "human",
         "is_manager": false,
         "email": "b2b-manager@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Ведение корпоративных заказчиков\nПодготовка договоров и спецификаций\nКонтроль сроков исполнения заказов"
       },
       {
         "id": "purchase-lead",
-        "name": "Ольга Петровна Лебедева",
+        "name": "Laura Schmid",
         "position": "Руководитель закупок",
         "company_id": "vector",
         "department_id": "purchasing",
@@ -126,11 +131,12 @@
         "kind": "human",
         "is_manager": true,
         "email": "purchase-lead@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Планирование закупок\nВыбор и оценка поставщиков\nКонтроль закупочного бюджета"
       },
       {
         "id": "buyer",
-        "name": "Илья Романович Волков",
+        "name": "Noah Baumann",
         "position": "Специалист по закупкам",
         "company_id": "vector",
         "department_id": "purchasing",
@@ -138,11 +144,12 @@
         "kind": "human",
         "is_manager": false,
         "email": "buyer@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Сбор предложений поставщиков\nОформление заказов на закупку\nКонтроль подтверждений и сроков поставки"
       },
       {
         "id": "finance-director",
-        "name": "Наталья Сергеевна Кузнецова",
+        "name": "Clara Dubois",
         "position": "Финансовый директор",
         "company_id": "vector",
         "department_id": "finance",
@@ -150,11 +157,12 @@
         "kind": "human",
         "is_manager": true,
         "email": "finance-director@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Финансовое планирование и бюджетирование\nКонтроль ликвидности и денежных потоков\nКонтроль управленческой и налоговой отчётности"
       },
       {
         "id": "accountant",
-        "name": "Светлана Юрьевна Павлова",
+        "name": "Anna Rossi",
         "position": "Главный бухгалтер",
         "company_id": "vector",
         "department_id": "finance",
@@ -162,11 +170,12 @@
         "kind": "human",
         "is_manager": false,
         "email": "accountant@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Учёт первичных документов\nСверка расчётов с контрагентами\nПодготовка данных по НДС и оплате труда"
       },
       {
         "id": "operations-director",
-        "name": "Сергей Александрович Громов",
+        "name": "Thomas Walker",
         "position": "Операционный директор",
         "company_id": "vector",
         "department_id": "operations",
@@ -174,11 +183,12 @@
         "kind": "human",
         "is_manager": true,
         "email": "operations-director@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Координация производства, склада и логистики\nКонтроль производительности и сроков\nУправление операционными рисками"
       },
       {
         "id": "production-lead",
-        "name": "Виктор Михайлович Фомин",
+        "name": "Matteo Steiner",
         "position": "Начальник производства",
         "company_id": "vector",
         "department_id": "production",
@@ -186,11 +196,12 @@
         "kind": "human",
         "is_manager": true,
         "email": "production-lead@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Составление производственного плана\nКонтроль качества и загрузки мощностей\nКонтроль выполнения сменных заданий"
       },
       {
         "id": "engineer",
-        "name": "Михаил Евгеньевич Титов",
+        "name": "Ethan Collins",
         "position": "Инженер-технолог",
         "company_id": "vector",
         "department_id": "production",
@@ -198,11 +209,12 @@
         "kind": "human",
         "is_manager": false,
         "email": "engineer@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Подготовка технологической документации\nКонтроль параметров производственного процесса\nАнализ и снижение производственных потерь"
       },
       {
         "id": "warehouse-lead",
-        "name": "Александр Олегович Миронов",
+        "name": "Jonas Frei",
         "position": "Начальник склада",
         "company_id": "vector",
         "department_id": "warehouse",
@@ -210,11 +222,12 @@
         "kind": "human",
         "is_manager": true,
         "email": "warehouse-lead@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Организация приёмки, хранения и отгрузки\nКонтроль складских остатков\nПланирование инвентаризаций"
       },
       {
         "id": "warehouse-worker",
-        "name": "Ирина Алексеевна Зайцева",
+        "name": "Lea Huber",
         "position": "Специалист складского учёта",
         "company_id": "vector",
         "department_id": "warehouse",
@@ -222,11 +235,12 @@
         "kind": "human",
         "is_manager": false,
         "email": "warehouse-worker@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Учёт движения товаров\nСверка остатков\nОформление складских документов"
       },
       {
         "id": "logistics-lead",
-        "name": "Юлия Владимировна Романова",
+        "name": "Emily Turner",
         "position": "Руководитель логистики",
         "company_id": "vector",
         "department_id": "logistics",
@@ -234,11 +248,12 @@
         "kind": "human",
         "is_manager": true,
         "email": "logistics-lead@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Планирование перевозок\nКонтроль транспортных затрат\nСогласование сроков доставки"
       },
       {
         "id": "dispatcher",
-        "name": "Роман Викторович Егоров",
+        "name": "Louis Morel",
         "position": "Логист-диспетчер",
         "company_id": "vector",
         "department_id": "logistics",
@@ -246,11 +261,12 @@
         "kind": "human",
         "is_manager": false,
         "email": "dispatcher@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Оперативная координация перевозок\nКонтроль статусов доставки\nПередача информации складу и клиентам"
       },
       {
         "id": "hr-lead",
-        "name": "Татьяна Игоревна Васильева",
+        "name": "Sarah Wilson",
         "position": "Руководитель по персоналу",
         "company_id": "vector",
         "department_id": "hr",
@@ -258,11 +274,12 @@
         "kind": "human",
         "is_manager": true,
         "email": "hr-lead@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Подбор и адаптация сотрудников\nКоординация обучения\nВедение кадровой структуры"
       },
       {
         "id": "it-lead",
-        "name": "Денис Андреевич Смирнов",
+        "name": "Leon Brunner",
         "position": "Руководитель информационных систем",
         "company_id": "vector",
         "department_id": "it",
@@ -270,7 +287,8 @@
         "kind": "human",
         "is_manager": true,
         "email": "it-lead@vector.example",
-        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00"
+        "work_schedule": "Пн–Пт, 09:00–18:00; перерыв 13:00–14:00",
+        "duties": "Сопровождение корпоративных систем\nУправление заявками ИТ\nКонтроль доступности и безопасности сервисов"
       },
       {
         "id": "ai-coordinator",
@@ -517,7 +535,7 @@
               },
               {
                 "author": "DeepAgent AI",
-                "text": "Павлу Викторовичу Новикову, аналитику отдела продаж. В поручении следует указать исходный файл, строку 2 и расхождение 6 000 €. Исправление нужно согласовать с руководителем.",
+                "text": "Luca Meier, аналитику отдела продаж. В поручении следует указать исходный файл, строку 2 и расхождение 6 000 €. Исправление нужно согласовать с руководителем.",
                 "at": "2026-10-17T09:20:00Z"
               },
               {

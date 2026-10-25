@@ -2,7 +2,7 @@ import {bindWorkEmail,normalizeWorkEmail} from './email-addresses.js';
 import {el,button} from './company-ui.js';
 import {photoEditor} from './profile-photo.js';
 import {avatarFace} from './person-avatar.js';
-const roles={owner:'Владелец',observer:'Наблюдатель',employee:'Сотрудник',manager:'Руководитель',structure_admin:'Администратор структуры'};
+const roles={owner:'Владелец',observer:'Наблюдатель',employee:'Сотрудник',manager:'Руководитель',structure_admin:'Администратор структуры',security_admin:'Администратор безопасности'};
 function field(form,label,value='',type='text'){
  const wrap=el('label',label),control=el(type==='textarea'?'textarea':'input');
  if(type!=='textarea')control.type=type;

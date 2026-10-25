@@ -12,10 +12,12 @@
 .demo-admin article strong{grid-column:1;overflow-wrap:anywhere}.demo-admin article small{grid-column:1;color:var(--muted);font-size:14px;overflow-wrap:anywhere}.demo-admin article button{grid-column:2;grid-row:1/span 2;margin:0!important}
 .conversation-layout .sidebar{background:color-mix(in srgb,var(--panel) 87%,transparent)!important;backdrop-filter:blur(22px) saturate(120%);-webkit-backdrop-filter:blur(22px) saturate(120%);box-shadow:inset -1px 0 #ffffff55!important}
 .conversation-layout #content :is(p,li,.data-row,.subtitle,.hint){text-align:start;overflow-wrap:anywhere}
+body{--company-marker:var(--company-color,#087ba5)}
+body[data-conversation-mode="dark"]{--company-marker:color-mix(in srgb,var(--company-color,#087ba5) 70%,white)}
 .company-location{display:flex;align-items:center;gap:8px;margin:0;font-size:12px;color:var(--muted)}
-.company-location::before{content:'';display:block;width:10px;height:10px;border-radius:50%;background:var(--company-color,#087ba5);box-shadow:0 0 0 3px color-mix(in srgb,var(--company-color,#087ba5) 16%,transparent)}
-.conversation-layout #company-switcher{border-inline-start:4px solid var(--company-color,#087ba5);border-radius:5px}
-.conversation-layout .composer{border-top:3px solid var(--company-color,#087ba5)!important}
+.company-location::before{content:'';display:block;width:10px;height:10px;border-radius:50%;background:var(--company-marker);box-shadow:0 0 0 3px color-mix(in srgb,var(--company-marker) 16%,transparent)}
+.conversation-layout #company-switcher{border-inline-start:4px solid var(--company-marker);border-radius:5px}
+.conversation-layout #company-switcher .firm>.nav-icon{color:var(--company-marker)!important;stroke:currentColor!important}
 .mailbox-restore{position:fixed;right:22px;bottom:92px;z-index:70;padding:12px 18px;border:1px solid var(--icon-accent);border-radius:16px;background:var(--panel);color:var(--text);box-shadow:0 5px 22px #0002}
 .mailbox-restore[hidden]{display:none}.has-minimized-mail::after{content:'•';color:var(--icon-accent);margin-inline-start:auto}
 .org-board{cursor:grab;user-select:none}.org-board:active{cursor:grabbing}.org-board button{cursor:pointer}
