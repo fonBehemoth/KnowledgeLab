@@ -20,6 +20,11 @@ body[data-conversation-mode="dark"]{--company-marker:color-mix(in srgb,var(--com
 .conversation-layout #company-switcher #companies{margin:0;min-height:60px}
 .conversation-layout[data-conversation-mode="dark"] #company-switcher{background:color-mix(in srgb,var(--company-color,#087ba5) 34%,var(--panel))!important;box-shadow:0 0 16px color-mix(in srgb,var(--company-marker) 20%,transparent)}
 .conversation-layout #company-switcher .firm>.nav-icon{color:var(--company-marker)!important;stroke:currentColor!important}
+.company-context-badge{display:inline-flex;align-items:center;vertical-align:middle;max-width:100%;margin-inline-start:14px;padding:6px 11px;border:1px solid color-mix(in srgb,var(--company-color) 65%,transparent);border-radius:10px;background:color-mix(in srgb,var(--company-color) 20%,var(--panel));color:var(--text);font-size:14px;font-weight:500;line-height:1.35;letter-spacing:0;overflow-wrap:anywhere}
+body[data-conversation-mode="dark"] .company-context-badge{border-color:color-mix(in srgb,var(--company-color) 65%,white);background:color-mix(in srgb,var(--company-color) 34%,var(--panel))}
+.conversation-layout .main-tabs>[aria-pressed="true"]{box-shadow:inset 4px 0 var(--company-marker)!important}
+.mailbox-head>.company-context-badge{order:1;margin:0;flex-shrink:0;max-width:280px}.mailbox-head-actions{order:2}
+@media(max-width:600px){.company-context-badge{font-size:12px;margin-inline-start:8px;padding:4px 7px}.mailbox-head{flex-wrap:wrap}.mailbox-head>.company-context-badge{max-width:100%}}
 .mailbox-restore{position:fixed;right:22px;bottom:92px;z-index:70;padding:12px 18px;border:1px solid var(--icon-accent);border-radius:16px;background:var(--panel);color:var(--text);box-shadow:0 5px 22px #0002}
 .mailbox-restore[hidden]{display:none}.has-minimized-mail::after{content:'•';color:var(--icon-accent);margin-inline-start:auto}
 .org-board{cursor:grab;user-select:none}.org-board:active{cursor:grabbing}.org-board button{cursor:pointer}
