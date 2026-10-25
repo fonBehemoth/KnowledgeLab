@@ -1,10 +1,11 @@
+import {attachHierarchyZoom} from './hierarchy-zoom.js';
 import {translate as t} from './i18n.js';
 import {el,button} from './company-ui.js';
 import {personAvatar} from './person-avatar.js';
 export function createStructureView(app,showPeople){
- let context,view='departments',selectedCompany='',expanded=new Map();
+ let context,view='departments',selectedCompany='',expanded=new Map(),zoomStates=new Map(),detachZoom;
  function render(host){
-  const {company,people,departments}=context;host.replaceChildren();const tools=el('div',null,'org-view-tabs');
+  const {company,people,departments}=context;detachZoom?.();host.replaceChildren();const tools=el('div',null,'org-view-tabs');
   for(const [id,label] of [['departments','Подразделения'],['people','Подчинённость сотрудников']]){const b=button(label,()=>{view=id;render(host);});b.classList.toggle('active',view===id);b.setAttribute('aria-pressed',String(view===id));tools.append(b);}tools.append(button('Развернуть всё',()=>{for(const item of [...departments,...people])expanded.set(view+':'+item.id,true);render(host);}),button('Свернуть всё',()=>{for(const item of [...departments,...people])expanded.set(view+':'+item.id,false);render(host);}));host.append(tools,el('p','Связи сверху вниз показывают непосредственное подчинение. Ветви можно сворачивать.','hint'));
   const board=el('section',null,'org-board');board.setAttribute('aria-label',company?.name||t('Структура компании'));board.tabIndex=0;host.append(board);
   const items=view==='departments'?departments:people,key=view==='departments'?'parent_id':'supervisor_id',ids=new Set(items.map(x=>x.id)),seen=new Set(),children=new Map();
@@ -17,7 +18,7 @@ export function createStructureView(app,showPeople){
    }else{const row=el('div',null,'org-reporting-person');row.append(personAvatar({...item,_department_name:departments.find(d=>d.id===item.department_id)?.name},()=>showPeople('',item.id)));const label=button(item.name,()=>showPeople('',item.id));label.className='org-person-name';label.append(el('small',item.position));if(item.kind==='ai')label.append(el('span','Агент','digital-badge'));row.append(label);card.append(row);}
    if(kids.length){const identity=view+':'+item.id,open=expanded.has(identity)?expanded.get(identity):true,toggle=button('',()=>{}),list=el('ul',null,depth===0?'org-branches-grid':'org-children');let visible=open;const caption=()=>{toggle.setAttribute('aria-expanded',String(visible));toggle.textContent=(visible?'− ':'+ ')+t(view==='departments'?'Подразделения':'Подчинённые')+' · '+kids.length;};toggle.className='org-branch-toggle';toggle.setAttribute('aria-label',t(view==='departments'?'Подразделения':'Подчинённые')+': '+item.name);caption();toggle.onclick=()=>{visible=!visible;expanded.set(identity,visible);list.hidden=!visible;caption();};card.append(toggle);list.hidden=!open;for(const child of kids){const childNode=branch(child,depth+1);if(childNode)list.append(childNode);}node.append(list);}return node;
   }
-  const roots=el('ul',null,'org-roots');board.append(roots);for(const item of children.get(null)||[]){const node=branch(item,0);if(node)roots.append(node);}for(const item of items)if(!seen.has(item.id)){const node=branch(item,0);if(node)roots.append(node);}if(!items.length)board.append(el('p',t('Структура пока не заполнена. Добавьте подразделения и сотрудников в настройках.')));
+  const roots=el('ul',null,'org-roots');board.append(roots);for(const item of children.get(null)||[]){const node=branch(item,0);if(node)roots.append(node);}for(const item of items)if(!seen.has(item.id)){const node=branch(item,0);if(node)roots.append(node);}if(!items.length)board.append(el('p',t('Структура пока не заполнена. Добавьте подразделения и сотрудников в настройках.')));else{const key=company.id+':'+view;if(!zoomStates.has(key))zoomStates.set(key,{scale:1});detachZoom=attachHierarchyZoom(board,roots,tools,zoomStates.get(key));}
  }
- return (host,next)=>{context=next;if(selectedCompany!==next.company?.id){selectedCompany=next.company?.id;expanded=new Map();}render(host);};
+ const update=(host,next)=>{context=next;if(selectedCompany!==next.company?.id){selectedCompany=next.company?.id;expanded=new Map();}render(host);};update.dispose=()=>{detachZoom?.();detachZoom=null;};return update;
 }

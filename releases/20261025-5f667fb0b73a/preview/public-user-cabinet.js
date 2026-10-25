@@ -15,8 +15,8 @@ export function createPublicUserCabinet(organization,storage){
  }
  function read(){try{const saved=JSON.parse(storage?.getItem(storageKey)||'null');if(saved?.version===1){value=clean(saved.value);revision=String(saved.revision);}}catch{}}
  read();
- const current=()=>({id:'public-current-user',login:'a.vorontsov',name:value.name,role:'owner'});
- function profile(){return {account:current(),revision,...value,employee:{id:person.id,company:company?.name||'',department:department?.name||'',position:person.position,work_schedule:person.work_schedule||'',duties:'Стратегия компании, развитие подразделений, согласование ключевых решений и контроль результатов.',manager:''},save_message:'Изменения сохранены в этом браузере.'};}
+ const current=()=>({id:'public-current-user',login:'daniel.keller',name:value.name,role:'owner'});
+ function profile(){return {account:current(),revision,...value,employee:{id:person.id,company:company?.name||'',department:department?.name||'',position:person.position,work_schedule:person.work_schedule||'',duties:person.duties||'',manager:''},save_message:'Изменения сохранены в этом браузере.'};}
  return {current,async profile(){read();return structuredClone(profile());},async saveProfile(input){
   read();if(input.revision!==revision)throw Error('Профиль изменён в другом окне. Откройте его заново.');
   const next=clean(input),nextRevision=crypto.randomUUID();

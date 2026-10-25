@@ -1,0 +1,40 @@
+/* Shared interaction states, without changing author-provided content sizes. */
+.conversation-layout :is(#content,.personnel-tools,.types,dialog,.workspace-disclosure) button:not(.send):not(.employee-button):not(.mailbox-message):not(.org-department-name):not(.org-person-name):not(.org-branch-toggle){border:1px solid color-mix(in srgb,var(--text) 22%,transparent)!important;box-shadow:0 1px 3px #1327360b!important;min-height:36px}
+.conversation-layout :is(#content,.personnel-tools,.types,dialog) button:hover:not(:disabled){border-color:var(--icon-accent)!important;background:var(--accent-soft)!important}
+.conversation-layout #employee-picker>.types button{padding:10px 18px!important;border-radius:12px!important;background:var(--inside)!important;border:1px solid color-mix(in srgb,var(--text) 35%,transparent)!important;font-weight:500}
+.conversation-layout #employee-picker>.types button[aria-pressed="true"]{border-color:var(--icon-accent)!important;background:var(--accent-soft)!important;box-shadow:inset 0 -3px 0 var(--icon-accent)!important}
+.conversation-layout #employee-picker[data-kind="ai"]>.types button[aria-pressed="true"]{border-color:#b95000!important;color:#b95000!important;background:#fff2e4!important;box-shadow:inset 0 -3px 0 #ff8400,0 0 9px #ff840025!important}
+.conversation-layout :is(.dialog-head,.people-drawer-head,.user-cabinet-head)>button:last-child,.conversation-layout .close-control,.conversation-layout button[aria-label^="Закрыть"],.conversation-layout #menu-toggle[aria-expanded="true"]{color:#b85b10!important;background:#fff1e5!important;border:1px solid #d7833d!important;border-radius:10px;box-shadow:0 0 8px #ff8a0020!important}
+.conversation-layout :is(.dialog-head,.people-drawer-head)>button:last-child:hover,.conversation-layout .close-control:hover{box-shadow:0 0 12px #ff8a0060!important;background:#ffe2c6!important}
+.organization-dialog>.dialog-head,.demo-admin>.dialog-head{position:sticky;top:-24px;z-index:3;background:var(--panel);padding:16px 0;border-bottom:1px solid var(--line)}
+.conversation-layout .demo-admin article{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 16px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
+.conversation-layout .demo-admin :is(input,select,textarea){background:var(--inside)!important;color:var(--text)!important;border:1px solid var(--line);border-radius:12px;padding:10px;max-width:100%;font:inherit}
+.demo-admin article strong{grid-column:1;overflow-wrap:anywhere}.demo-admin article small{grid-column:1;color:var(--muted);font-size:14px;overflow-wrap:anywhere}.demo-admin article button{grid-column:2;grid-row:1/span 2;margin:0!important}
+.conversation-layout .sidebar{background:color-mix(in srgb,var(--panel) 87%,transparent)!important;backdrop-filter:blur(22px) saturate(120%);-webkit-backdrop-filter:blur(22px) saturate(120%);box-shadow:inset -1px 0 #ffffff55!important}
+.conversation-layout #content :is(p,li,.data-row,.subtitle,.hint){text-align:start;overflow-wrap:anywhere}
+.company-location{display:flex;align-items:center;gap:8px;margin:0;font-size:12px;color:var(--muted)}
+.company-location::before{content:'';display:block;width:10px;height:10px;border-radius:50%;background:var(--company-color,#087ba5);box-shadow:0 0 0 3px color-mix(in srgb,var(--company-color,#087ba5) 16%,transparent)}
+.conversation-layout #company-switcher{border-inline-start:4px solid var(--company-color,#087ba5);border-radius:5px}
+.conversation-layout .composer{border-top:3px solid var(--company-color,#087ba5)!important}
+.mailbox-restore{position:fixed;right:22px;bottom:92px;z-index:70;padding:12px 18px;border:1px solid var(--icon-accent);border-radius:16px;background:var(--panel);color:var(--text);box-shadow:0 5px 22px #0002}
+.mailbox-restore[hidden]{display:none}.has-minimized-mail::after{content:'•';color:var(--icon-accent);margin-inline-start:auto}
+.org-board{cursor:grab;user-select:none}.org-board:active{cursor:grabbing}.org-board button{cursor:pointer}
+.conversation-layout .org-board :is(.org-department-name,.org-person-name,.org-branch-toggle){border:0!important;box-shadow:none!important;min-height:0;background:transparent!important}
+.conversation-layout .close-control svg,.conversation-layout #menu-toggle[aria-expanded="true"] svg{color:#b85b10!important;stroke:currentColor!important}
+/* Navigation close: orange glyph only, including hover; keep its hit area. */
+.conversation-layout #menu-toggle[aria-expanded="true"],.conversation-layout #menu-toggle[aria-expanded="true"]:hover,.conversation-layout #menu-toggle[aria-expanded="true"]:active{color:#ff963e!important;background:transparent!important;border:0!important;box-shadow:none!important}
+.conversation-layout #menu-toggle[aria-expanded="true"] svg{color:#ff963e!important;stroke:currentColor!important}
+/* Drawers use the same SVG close geometry, independent of font metrics. */
+html body.conversation-layout .people-drawer .people-drawer-head>button.icon-close-control{display:inline-flex;align-items:center;justify-content:center;flex:0 0 42px;width:42px;height:42px;min-height:42px;padding:0!important;gap:0;line-height:0;color:#ff963e!important;background:transparent!important;border:0!important;box-shadow:none!important}
+html body.conversation-layout .people-drawer .people-drawer-head>button.icon-close-control svg{display:block;flex:0 0 22px;width:22px;height:22px;margin:0!important;transform:none!important;color:#ff963e!important;stroke:currentColor!important}
+input[type="date"],input[type="datetime-local"]{color-scheme:light dark;min-width:150px;cursor:pointer}
+input[type="date"]::-webkit-calendar-picker-indicator,input[type="datetime-local"]::-webkit-calendar-picker-indicator{cursor:pointer;opacity:1;padding:7px;background-color:#d8edf8;border-radius:8px}
+html body.conversation-layout[data-conversation-mode="dark"][data-theme]{--muted:#bdc7d4!important;--line:#465363!important}
+body select option,body select optgroup{background:#f6f8fb!important;color:#202a35!important}
+body[data-conversation-mode="dark"] select{color-scheme:dark}
+body[data-conversation-mode="dark"] select option,body[data-conversation-mode="dark"] select optgroup{background:#202a35!important;color:#f4f7fb!important}
+body[data-conversation-mode="dark"] select option:checked{background:#23536d!important;color:#ffffff!important}
+body[data-conversation-mode="dark"] :is(input,textarea)::placeholder{color:#b8c4d2!important;opacity:1}
+body[data-conversation-mode="dark"] .executive-tabs button:not([aria-pressed="true"]){color:#e2e8f0!important}
+@media(prefers-reduced-transparency:reduce){.conversation-layout .sidebar{background:var(--panel)!important;backdrop-filter:none}}
+@media(max-width:600px){.mailbox-restore{right:12px;bottom:92px}.organization-dialog>.dialog-head{top:-16px}.conversation-layout #employee-picker>.types button{padding:10px 13px!important}}
