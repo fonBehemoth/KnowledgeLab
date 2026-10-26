@@ -237,8 +237,10 @@ html body.conversation-layout[data-conversation-mode="dark"][data-theme]{--insid
 .conversation-layout .composer-input-dock{position:absolute;left:0;right:0;bottom:0;z-index:20;padding-top:8px;background:transparent;pointer-events:none}
 .conversation-layout .composer-input-dock>*{pointer-events:auto}
 .conversation-layout .conversation-flow{padding-bottom:calc(var(--input-dock-height,100px) + 24px);scroll-padding-bottom:calc(var(--input-dock-height,100px) + 24px)}
-.conversation-layout .composer-input-surface{background:rgba(232,239,244,.58);backdrop-filter:blur(20px) saturate(135%);-webkit-backdrop-filter:blur(20px) saturate(135%);box-shadow:0 3px 20px #2233440a}
-.conversation-layout[data-conversation-mode="dark"] .composer-input-surface{background:rgba(43,55,70,.56);box-shadow:0 3px 20px #0002}
+.conversation-layout{--capsule-surface:rgba(232,239,244,.58);--capsule-shadow:0 3px 20px #2233440a}
+.conversation-layout[data-conversation-mode="dark"]{--capsule-surface:rgba(43,55,70,.56);--capsule-shadow:0 3px 20px #0002}
+.conversation-layout .composer-input-surface{background:var(--capsule-surface);backdrop-filter:blur(20px) saturate(135%);-webkit-backdrop-filter:blur(20px) saturate(135%);box-shadow:var(--capsule-shadow)}
+.conversation-layout[data-conversation-mode="dark"] .composer-input-surface{background:var(--capsule-surface);box-shadow:var(--capsule-shadow)}
 .conversation-layout .composer-input-surface #question{outline:none!important;line-height:22px;scrollbar-width:none}
 .conversation-layout .composer-input-surface #question::-webkit-scrollbar{display:none}
 .conversation-layout .composer-input-surface #question::placeholder{white-space:nowrap;text-overflow:ellipsis}

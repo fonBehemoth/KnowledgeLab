@@ -88,6 +88,7 @@ let theme='glass';try{theme=localStorage.getItem('deepagent-theme')||theme;}catc
 $('#history-access').onclick=()=>{if(!companies.length)return;useAssistant();s.section='История';s.sub='';render();};$('#mobile-activity').onclick=openActivity;$('#activity-button').onclick=openActivity;$('#close-activity').onclick=()=>$('#activity-dialog').close();$('#activity-tasks').onclick=()=>{$('#activity-dialog').close();s.section='Персонал';s.sub='Дополнительные задачи';render();$('#content').scrollIntoView({behavior:'smooth',block:'start'});};$('#activity-switch').onclick=()=>{$('#activity-dialog').close();openEmployeeChoice();};
 function fitBrand(){
  const maker=$('.maker'),brand=$('.brand');
+ if(!maker||!brand)return; // The complete supplied lockup may include its own caption.
  maker.style.removeProperty('width');maker.style.removeProperty('font-size');maker.style.removeProperty('letter-spacing');
  maker.style.setProperty('--brand-tracking','0px');
  const text=maker.textContent.trim(),range=document.createRange();range.selectNodeContents(maker);
