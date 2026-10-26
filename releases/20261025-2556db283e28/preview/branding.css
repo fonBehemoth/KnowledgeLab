@@ -1,7 +1,0 @@
-/* Product identity. Internal module names and persisted identifiers stay stable. */
-.brand-lockup .brand{display:flex;align-items:center;gap:10px;letter-spacing:.6px;white-space:nowrap}
-.brand-lockup .brand .product-mark{display:block;width:47px;height:32px;object-fit:contain;flex:none}
-.brand-lockup .brand .product-name{font:600 29px/1.1 'MINDI Wordmark',Arial,sans-serif;font-family:'MINDI Wordmark',Arial,sans-serif!important;letter-spacing:2.4px;color:var(--text)}
-.brand-lockup .maker,.conversation-layout .brand-lockup .maker{font:400 12px/1.35 'DIN Pro',Arial,sans-serif!important;letter-spacing:0!important;white-space:normal;margin-top:6px;width:auto!important;max-width:210px}
-.organized-workspace .brand-lockup .maker{display:block!important}
-@media(max-width:600px){.brand-lockup .brand{gap:7px}.brand-lockup .brand .product-mark{width:38px;height:27px}.brand-lockup .brand .product-name{font-size:27px}.brand-lockup .maker,.conversation-layout .brand-lockup .maker{font-size:11px!important}}
