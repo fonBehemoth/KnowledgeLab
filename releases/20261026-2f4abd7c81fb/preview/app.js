@@ -86,7 +86,14 @@ $('#ask-form').onsubmit=e=>{e.preventDefault();};
 
 let theme='glass';try{theme=localStorage.getItem('deepagent-theme')||theme;}catch{}if(!['glass','night','linen','sage'].includes(theme))theme='glass';document.body.dataset.theme=theme;$('#theme-select').value=theme;$('#theme-select').onchange=e=>{document.body.dataset.theme=e.target.value;try{localStorage.setItem('deepagent-theme',e.target.value)}catch{}};
 $('#history-access').onclick=()=>{if(!companies.length)return;useAssistant();s.section='История';s.sub='';render();};$('#mobile-activity').onclick=openActivity;$('#activity-button').onclick=openActivity;$('#close-activity').onclick=()=>$('#activity-dialog').close();$('#activity-tasks').onclick=()=>{$('#activity-dialog').close();s.section='Персонал';s.sub='Дополнительные задачи';render();$('#content').scrollIntoView({behavior:'smooth',block:'start'});};$('#activity-switch').onclick=()=>{$('#activity-dialog').close();openEmployeeChoice();};
-function fitBrand(){const maker=$('.maker');maker.style.removeProperty('width');maker.style.removeProperty('font-size');maker.style.removeProperty('letter-spacing');}
+function fitBrand(){
+ const maker=$('.maker'),brand=$('.brand');
+ maker.style.removeProperty('width');maker.style.removeProperty('font-size');maker.style.removeProperty('letter-spacing');
+ maker.style.setProperty('--brand-tracking','0px');
+ const text=maker.textContent.trim(),range=document.createRange();range.selectNodeContents(maker);
+ const natural=range.getBoundingClientRect().width,target=brand.getBoundingClientRect().width;
+ if(text.length&&natural&&target)maker.style.setProperty('--brand-tracking',Math.max(0,(target-natural)/Array.from(text).length).toFixed(3)+'px');
+}
 document.addEventListener('deepagent-language-change',fitBrand);document.fonts.ready.then(fitBrand);new ResizeObserver(fitBrand).observe($('.brand'));
 // Persistent presentation data; no real delivery is performed.
 const dayKey=date=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Zurich',year:'numeric',month:'2-digit',day:'2-digit'}).format(date),clock=()=>new Date().toISOString(),dateLabel=value=>value.split('-').reverse().join('.'),stamp=t=>new Intl.DateTimeFormat(document.documentElement.lang||'ru',{timeZone:'Europe/Zurich',hour:'2-digit',minute:'2-digit'}).format(new Date(t));

@@ -1,5 +1,6 @@
 /* Supplied complete logo: lettering is part of the original image. */
 :root{--brand-blue:#0F89F6;--icon-accent:var(--brand-blue)}
+.conversation-layout .sidebar .assistant-brand-icon{display:block;object-fit:contain;transform:scale(1.4);filter:none!important}
 .brand-lockup{--product-logo-width:168px}
 .brand-lockup .brand{position:relative;display:block;width:var(--product-logo-width);max-width:100%;line-height:0}
 .brand-lockup .brand .product-logo{display:block;width:100%;height:auto;object-fit:contain}
