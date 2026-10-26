@@ -1,0 +1,9 @@
+/* Supplied complete logo: lettering is part of the original image. */
+.brand-lockup{--product-logo-width:168px}
+.brand-lockup .brand{position:relative;display:block;width:var(--product-logo-width);max-width:100%;line-height:0}
+.brand-lockup .brand .product-logo{display:block;width:100%;height:auto;object-fit:contain}
+.brand-lockup .brand .product-logo-light{display:none;position:absolute;inset:0;width:100%;height:auto;clip-path:inset(0 0 0 40%);filter:brightness(0) invert(1);pointer-events:none}
+body[data-conversation-mode="dark"] .brand-lockup .brand .product-logo-light{display:block}
+.brand-lockup .maker,.conversation-layout .brand-lockup .maker{font:400 12px/1.35 'DIN Pro',Arial,sans-serif!important;letter-spacing:0!important;white-space:nowrap;margin-top:6px;width:var(--product-logo-width)!important;max-width:100%;text-align:justify;text-align-last:justify}
+.organized-workspace .brand-lockup .maker{display:block!important}
+@media(max-width:600px){.brand-lockup{--product-logo-width:152px}.brand-lockup .maker,.conversation-layout .brand-lockup .maker{font-size:11px!important}}

@@ -26,7 +26,7 @@ body[data-conversation-mode="dark"] .company-context-badge{border-color:color-mi
 .mailbox-head>.company-context-badge{order:1;margin:0;flex-shrink:0;max-width:280px}.mailbox-head-actions{order:2}
 @media(max-width:600px){.company-context-badge{font-size:12px;margin-inline-start:8px;padding:4px 7px}.mailbox-head{flex-wrap:wrap}.mailbox-head>.company-context-badge{max-width:100%}}
 .mailbox-restore{position:fixed;right:22px;bottom:92px;z-index:70;padding:12px 18px;border:1px solid var(--icon-accent);border-radius:16px;background:var(--panel);color:var(--text);box-shadow:0 5px 22px #0002}
-.mailbox-restore[hidden]{display:none}.has-minimized-mail::after{content:'•';color:var(--icon-accent);margin-inline-start:auto}
+.mailbox-restore[hidden]{display:none}.has-minimized-mail::after{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--icon-accent);margin-inline-start:auto}
 .org-board{cursor:grab;user-select:none}.org-board:active{cursor:grabbing}.org-board button{cursor:pointer}
 .conversation-layout .org-board :is(.org-department-name,.org-person-name,.org-branch-toggle){border:0!important;box-shadow:none!important;min-height:0;background:transparent!important}
 .conversation-layout .close-control svg,.conversation-layout #menu-toggle[aria-expanded="true"] svg{color:#b85b10!important;stroke:currentColor!important}

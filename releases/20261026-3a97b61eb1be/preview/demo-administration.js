@@ -20,7 +20,11 @@ export function initDemoAdministration(app,initial,settings){
     if(!saved.digital_specialists_version&&saved.people.some(p=>p.id==='ai-analyst')&&saved.companies.some(c=>c.id==='vector')){
       for(const p of initial.people.filter(p=>p.kind==='ai'))if(!saved.people.some(x=>x.id===p.id)&&saved.departments.some(d=>d.id===p.department_id&&d.company_id===p.company_id)&&(!p.supervisor_id||saved.people.some(x=>x.id===p.supervisor_id)))saved.people.push(structuredClone(p));
       const analyst=saved.people.find(p=>p.id==='ai-analyst');if(analyst.name==='ИИ-аналитик'&&analyst.supervisor_id==='orlov'&&saved.people.some(p=>p.id==='ai-coordinator')){analyst.name='Аналитик';analyst.supervisor_id='ai-coordinator';}saved.digital_specialists_version=1;validate(saved);localStorage.setItem(KEY,JSON.stringify(saved));
-    }app.applyOrganization(organization);}}catch{}
+    }
+    // Rename only untouched legacy sample labels, preserving custom companies.
+    for(const [id,oldName,newName] of [['vector','Вектор','Alvenor Industries'],['horizon','Горизонт','Nordhaven Logistics']]){const c=saved.companies.find(c=>c.id===id);if(c?.name===oldName)c.name=newName;}
+    for(const g of saved.groups||[])if(g.id==='vector-group'&&/Вектор/.test(g.name))g.name='Alvenor Group';
+    localStorage.setItem(KEY,JSON.stringify(saved));app.applyOrganization(organization);}}catch{}
     const actions=el('div');actions.className='demo-admin-actions';const manage=btn('Компании и структура',()=>{settings.close();structure();});manage.id='organization-settings-button';actions.append(manage,btn('Права доступа',()=>{settings.close();permissions();}));settings.querySelector('.dialog-head').after(actions);
     settings.querySelector('#reset-demo').addEventListener('click',()=>{localStorage.removeItem(KEY);localStorage.removeItem(POLICY);},true);
     function save(next){validate(next);localStorage.setItem(KEY,JSON.stringify(next));organization=next;app.applyOrganization(organization);app.refresh();}

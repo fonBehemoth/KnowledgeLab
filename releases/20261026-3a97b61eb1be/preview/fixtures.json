@@ -3,14 +3,14 @@
     "companies": [
       {
         "id": "vector",
-        "name": "Вектор",
+        "name": "Alvenor Industries",
         "field": "Производство и торговля",
         "currency": "CHF",
         "group_id": "vector-group"
       },
       {
         "id": "horizon",
-        "name": "Горизонт",
+        "name": "Nordhaven Logistics",
         "field": "Логистика и склад",
         "currency": "CHF",
         "group_id": "vector-group"
@@ -463,7 +463,7 @@
     "groups": [
       {
         "id": "vector-group",
-        "name": "Группа компаний «Вектор»"
+        "name": "Alvenor Group"
       }
     ]
   },
