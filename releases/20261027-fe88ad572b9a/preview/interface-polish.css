@@ -26,6 +26,10 @@ body[data-conversation-mode="dark"] .company-context-badge{border-color:color-mi
 .mailbox-head>.company-context-badge{order:1;margin:0;flex-shrink:0;max-width:280px}.mailbox-head-actions{order:2}
 @media(max-width:600px){.company-context-badge{font-size:12px;margin-inline-start:8px;padding:4px 7px}.mailbox-head{flex-wrap:wrap}.mailbox-head>.company-context-badge{max-width:100%}}
 .mailbox-restore{position:fixed;right:22px;bottom:92px;z-index:70;padding:12px 18px;border:1px solid var(--icon-accent);border-radius:16px;background:var(--panel);color:var(--text);box-shadow:0 5px 22px #0002}
+html body.conversation-layout button.mailbox-restore{display:inline-flex;align-items:center;justify-content:center;min-height:44px;max-width:calc(100vw - 24px);padding:12px 18px;border-radius:999px!important;background:var(--capsule-surface,rgba(232,239,244,.58))!important;color:#b95000!important;border:1px solid #ff963e!important;box-shadow:var(--capsule-shadow,0 3px 20px #2233440a),0 0 12px #ff8a2438!important;backdrop-filter:blur(20px) saturate(135%)!important;-webkit-backdrop-filter:blur(20px) saturate(135%)}
+html body.conversation-layout[data-conversation-mode="dark"] button.mailbox-restore{color:#ffb66f!important}
+html body.conversation-layout button.mailbox-restore:is(:hover,:focus-visible){box-shadow:var(--capsule-shadow,0 3px 20px #2233440a),0 0 17px #ff8a2460!important;outline-color:#ff963e!important}
+@media(prefers-reduced-transparency:reduce){html body.conversation-layout button.mailbox-restore{background:var(--inside)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none}}
 .mailbox-restore[hidden]{display:none}.has-minimized-mail::after{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--icon-accent);margin-inline-start:auto}
 .org-board{cursor:grab;user-select:none}.org-board:active{cursor:grabbing}.org-board button{cursor:pointer}
 .conversation-layout .org-board :is(.org-department-name,.org-person-name,.org-branch-toggle){border:0!important;box-shadow:none!important;min-height:0;background:transparent!important}
