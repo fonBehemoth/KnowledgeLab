@@ -16,3 +16,4 @@
 @media(prefers-reduced-transparency:reduce){.glass,.site-header,.floating-note,.infra-mindi{background:var(--surface);backdrop-filter:none}}
 .button{color:#071c30}.button:hover{background:#319bf9}
 @media(max-width:700px){html[lang=uk] .hero h1{font-size:clamp(35px,10.3vw,65px)}}
+@media(max-width:380px){.process-steps{grid-template-columns:1fr}.hero-visual .orbit-blue{left:0;right:auto}}
