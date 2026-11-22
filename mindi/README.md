@@ -1,12 +1,16 @@
-# MINDI website preview
+# MINDI website
 
-Public presentation website by GENRON.
+Public presentation website by GENRON, in Ukrainian and English.
 
-- Ukrainian: https://fonbehemoth.github.io/KnowledgeLab/mindi/uk/
-- English: https://fonbehemoth.github.io/KnowledgeLab/mindi/en/
+- https://fonbehemoth.github.io/KnowledgeLab/mindi/uk/
+- https://fonbehemoth.github.io/KnowledgeLab/mindi/en/
 
-Light/dark themes, product screenshots and three inquiry choices. Requests are prepared locally for download and are not sent. Economic figures are displayed as a preliminary expert estimate, not a guarantee or measured case study.
+Company introduction, MINDI, AI specialists, systems, application projects, control, implementation and contact are separate pages. Light/dark themes, DIN Pro, product screens and a business information flow diagram are preserved.
 
-Release: 20261106-24bc19ce4956.
+Application projects describe possible workflows, not completed client case studies. System connections require individual integration. Economic figures remain a preliminary expert estimate, not a guarantee or measured case study.
 
-The existing product demo at the repository root is separate from this landing page.
+No contact details have been supplied. Requests are prepared locally for download and are not sent.
+
+Release: 20261122-650a01ef3dfc.
+
+The existing product demo at the repository root is separate and unchanged. Internal application documentation, configuration and data are excluded.
