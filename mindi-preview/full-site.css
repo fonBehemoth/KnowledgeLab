@@ -1,0 +1,29 @@
+body[data-section] { overflow-x: clip; }
+.nav-wrap { max-width: 1520px; }
+[data-section]:not([data-section="home"]) main { position: relative; isolation: isolate; }
+[data-section]:not([data-section="home"]) main::before {
+  position: absolute; z-index: -1; inset: 0 0 auto; height: 510px; content: "";
+  background: var(--section-art) 50% 56% / cover no-repeat;
+  opacity: .32; mask-image: linear-gradient(black 12%, transparent 96%); pointer-events: none;
+}
+html[data-theme="dark"] [data-section]:not([data-section="home"]) main::before { opacity: .16; }
+.full-feature { display: grid; gap: 22px; margin-block: clamp(32px, 6vw, 94px); }
+.full-feature h2, .interior-intro h1 { margin: 0; line-height: 1.06; }
+.full-feature h2 { font-size: clamp(28px, 4vw, 54px); }
+.interior-intro { padding-block: clamp(52px, 9vw, 132px) 26px; }
+.interior-intro h1 { font-size: clamp(45px, 8vw, 94px); }
+.interior-intro p { max-width: 56ch; font-size: clamp(17px, 2vw, 23px); }
+.film-grid, .motion-gallery { display: grid; gap: 16px; }
+.film-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.motion-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.film, .motion-gallery figure { margin: 0; overflow: hidden; border: 1px solid #85a5bb66; border-radius: 22px; background: var(--surface, #abc3d426); }
+.film video, .motion-gallery img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #15263b; }
+.film figcaption, .motion-gallery figcaption { padding: 15px 19px; }
+.film figcaption p, .motion-gallery figcaption p { margin: 5px 0 0; }
+.motion-link { display: block; position: relative; }
+.motion-link span { position: absolute; bottom: 9px; right: 9px; padding: 5px 10px; background: #15263b; color: #fff; border-radius: 8px; }
+.visual-path ol { padding: 13px; margin: 0; list-style: none; display: grid; gap: 10px; grid-template-columns: repeat(3,1fr); border-radius: 20px; background: linear-gradient(110deg,#279de429,#e9984027); }
+.visual-path li { min-width: 0; padding: 16px; border-inline-start: 3px solid #3898d4; font-weight: 700; }
+.visual-path li:last-child { border-color: #dd9337; }
+.planned-actions { padding-bottom: 75px; }
+@media (max-width: 760px) { .film-grid, .motion-gallery, .visual-path ol { grid-template-columns: 1fr; } }
